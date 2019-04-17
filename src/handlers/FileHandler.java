@@ -177,4 +177,12 @@ public class FileHandler
 			return false;
 		}
 	}
+	
+	public int getLastID()
+	{
+		ArrayList<ArrayList<String>> db = readFile();
+		ArrayList<String> row=db.get(db.size());
+		
+		return (Integer.parseInt(row.get(0))+1);
+	}
 }
