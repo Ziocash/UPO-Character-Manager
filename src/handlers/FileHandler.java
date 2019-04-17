@@ -181,8 +181,8 @@ public class FileHandler
 	public int getLastID()
 	{
 		ArrayList<ArrayList<String>> db = readFile();
-		ArrayList<String> row=db.get(db.size());
+		ArrayList<String> row = db.get(db.size() - 1);
 		
-		return (Integer.parseInt(row.get(0))+1);
+		return (Integer.parseInt(row.get(0)) + 1);
 	}
 }
