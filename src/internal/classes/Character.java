@@ -4,30 +4,31 @@ public abstract class Character
 {
 	private final int id;
 	private String name;
-	private int strength = 0;
-	private int constitution = 0;
+	private int level = 1;
+	private double strength = 0;
+	private double constitution = 0;
 	
 	public Character(int id)
 	{
 		this.id = id;
 	}
 	
-	public int getStrength() 
+	public double getStrength() 
 	{
 		return strength;
 	}
 
-	public void setStrength(int strength) 
+	public void setStrength(double strength) 
 	{
 		this.strength = strength;
 	}
 
-	public int getConstitution() 
+	public double getConstitution() 
 	{
 		return constitution;
 	}
 
-	public void setConstitution(int constitution) 
+	public void setConstitution(double constitution) 
 	{
 		this.constitution = constitution;
 	}
@@ -43,5 +44,13 @@ public abstract class Character
 	public void setName(String name)
 	{
 		this.name = name;
+	}
+	public void levelUp()
+	{
+		level++;
+	}
+	public int getLevel()
+	{
+		return level;
 	}
 }
