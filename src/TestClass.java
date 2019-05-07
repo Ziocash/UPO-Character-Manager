@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import handlers.CharacterHandler;
 import handlers.FileHandler;
 import internal.classes.BerserkerClass;
+import windows.MainWindow;
 
 class TestClass 
 {
@@ -21,6 +22,8 @@ class TestClass
 		ch.addCharacter(bers);
 		out.println(ch.getCharactersList());
 		out.println("Characters in list: " + ch.countCharacters());
+		MainWindow mw = new MainWindow();
+		out.println(mw.show());
 		
 		//out.println("ELLAMADONNA SE SEI SGRAVO");
 	}
