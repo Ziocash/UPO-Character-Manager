@@ -23,9 +23,9 @@ class TestClass
 		out.println(ch.getCharactersList());
 		out.println("Characters in list: " + ch.countCharacters());
 		MainWindow mw = new MainWindow();
-		out.println(mw.show());
+		mw.show();
+		out.println(mw.isShown());
 		
-		//out.println("ELLAMADONNA SE SEI SGRAVO");
 	}
 
 }
