@@ -88,10 +88,9 @@ public class FileHandler
 		try
 		{
 			File file = new File(pathOfFile);
-			List<String> list = Files.readAllLines(file.toPath(),Charset.defaultCharset());
+			List<String> list = Files.readAllLines(file.toPath(), Charset.defaultCharset());
 			for(String item : list)
 			{
-
 				ArrayList<String> y=new ArrayList<String>(Arrays.asList(item.split("\\|")));
 				x.add(y);
 			}			
@@ -106,10 +105,10 @@ public class FileHandler
 	public ArrayList<String> search(int id) 
 	{
 		ArrayList<ArrayList<String>> x = readFile();
-		if(x!=null)
+		if(x != null)
 			for (ArrayList<String> item : x)
 			{
-				if(item.indexOf(Integer.toString(id))!=-1)				
+				if(item.indexOf(Integer.toString(id)) != -1)				
 				{
 					return item;
 				}	
@@ -120,8 +119,8 @@ public class FileHandler
 	public boolean writeFile(int Id, String name, String type) 
 	{
 		String x = Integer.toString(Id) + "|" + name + "|" + type + "\n";
-		ArrayList<String> flag=search(Id);
-		if(flag==null)
+		ArrayList<String> flag = search(Id);
+		if(flag == null)
 		{
 			try
 			{
@@ -154,19 +153,19 @@ public class FileHandler
 		    BufferedWriter bw = new BufferedWriter(fw);
 		    PrintWriter out = new PrintWriter(bw);
 		    out.write("");
-			for(ArrayList<String> row:db)
+			for(ArrayList<String> row : db)
 			{
-				String x="";
-				int i=0;
-				int maxI=row.size()-1;
-				for(String item:row)
+				String x = "";
+				int i = 0;
+				int maxI = row.size() - 1;
+				for(String item : row)
 				{
-					x+=item;
-					if(maxI>i)
-						x+="|";
+					x += item;
+					if(maxI > i)
+						x += "|";
 					i++;
 				}
-				out.append(x+"\n");			
+				out.append(x + "\n");			
 			}			
 			out.close();
 			return true;
@@ -178,11 +177,19 @@ public class FileHandler
 		}
 	}
 	
+	/*
+	 * 
+	 * */
 	public int getLastID()
 	{
-		ArrayList<ArrayList<String>> db = readFile();
-		ArrayList<String> row = db.get(db.size() - 1);
+		if(readFile().size() != 0)
+		{
+			ArrayList<ArrayList<String>> db = readFile();
+			ArrayList<String> row = db.get(db.size() - 1);
 		
-		return (Integer.parseInt(row.get(0)) + 1);
+			return (Integer.parseInt(row.get(0)) + 1);
+		}
+		else
+			return 1; //No elements in data file (empty file)
 	}
 }
