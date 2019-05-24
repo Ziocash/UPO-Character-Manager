@@ -40,7 +40,8 @@ class TestClass
 			mw.appendText(b.toString() + "\n");
 		
 		//
-		while(mw.isShown()){}
+		while(mw.isShown())
+			continue;
 		
 	}
 

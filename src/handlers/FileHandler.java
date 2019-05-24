@@ -11,6 +11,9 @@ import javax.swing.JOptionPane;
 
 public class FileHandler 
 {
+	/**
+	 * 
+	 */
 	private String pathOfFile = ""; //path/to/file
 	
 	/**
@@ -109,7 +112,7 @@ public class FileHandler
 			List<String> list = Files.readAllLines(file.toPath(), Charset.defaultCharset());
 			for(String item : list)
 			{
-				ArrayList<String> y=new ArrayList<String>(Arrays.asList(item.split("\\|")));
+				ArrayList<String> y = new ArrayList<String>(Arrays.asList(item.split("\\|")));
 				content.add(y);
 			}			
 		} 
@@ -148,12 +151,14 @@ public class FileHandler
 	 */
 	public boolean writeFile(int Id, String name, String type) 
 	{
+		//
 		String x = Integer.toString(Id) + "|" + name + "|" + type + "\n";
 		ArrayList<String> flag = search(Id);
 		if(flag == null)
 		{
 			try
 			{
+				//
 				FileWriter fw = new FileWriter(pathOfFile, true);
 			    BufferedWriter bw = new BufferedWriter(fw);
 			    PrintWriter out = new PrintWriter(bw);
@@ -179,14 +184,17 @@ public class FileHandler
 	 */
 	public boolean delete(int id)
 	{		
+		//
 		ArrayList<ArrayList<String>> db = readFile();
 		ArrayList<String> arraySearch = search(id);
 		db.remove(arraySearch);	
 		try
 		{
+			//
 			FileWriter fw = new FileWriter(pathOfFile, false);
 		    BufferedWriter bw = new BufferedWriter(fw);
 		    PrintWriter out = new PrintWriter(bw);
+		    
 		    out.write("");
 			for(ArrayList<String> row : db)
 			{
@@ -212,9 +220,10 @@ public class FileHandler
 		}
 	}
 	
-	/*
+	/**
 	 * 
-	 * */
+	 * @return
+	 */
 	public int getLastID()
 	{
 		if(readFile().size() != 0)
