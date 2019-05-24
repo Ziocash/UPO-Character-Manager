@@ -43,10 +43,10 @@ public class SettingsHandler
 		{
 			if(testFile())
 			{
-			Properties prop = new Properties();
-			FileInputStream input = new FileInputStream(settingsFile);
-			prop.load(input);	
-			return prop.getProperty(property);
+				Properties prop = new Properties();
+				FileInputStream input = new FileInputStream(settingsFile);
+				prop.load(input);	
+				return prop.getProperty(property);
 			}
 			else
 				return null;

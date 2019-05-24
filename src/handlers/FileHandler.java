@@ -13,7 +13,9 @@ public class FileHandler
 {
 	private String pathOfFile = ""; //path/to/file
 	
-	
+	/**
+	 * 
+	 */
 	public FileHandler()
 	{
 		try
@@ -30,6 +32,9 @@ public class FileHandler
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	private void intializeClass()
 	{
 		int result = 0;
@@ -51,6 +56,11 @@ public class FileHandler
 		}
 	}
 	
+	/**
+	 * 
+	 * @param onlyCheck
+	 * @return
+	 */
 	private boolean testFile(boolean onlyCheck)
 	{
 		if(new File(pathOfFile).isFile() && onlyCheck)			
@@ -76,14 +86,22 @@ public class FileHandler
 			
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getFilePath()
 	{
 		return pathOfFile;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public ArrayList<ArrayList<String>> readFile() 
 	{
-		ArrayList<ArrayList<String>> x = new ArrayList<ArrayList<String>>();		
+		ArrayList<ArrayList<String>> content = new ArrayList<ArrayList<String>>();		
 		
 		try
 		{
@@ -92,16 +110,21 @@ public class FileHandler
 			for(String item : list)
 			{
 				ArrayList<String> y=new ArrayList<String>(Arrays.asList(item.split("\\|")));
-				x.add(y);
+				content.add(y);
 			}			
 		} 
 		catch (Exception e1)
 		{
 			e1.printStackTrace();
 		}
-		return x;
+		return content;
 	}
 	
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
 	public ArrayList<String> search(int id) 
 	{
 		ArrayList<ArrayList<String>> x = readFile();
@@ -116,6 +139,13 @@ public class FileHandler
 		return null;
 	}
 
+	/**
+	 * 
+	 * @param Id
+	 * @param name
+	 * @param type
+	 * @return
+	 */
 	public boolean writeFile(int Id, String name, String type) 
 	{
 		String x = Integer.toString(Id) + "|" + name + "|" + type + "\n";
@@ -142,6 +172,11 @@ public class FileHandler
 		
 	}
 	
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
 	public boolean delete(int id)
 	{		
 		ArrayList<ArrayList<String>> db = readFile();
