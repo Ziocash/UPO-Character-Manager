@@ -90,8 +90,8 @@ public class FileHandler
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Returns settings file path 
+	 * @return empty string or file path if set
 	 */
 	public String getFilePath()
 	{
@@ -198,17 +198,17 @@ public class FileHandler
 		    out.write("");
 			for(ArrayList<String> row : db)
 			{
-				String x = "";
+				String content = "";
 				int i = 0;
 				int maxI = row.size() - 1;
 				for(String item : row)
 				{
-					x += item;
+					content += item;
 					if(maxI > i)
-						x += "|";
+						content += "|";
 					i++;
 				}
-				out.append(x + "\n");			
+				out.append(content + "\n");			
 			}			
 			out.close();
 			return true;

@@ -1,4 +1,7 @@
 import static java.lang.System.out;
+
+import java.lang.reflect.Method;
+
 import org.junit.jupiter.api.Test;
 
 import handlers.CharacterHandler;
@@ -24,6 +27,10 @@ class TestClass
 		//BerserkerClass insertion test
 		bers.setName("Sgravo simulator");
 		out.println(bers.getId()+"|"+bers.getName()+"|"+bers.getConstitution());
+		
+		Method[] methods = bers.getClass().getMethods();
+		for(Method method : methods)
+			out.append(method.getName() + "\n");
 		
 		//CharacterHandler insertion testing
 		ch.addCharacter(bers);
