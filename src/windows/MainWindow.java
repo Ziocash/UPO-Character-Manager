@@ -3,14 +3,13 @@ package windows;
 import java.awt.Font;
 
 import javax.swing.JFrame;
-import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextArea;
-import javax.swing.ListModel;
+import controllers.Controller;
 
 public class MainWindow
 {
@@ -43,14 +42,20 @@ public class MainWindow
 		JMenuItem mntmNewWindow = new JMenuItem("New window");
 		mnNewMenu.add(mntmNewWindow);
 		
+		Controller newWindowController = new Controller(mntmNewWindow);
+		mntmNewWindow.addActionListener(newWindowController);
+		
 		JSeparator separator = new JSeparator();
 		mnNewMenu.add(separator);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Delete");
 		mnNewMenu.add(mntmNewMenuItem);
 		
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Exit");
-		mnNewMenu.add(mntmNewMenuItem_1);
+		JMenuItem mntmExit = new JMenuItem("Exit");
+		mnNewMenu.add(mntmExit);
+		
+		Controller exitController = new Controller(mntmExit);
+		mntmExit.addActionListener(exitController);
 	}
 	
 	public synchronized void setText(String text)
@@ -81,6 +86,7 @@ public class MainWindow
 
 	public void close()
 	{
-		frame.setVisible(false);		
+		frame.setVisible(false);
+		frame.dispose();
 	}
 }

@@ -36,7 +36,9 @@ public class FileHandler
 	}
 	
 	/**
+	 * Initialize the class with the correct instruction sequence
 	 * 
+	 * (Automatic error handling included)
 	 */
 	private void intializeClass()
 	{
@@ -60,23 +62,23 @@ public class FileHandler
 	}
 	
 	/**
-	 * 
-	 * @param onlyCheck
-	 * @return
+	 * Test if the file should save information exists
+	 * @param onlyCheck specify if the method should create the file or only checks if it exists
+	 * @return {@code true} if the file exists, {@code false} in other cases
 	 */
 	private boolean testFile(boolean onlyCheck)
 	{
 		if(new File(pathOfFile).isFile() && onlyCheck)			
 			return true;
-		else		
+		else
 		{
 			if(!onlyCheck)
 			{
 				File f = new File(pathOfFile);
-				try 
+				try
 				{
 					f.createNewFile();
-				} 
+				}
 				catch (IOException e) 
 				{
 					e.printStackTrace();
