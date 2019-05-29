@@ -7,14 +7,16 @@ import javax.swing.JMenuItem;
 
 import windows.MainWindow;
 
-public class Controller implements ActionListener
+public class MenuController implements ActionListener
 {
 	private JMenuItem item = new JMenuItem();
+	private MainWindow owner = new MainWindow();
 	
-	public Controller(JMenuItem menuItem)
+	public MenuController(JMenuItem menuItem, MainWindow ownFrame)
 	{
 		super();
 		item = menuItem;
+		owner = ownFrame;
 	}
 	
 	@Override
@@ -33,7 +35,7 @@ public class Controller implements ActionListener
 			case "G":
 				break;
 			case "Exit":
-				System.exit(0);
+				owner.close();
 				break;
 			default:
 				break;

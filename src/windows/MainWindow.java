@@ -9,7 +9,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextArea;
-import controllers.Controller;
+import controllers.MenuController;
 
 public class MainWindow
 {
@@ -42,7 +42,7 @@ public class MainWindow
 		JMenuItem mntmNewWindow = new JMenuItem("New window");
 		mnNewMenu.add(mntmNewWindow);
 		
-		Controller newWindowController = new Controller(mntmNewWindow);
+		MenuController newWindowController = new MenuController(mntmNewWindow, this);
 		mntmNewWindow.addActionListener(newWindowController);
 		
 		JSeparator separator = new JSeparator();
@@ -54,7 +54,7 @@ public class MainWindow
 		JMenuItem mntmExit = new JMenuItem("Exit");
 		mnNewMenu.add(mntmExit);
 		
-		Controller exitController = new Controller(mntmExit);
+		MenuController exitController = new MenuController(mntmExit, this);
 		mntmExit.addActionListener(exitController);
 	}
 	

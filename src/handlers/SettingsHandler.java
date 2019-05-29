@@ -8,20 +8,29 @@ import java.util.Properties;
 
 public class SettingsHandler 
 {
-	private static final String settingsFile = "Settings.settings";
+	/**
+	 * Constant field: contains settings file path
+	 */
+	private static final String SETTINGS_FILE = "Settings.settings";
 	
+	/**
+	 * Sets a property in settings file
+	 * @param property Property given name
+	 * @param value Property value
+	 * @return
+	 * {@code true} if the property is correctly set, else returns {@code false}
+	 */
 	public static boolean setProperty(String property, String value)
-	{
-		
-		Properties prop = new Properties();
+	{		
 		try 
 		{
 			if(testFile())
 			{
-				FileInputStream input = new FileInputStream(settingsFile);
+				Properties prop = new Properties();
+				FileInputStream input = new FileInputStream(SETTINGS_FILE);
 				prop.load(input);	
 				input.close();
-				FileOutputStream out = new FileOutputStream(settingsFile);
+				FileOutputStream out = new FileOutputStream(SETTINGS_FILE);
 				prop.setProperty(property, value);
 				prop.store(out, null);
 				out.close();
@@ -37,6 +46,12 @@ public class SettingsHandler
 		}
 	}
 	
+	/**
+	 * Retrieves a property in settings file
+	 * @param property Property given name
+	 * @return
+	 * the property value if exists, else return {@code null}
+	 */
 	public static String retrieveProperty(String property)
 	{
 		try
@@ -44,8 +59,9 @@ public class SettingsHandler
 			if(testFile())
 			{
 				Properties prop = new Properties();
-				FileInputStream input = new FileInputStream(settingsFile);
-				prop.load(input);	
+				FileInputStream input = new FileInputStream(SETTINGS_FILE);
+				prop.load(input);
+				input.close();
 				return prop.getProperty(property);
 			}
 			else
@@ -59,13 +75,18 @@ public class SettingsHandler
 		
 	}
 	
+	/**
+	 * Tests if settings file exists
+	 * @return
+	 * {@code true} if exists, else returns {@code false}
+	 */
 	private static boolean testFile()
 	{
-		if(new File(settingsFile).isFile())			
+		if(new File(SETTINGS_FILE).isFile())			
 			return true;
 		else		
 		{			
-			File f = new File(settingsFile);
+			File f = new File(SETTINGS_FILE);
 			try 
 			{
 				f.createNewFile();
