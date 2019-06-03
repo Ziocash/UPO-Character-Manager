@@ -1,6 +1,8 @@
 package windows;
 
+import java.awt.Dialog;
 import java.awt.Font;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -8,27 +10,33 @@ import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextArea;
+
 import controllers.MainMenuController;
 
-public class MainWindow
+public class AdaptableWindow
 {
-	private JFrame frame;
+	private JDialog frame;
+	private JFrame owner;
+	private Dialog.ModalityType modType;
+	private String title;
 	private JScrollPane scrollPane = new JScrollPane();
 	private JTextArea txtArea = new JTextArea();
 	private JMenuBar menuBar = new JMenuBar();	
 
-	public MainWindow()
+	public AdaptableWindow(JFrame owner, String title, Dialog.ModalityType modType)
 	{
+		this.owner = owner;
+		this.modType = modType;
+		this.title = "Characters Manager - " + title;
 		initializeComponents();
 	}
 	
 	private void initializeComponents()
 	{
-		frame = new JFrame();
-		frame.setTitle("Characters Manager - Finestra principale");
-		frame.setBounds(0, 0, 600, 450);
+		frame = new JDialog(owner, title, modType);
+		frame.setBounds(0, 0, 400, 250);
 		frame.setLocationRelativeTo(null);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
+		frame.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);		
 		
 		//------------------------------------------------		
 		scrollPane.setViewportView(txtArea);
@@ -47,7 +55,7 @@ public class MainWindow
 		JMenuItem mntmNewWindow = new JMenuItem("New window");
 		mnNewMenu.add(mntmNewWindow);
 		
-		MainMenuController newWindowController = new MainMenuController(mntmNewWindow, frame);
+		MainMenuController newWindowController = new MainMenuController(mntmNewWindow, null);
 		mntmNewWindow.addActionListener(newWindowController);
 		
 		JSeparator separator = new JSeparator();
@@ -59,7 +67,7 @@ public class MainWindow
 		JMenuItem mntmExit = new JMenuItem("Exit");
 		mnNewMenu.add(mntmExit);
 		
-		MainMenuController exitController = new MainMenuController(mntmExit, frame);
+		MainMenuController exitController = new MainMenuController(mntmExit, null);
 		mntmExit.addActionListener(exitController);
 	}
 	
@@ -86,11 +94,5 @@ public class MainWindow
 	public boolean isShown()
 	{
 		return frame.isVisible();
-	}
-
-	public void close()
-	{
-		frame.setVisible(false);
-		frame.dispose();
 	}
 }
