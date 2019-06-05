@@ -34,6 +34,8 @@ class TestClass
 		out.println (bers.getCharSpec());
 		out.println(bers.getId()+"|"+bers.getName()+"|"+bers.getConstitution());
 		
+		out.println(bers.toString());
+		
 		//Method[] methods = bers.getClass().getMethods();
 		//for(Method method : methods)
 			//out.append(method.getName() + "\n");

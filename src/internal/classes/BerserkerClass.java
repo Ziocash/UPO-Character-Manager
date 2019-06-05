@@ -39,15 +39,10 @@ public class BerserkerClass extends Character
 		super.setStrength(newStr);	
 	}
 	
-	/**
-	 * Returns a String which contains all configured fields
-	 * 
-	 * @return a String which contains all configured fields
-	 */
+	
 	@Override
 	public String toString()
 	{
-		String text = "ID: " + super.getId() + " Name: " + super.getName() + " Constitution: " + super.getConstitution() + " Strength: " + super.getStrength()+ " Level: " + super.getLevel();
-		return text;
+		return super.toString();
 	}
 }

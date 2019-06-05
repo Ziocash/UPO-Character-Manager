@@ -2,7 +2,7 @@ package internal.classes;
 
 import internal.classes.CharacterSpecializations.*;
 
-public abstract class Character 
+public class Character 
 {
 	/**
 	 * CharacterID
@@ -174,5 +174,25 @@ public abstract class Character
 	public void setCharClass(CharacterClasses charClass)
 	{
 		this.charClass = charClass;
+	}
+	
+	/**
+	 * Returns a String which contains all configured fields
+	 * 
+	 * @return a String which contains all configured fields
+	 */
+	@Override
+	public String toString()
+	{
+		String value = new String();
+		value += "ID: " + id + " ";
+		value += "Name: " + name + " ";
+		value += "Level: " + level + " ";
+		value += "Strength: " + strength + " ";
+		value += "Constitution: " + constitution + " ";
+		value += "Class: " + getCharClass() + " ";
+		value += "Specialization: " + getCharSpec().replace('_', ' ') + " ";
+		
+		return value;
 	}
 }
