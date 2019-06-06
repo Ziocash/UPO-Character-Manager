@@ -24,21 +24,18 @@ class TestClass
 		//FileHandler test
 		out.println(fh.getFilePath());
 		out.println(fh.readFile());
-		out.println("Last ID: " + fh.getLastID());
+		
 
 		//BerserkerClass insertion test
-		bers.setName("Sgravo simulator");
+		bers.setName("Culo");
 		bers.setCharClass(CharacterClasses.MAGE);
 		out.println(bers.getCharClass());
 		bers.setCharSpec(CharacterSpecializations.MageType.ARCANE_WARRIOR);
-		out.println (bers.getCharSpec());
-		out.println(bers.getId()+"|"+bers.getName()+"|"+bers.getConstitution());
-		
+		out.println (bers.getCharSpec());		
 		out.println(bers.toString());
 		
-		//Method[] methods = bers.getClass().getMethods();
-		//for(Method method : methods)
-			//out.append(method.getName() + "\n");
+		out.println(fh.writeFile(bers.toFileString()));
+		out.println("Last ID: " + fh.getLastID());
 		
 		//CharacterHandler insertion testing
 		ch.addCharacter(bers);

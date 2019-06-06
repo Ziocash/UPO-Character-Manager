@@ -1,5 +1,6 @@
 package internal.classes;
 
+import handlers.SettingsHandler;
 import internal.classes.CharacterSpecializations.*;
 
 public class Character 
@@ -195,4 +196,18 @@ public class Character
 		
 		return value;
 	}
+	
+	public String toFileString()
+	{
+		String value = new String();
+		value += id + "|";
+		value += name + "|";
+		value += level + "|";
+		value += strength + "|";
+		value += constitution + "|";
+		value += getCharClass() + "|";
+		value += getCharSpec().replace('_', ' ') + "\n";
+		return value;
+	}
+	
 }

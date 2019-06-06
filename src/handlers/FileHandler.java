@@ -1,5 +1,8 @@
 package handlers;
 import java.io.*;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.ArrayList;
@@ -24,10 +27,12 @@ public class FileHandler
 		try
 		{
 			String path = SettingsHandler.retrieveProperty("SaveFilePath");
-			if(path.contentEquals(""))
+			if(path == null || path.isEmpty())
 				intializeClass();
 			else
-				pathOfFile = path;	
+				pathOfFile = path;
+			
+				
 		}
 		catch(Exception e)
 		{
@@ -45,15 +50,19 @@ public class FileHandler
 		int result = 0;
 		if(!testFile(true))
 		{
-			JFileChooser fc = new JFileChooser();
-			result = fc.showSaveDialog(null);
-			
-			if(result == JFileChooser.APPROVE_OPTION)
+			if(pathOfFile.isEmpty())
 			{
-				pathOfFile = fc.getSelectedFile().getPath();
-				testFile(false);
-				SettingsHandler.setProperty("SaveFilePath", pathOfFile);
-			}			
+				JFileChooser fc = new JFileChooser();
+				result = fc.showSaveDialog(null);
+				
+				if(result == JFileChooser.APPROVE_OPTION)
+				{
+					pathOfFile = fc.getSelectedFile().getPath();
+					testFile(false);
+					SettingsHandler.setProperty("SaveFilePath", pathOfFile);
+				}			
+			}
+			
 		}
 		else
 		{
@@ -62,7 +71,7 @@ public class FileHandler
 	}
 	
 	/**
-	 * Test if the file should save information exists
+	 * Test if the file which should save information exists
 	 * @param onlyCheck specify if the method should create the file or only checks if it exists
 	 * @return {@code true} if the file exists, {@code false} in other cases
 	 */
@@ -101,8 +110,8 @@ public class FileHandler
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Reads the file with a default separator style ("|")
+	 * @return an 
 	 */
 	public ArrayList<ArrayList<String>> readFile() 
 	{
@@ -110,13 +119,16 @@ public class FileHandler
 		
 		try
 		{
-			File file = new File(pathOfFile);
-			List<String> list = Files.readAllLines(file.toPath(), Charset.defaultCharset());
-			for(String item : list)
+			if(testFile(true))
 			{
-				ArrayList<String> y = new ArrayList<String>(Arrays.asList(item.split("\\|")));
-				content.add(y);
-			}			
+				File file = new File(pathOfFile);
+				List<String> list = Files.readAllLines(file.toPath(), Charset.defaultCharset());
+				for(String item : list)
+				{
+					ArrayList<String> y = new ArrayList<String>(Arrays.asList(item.split("\\|")));
+					content.add(y);
+				}			
+			}
 		} 
 		catch (Exception e1)
 		{
@@ -151,21 +163,21 @@ public class FileHandler
 	 * @param type
 	 * @return
 	 */
-	public boolean writeFile(int Id, String name, String type) 
+	public boolean writeFile(String line) 
 	{
-		//
-		String x = Integer.toString(Id) + "|" + name + "|" + type + "\n";
-		ArrayList<String> flag = search(Id);
+		ArrayList<String> flag = search(1);
 		if(flag == null)
 		{
 			try
 			{
-				//
-				FileWriter fw = new FileWriter(pathOfFile, true);
-			    BufferedWriter bw = new BufferedWriter(fw);
-			    PrintWriter out = new PrintWriter(bw);
-				out.append(x);			
-				out.close();
+				if(!testFile(true))
+				{
+					FileWriter fw = new FileWriter(pathOfFile, true);
+				    BufferedWriter bw = new BufferedWriter(fw);
+				    PrintWriter out = new PrintWriter(bw);
+					out.append(line);			
+					out.close();
+				}
 				
 			} 
 			catch (Exception e1)

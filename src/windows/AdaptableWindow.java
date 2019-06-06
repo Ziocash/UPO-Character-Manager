@@ -15,14 +15,47 @@ import controllers.MainMenuController;
 
 public class AdaptableWindow
 {
+	/**
+	 *  
+	 */
 	private JDialog frame;
+	
+	/**
+	 * 
+	 */
 	private JFrame owner;
+	
+	/**
+	 * 
+	 */
 	private Dialog.ModalityType modType;
+	
+	/**
+	 * 
+	 */
 	private String title;
+	
+	/**
+	 * 
+	 */
 	private JScrollPane scrollPane = new JScrollPane();
+	
+	/**
+	 * 
+	 */
 	private JTextArea txtArea = new JTextArea();
+	
+	/**
+	 * 
+	 */
 	private JMenuBar menuBar = new JMenuBar();	
 
+	/**
+	 * 
+	 * @param owner
+	 * @param title
+	 * @param modType
+	 */
 	public AdaptableWindow(JFrame owner, String title, Dialog.ModalityType modType)
 	{
 		this.owner = owner;
@@ -31,6 +64,9 @@ public class AdaptableWindow
 		initializeComponents();
 	}
 	
+	/**
+	 * 
+	 */
 	private void initializeComponents()
 	{
 		frame = new JDialog(owner, title, modType);
@@ -47,6 +83,9 @@ public class AdaptableWindow
 		frame.add(scrollPane);
 	}
 	
+	/**
+	 * 
+	 */
 	private void initializeMenu()
 	{
 		JMenu mnNewMenu = new JMenu("File");
@@ -71,26 +110,45 @@ public class AdaptableWindow
 		mntmExit.addActionListener(exitController);
 	}
 	
+	/**
+	 * 
+	 * @param text
+	 */
 	public synchronized void setText(String text)
 	{
 		txtArea.setText(text);
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public synchronized String getText()
 	{
 		return txtArea.getText();
 	}
 	
+	/**
+	 * 
+	 * @param text
+	 */
 	public synchronized void appendText(String text)
 	{
 		txtArea.append(text);
 	}
 	
+	/**
+	 * 
+	 */
 	public void show()
 	{
 		frame.setVisible(true);
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean isShown()
 	{
 		return frame.isVisible();
