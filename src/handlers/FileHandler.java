@@ -15,12 +15,12 @@ import javax.swing.JOptionPane;
 public class FileHandler 
 {
 	/**
-	 * 
+	 * Path to the save file
 	 */
 	private String pathOfFile = ""; //path/to/file
 	
 	/**
-	 * 
+	 * Class constructor
 	 */
 	public FileHandler()
 	{
@@ -30,8 +30,7 @@ public class FileHandler
 			if(path == null || path.isEmpty())
 				intializeClass();
 			else
-				pathOfFile = path;
-			
+				pathOfFile = path;			
 				
 		}
 		catch(Exception e)
@@ -65,14 +64,12 @@ public class FileHandler
 			
 		}
 		else
-		{
 			testFile(true);
-		}
 	}
 	
 	/**
 	 * Test if the file which should save information exists
-	 * @param onlyCheck specify if the method should create the file or only checks if it exists
+	 * @param onlyCheck Specify if the method should create the file or only checks if it exists
 	 * @return {@code true} if the file exists, {@code false} in other cases
 	 */
 	private boolean testFile(boolean onlyCheck)
@@ -85,15 +82,15 @@ public class FileHandler
 			{
 				File f = new File(pathOfFile);
 				try
-				{
-					f.createNewFile();
+				{					
+					return f.createNewFile();
 				}
 				catch (IOException e) 
 				{
 					e.printStackTrace();
 					JOptionPane.showMessageDialog(null, e.getMessage(), "Errore nella creazione del file", JOptionPane.ERROR_MESSAGE);
-				}
-				return true;
+					return false;
+				}				
 			}
 			return false;
 		}
@@ -111,7 +108,7 @@ public class FileHandler
 	
 	/**
 	 * Reads the file with a default separator style ("|")
-	 * @return an 
+	 * @return a list of lists which contains all file lines ({@code ArrayList<ArrayList<String>>})
 	 */
 	public ArrayList<ArrayList<String>> readFile() 
 	{
@@ -119,14 +116,15 @@ public class FileHandler
 		
 		try
 		{
+			//If the file exists 
 			if(testFile(true))
 			{
 				File file = new File(pathOfFile);
 				List<String> list = Files.readAllLines(file.toPath(), Charset.defaultCharset());
 				for(String item : list)
 				{
-					ArrayList<String> y = new ArrayList<String>(Arrays.asList(item.split("\\|")));
-					content.add(y);
+					ArrayList<String> splitted = new ArrayList<String>(Arrays.asList(item.split("\\|")));
+					content.add(splitted);
 				}			
 			}
 		} 
@@ -138,30 +136,27 @@ public class FileHandler
 	}
 	
 	/**
+	 * Searches an element with a given id 
 	 * 
-	 * @param id
-	 * @return
+	 * @param id Item Id to find
+	 * @return the searched item ({@code ArrayList<String>}) else {@code null}
 	 */
 	public ArrayList<String> search(int id) 
 	{
 		ArrayList<ArrayList<String>> x = readFile();
 		if(x != null)
 			for (ArrayList<String> item : x)
-			{
 				if(item.indexOf(Integer.toString(id)) != -1)				
-				{
 					return item;
-				}	
-			}
+
 		return null;
 	}
 
 	/**
+	 * Writes a given string onto the file at path {@link #pathOfFile}
 	 * 
-	 * @param Id
-	 * @param name
-	 * @param type
-	 * @return
+	 * @param line 
+	 * @return {@code true} if the file is correctly written, {@code false} in the other cases
 	 */
 	public boolean writeFile(String line) 
 	{
@@ -177,14 +172,17 @@ public class FileHandler
 				    PrintWriter out = new PrintWriter(bw);
 					out.append(line);			
 					out.close();
+					return true;
 				}
+				else
+					return false;
 				
 			} 
 			catch (Exception e1)
 			{
 				e1.printStackTrace();
+				return false;
 			}
-			return true;
 		}
 		else
 			return false;
@@ -209,6 +207,7 @@ public class FileHandler
 		    BufferedWriter bw = new BufferedWriter(fw);
 		    PrintWriter out = new PrintWriter(bw);
 		    
+		    //------
 		    out.write("");
 			for(ArrayList<String> row : db)
 			{
@@ -240,9 +239,9 @@ public class FileHandler
 	 */
 	public int getLastID()
 	{
-		if(readFile().size() != 0)
-		{
-			ArrayList<ArrayList<String>> db = readFile();
+		ArrayList<ArrayList<String>> db = readFile();
+		if(db.size() != 0 && !db.isEmpty())
+		{			
 			ArrayList<String> row = db.get(db.size() - 1);
 		
 			return (Integer.parseInt(row.get(0)) + 1);

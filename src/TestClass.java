@@ -27,7 +27,7 @@ class TestClass
 		
 
 		//BerserkerClass insertion test
-		bers.setName("Culo");
+		bers.setName("Wizardous witness");
 		bers.setCharClass(CharacterClasses.MAGE);
 		out.println(bers.getCharClass());
 		bers.setCharSpec(CharacterSpecializations.MageType.ARCANE_WARRIOR);
