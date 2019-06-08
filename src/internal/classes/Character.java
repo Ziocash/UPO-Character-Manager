@@ -1,6 +1,5 @@
 package internal.classes;
 
-import handlers.SettingsHandler;
 import internal.classes.CharacterSpecializations.*;
 
 public class Character 
