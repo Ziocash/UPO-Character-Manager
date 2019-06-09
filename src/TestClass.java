@@ -18,7 +18,7 @@ class TestClass
 	{
 		//Instances
 		FileHandler fh = new FileHandler();
-		BerserkerClass bers = new BerserkerClass(1);
+		BerserkerClass bers = new BerserkerClass(fh.getLastID());
 		CharacterHandler<BerserkerClass> ch = new CharacterHandler<BerserkerClass>();
 		
 		//FileHandler test
@@ -49,7 +49,7 @@ class TestClass
 
 		//
 		for(BerserkerClass b : ch.getCharactersList())
-			mw.appendText(b.toString() + "\n");
+			out.println(b.toString() + "\n");
 		
 		//
 		while(mw.isShown())

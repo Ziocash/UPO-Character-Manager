@@ -157,33 +157,26 @@ public class FileHandler
 	 */
 	public boolean writeFile(String line) 
 	{
-		ArrayList<String> flag = search(1);
-		if(flag == null)
+		try
 		{
-			try
+			if(testFile(true))
 			{
-				if(!testFile(true))
-				{
-					FileWriter fw = new FileWriter(pathOfFile, true);
-				    BufferedWriter bw = new BufferedWriter(fw);
-				    PrintWriter out = new PrintWriter(bw);
-					out.append(line);			
-					out.close();
-					return true;
-				}
-				else
-					return false;
-				
-			} 
-			catch (Exception e1)
-			{
-				e1.printStackTrace();
-				return false;
+				FileWriter fw = new FileWriter(pathOfFile, true);
+			    BufferedWriter bw = new BufferedWriter(fw);
+			    PrintWriter out = new PrintWriter(bw);
+				out.append(line);			
+				out.close();
+				return true;
 			}
-		}
-		else
+			else
+				return false;
+			
+		} 
+		catch (Exception e1)
+		{
+			e1.printStackTrace();
 			return false;
-		
+		}
 	}
 	
 	/**
@@ -238,11 +231,7 @@ public class FileHandler
 	{
 		ArrayList<ArrayList<String>> db = readFile();
 		if(db.size() != 0 && !db.isEmpty())
-		{			
-			ArrayList<String> row = db.get(db.size() - 1);
-		
-			return (Integer.parseInt(row.get(0)) + 1);
-		}
+			return db.size() + 1;
 		else
 			return 1; //No elements in data file (empty file)
 	}
