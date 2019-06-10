@@ -26,11 +26,11 @@ public class TableModel extends AbstractTableModel
 		return COLUMN_NAME_STRINGS.length;
 	}
 	
-	 @Override
-	 public String getColumnName(int index) 
-	 {
-	    return COLUMN_NAME_STRINGS[index];
-	 }
+	@Override
+	public String getColumnName(int index) 
+	{
+		return COLUMN_NAME_STRINGS[index];
+	}
 
 	@Override
 	public int getRowCount()

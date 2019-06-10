@@ -72,7 +72,7 @@ public class AdaptableWindow
 		frame = new JDialog(owner, title, modType);
 		frame.setBounds(0, 0, 400, 250);
 		frame.setLocationRelativeTo(null);
-		frame.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);		
+		frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);		
 		
 		//------------------------------------------------		
 		scrollPane.setViewportView(txtArea);

@@ -148,7 +148,7 @@ public class MainWindow
 		Component c = table.prepareRenderer(cellRenderer, row, column);
 		int width = c.getPreferredSize().width + table.getIntercellSpacing().width;
 
-		return width;
+		return width + 20;
 	}
 	
 	public void show()

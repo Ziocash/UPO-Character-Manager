@@ -1,4 +1,5 @@
 import static java.lang.System.out;
+import static internal.classes.CharacterSpecializations.*;
 
 //import java.lang.reflect.Method;
 
@@ -8,7 +9,6 @@ import handlers.CharacterHandler;
 import handlers.FileHandler;
 import internal.classes.BerserkerClass;
 import internal.classes.CharacterClasses;
-import internal.classes.CharacterSpecializations;
 import windows.MainWindow;
 
 class TestClass 
@@ -30,7 +30,7 @@ class TestClass
 		bers.setName("Wizardous witness");
 		bers.setCharClass(CharacterClasses.MAGE);
 		out.println(bers.getCharClass());
-		bers.setCharSpec(CharacterSpecializations.MageType.ARCANE_WARRIOR);
+		bers.setCharSpec(MageType.ARCANE_WARRIOR);
 		out.println (bers.getCharSpec());		
 		out.println(bers.toString());
 		

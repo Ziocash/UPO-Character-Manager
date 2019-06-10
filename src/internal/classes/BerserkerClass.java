@@ -1,5 +1,6 @@
 package internal.classes;
 
+@Deprecated
 public class BerserkerClass extends Character
 {
 	//Class-specific multiplier
