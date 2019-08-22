@@ -15,7 +15,7 @@ public class FileHandler
 	 * Path to the save file
 	 */
 	private String pathOfFile = ""; //path/to/file
-	
+	private ArrayList<ArrayList<String>> db = new ArrayList<ArrayList<String>>();
 	/**
 	 * Class constructor
 	 */
@@ -33,6 +33,15 @@ public class FileHandler
 		catch(Exception e)
 		{
 			intializeClass();
+		}
+		
+		try 
+		{
+			readFile();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
 		}
 	}
 	
@@ -107,10 +116,8 @@ public class FileHandler
 	 * Reads the file with a default separator style ("|")
 	 * @return a list of lists which contains all file lines ({@code ArrayList<ArrayList<String>>})
 	 */
-	public ArrayList<ArrayList<String>> readFile() 
+	private void readFile() 
 	{
-		ArrayList<ArrayList<String>> content = new ArrayList<ArrayList<String>>();		
-		
 		try
 		{
 			//If the file exists 
@@ -121,7 +128,7 @@ public class FileHandler
 				for(String item : list)
 				{
 					ArrayList<String> splitted = new ArrayList<String>(Arrays.asList(item.split("\\|")));
-					content.add(splitted);
+					db.add(splitted);
 				}			
 			}
 		} 
@@ -129,7 +136,7 @@ public class FileHandler
 		{
 			e1.printStackTrace();
 		}
-		return content;
+		return;
 	}
 	
 	/**
@@ -140,38 +147,29 @@ public class FileHandler
 	 */
 	public ArrayList<String> search(int id) 
 	{
-		ArrayList<ArrayList<String>> x = readFile();
-		if(x != null)
-			for (ArrayList<String> item : x)
+		
+		if(db != null)
+			for (ArrayList<String> item : db)
 				if(item.indexOf(Integer.toString(id)) != -1)				
 					return item;
 
 		return null;
 	}
-
+	
 	/**
-	 * Writes a given string onto the file at path {@link #pathOfFile}
+	 * Writes the db array into the file at path {@link #pathOfFile}
 	 * 
-	 * @param line 
-	 * @return {@code true} if the file is correctly written, {@code false} in the other cases
+	 * @param line
+	 * @return {@code true} if the line is correctly added to db array, {@code false} in the other cases
 	 */
-	public boolean writeFile(String line) 
+	public boolean addLine(String line)
 	{
 		try
 		{
-			if(testFile(true))
-			{
-				FileWriter fw = new FileWriter(pathOfFile, true);
-			    BufferedWriter bw = new BufferedWriter(fw);
-			    PrintWriter out = new PrintWriter(bw);
-				out.append(line);			
-				out.close();
-				return true;
-			}
-			else
-				return false;
-			
-		} 
+			ArrayList<String> splitted = new ArrayList<String>(Arrays.asList(line.split("\\|")));
+			db.add(splitted);
+			return true;
+		}
 		catch (Exception e1)
 		{
 			e1.printStackTrace();
@@ -180,19 +178,15 @@ public class FileHandler
 	}
 	
 	/**
+	 * Writes the db array into the file at path {@link #pathOfFile}
 	 * 
-	 * @param id
-	 * @return
+	 * @param db
+	 * @return {@code true} if the file is correctly written, {@code false} in the other cases
 	 */
-	public boolean delete(int id)
-	{		
-		//
-		ArrayList<ArrayList<String>> db = readFile();
-		ArrayList<String> arraySearch = search(id);
-		db.remove(arraySearch);	
+	public boolean writeFile() 
+	{
 		try
 		{
-			//
 			FileWriter fw = new FileWriter(pathOfFile, false);
 		    BufferedWriter bw = new BufferedWriter(fw);
 		    PrintWriter out = new PrintWriter(bw);
@@ -215,10 +209,28 @@ public class FileHandler
 			}			
 			out.close();
 			return true;
-		} 
+		}
 		catch (Exception e1)
 		{
 			e1.printStackTrace();
+			return false;
+		}
+	}
+	
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public boolean delete(int id)
+	{
+		ArrayList<String> arraySearch = search(id);
+		if(db.remove(arraySearch))
+		{
+			return true;
+		} 
+		else
+		{
 			return false;
 		}
 	}
@@ -229,7 +241,6 @@ public class FileHandler
 	 */
 	public int getLastID()
 	{
-		ArrayList<ArrayList<String>> db = readFile();
 		if(db.size() != 0 && !db.isEmpty())
 			return db.size() + 1;
 		else
