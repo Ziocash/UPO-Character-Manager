@@ -4,6 +4,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import javax.swing.JFileChooser;
@@ -185,6 +186,19 @@ public class FileHandler
 			e1.printStackTrace();
 			return false;
 		}
+	}
+	
+	/**
+	 * Writes the db array into the file at path {@link #pathOfFile}
+	 * 
+	 * @param db line id
+	 * @return {@code true} if the file is correctly written, {@code false} in the other cases
+	 */
+	public boolean writeLine(String line,int id)
+	{
+		if(db.remove(search(id)))
+			return addLine(line);
+		return false;		
 	}
 	
 	/**
