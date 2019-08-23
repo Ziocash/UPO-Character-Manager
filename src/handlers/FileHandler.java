@@ -24,7 +24,7 @@ public class FileHandler
 		try
 		{
 			String path = SettingsHandler.retrieveProperty("SaveFilePath");
-			if(path == null || path.isEmpty())
+			if(path == null || path.isEmpty() || !(new File(path).exists()))
 				intializeClass();
 			else
 				pathOfFile = path;			
@@ -43,6 +43,16 @@ public class FileHandler
 		{
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * Returns the DB value 
+	 * 
+	 * @return the DB value
+	 */
+	public ArrayList<ArrayList<String>> getDb()
+	{
+		return db;
 	}
 	
 	/**

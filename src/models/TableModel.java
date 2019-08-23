@@ -16,7 +16,7 @@ public class TableModel extends AbstractTableModel
 	public TableModel()
 	{
 		FileHandler fh = new FileHandler();
-		this.characters = new ArrayList<ArrayList<String>>(fh.readFile());
+		this.characters = new ArrayList<ArrayList<String>>(fh.getDb());
 		out.println(getColumnName(1));
 	}
 	
