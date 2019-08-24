@@ -1,19 +1,20 @@
 package handlers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import internal.classes.Character;
 
 public class CharacterHandler
 {
-	private List<Character> list;
+	private List<Character> db;
 	
 	/**
 	 * CharacterHandler constructor
 	 */
 	public CharacterHandler()
 	{
-		list = new ArrayList<Character>();
+		db = new ArrayList<Character>();
 	}
 	
 	/**
@@ -23,7 +24,7 @@ public class CharacterHandler
 	 */
 	public void addCharacter(Character character)
 	{
-		list.add(character);
+		db.add(character);
 	}
 	
 	/**
@@ -33,7 +34,7 @@ public class CharacterHandler
 	 */
 	public int countCharacters()
 	{
-		return list.size();
+		return db.size();
 	}
 	
 	/**
@@ -43,7 +44,59 @@ public class CharacterHandler
 	 */
 	public List<Character> getCharactersList()
 	{
-		return list;
+		return db;
 	}
 	
+	/**
+	 * Searches an element with a given id 
+	 * 
+	 * @param id Item Id to find
+	 * @return the searched item ({@code ArrayList<String>}) else {@code null}
+	 */
+	public Character search(int id) 
+	{
+		if(db != null)
+			for (Character item : db)
+				if(item.getId() == id)				
+					return item;
+		return null;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public int getNewID()
+	{
+		if(db.size() != 0 && !db.isEmpty())
+			if(db.size() < (db.get(db.size()-1).getId()))
+				return db.get(db.size()-1).getId() + 1;
+			else
+				return db.size()+1;		
+		else
+			return 1; //No elements in data file (empty file)
+	}
+	
+	/**
+	 * Writes the db array into the file at path {@link #pathOfFile}
+	 * 
+	 * @param line
+	 * @return {@code true} if the line is correctly added to db array, {@code false} in the other cases
+	 */
+	public boolean addLine(String line)
+	{
+		try
+		{
+			Character ch = new Character(getNewID());
+			ch.
+			List<String> dati=Arrays.asList(line.split("\\|"));
+			addCharacter(ch);
+			return true;
+		}
+		catch (Exception e1)
+		{
+			e1.printStackTrace();
+			return false;
+		}
+	}
 }

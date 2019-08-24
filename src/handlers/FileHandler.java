@@ -4,8 +4,6 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import javax.swing.JFileChooser;
@@ -69,46 +67,6 @@ public class FileHandler
 	public String getFilePath()
 	{
 		return pathOfFile;
-	}
-
-	/**
-	 * Searches an element with a given id 
-	 * 
-	 * @param id Item Id to find
-	 * @return the searched item ({@code ArrayList<String>}) else {@code null}
-	 */
-	public ArrayList<String> search(int id) 
-	{
-		
-		if(db != null)
-			for (ArrayList<String> item : db)
-				if(item.indexOf(Integer.toString(id)) != -1)				
-					return item;
-
-		return null;
-	}
-	
-	/**
-	 * Writes the db array into the file at path {@link #pathOfFile}
-	 * 
-	 * @param line
-	 * @return {@code true} if the line is correctly added to db array, {@code false} in the other cases
-	 */
-	public boolean addLine(String line)
-	{
-		try
-		{
-			ArrayList<String> splitted = new ArrayList<String>();
-			splitted.add(0, Integer.toString(getNewID()));
-			splitted.addAll(Arrays.asList(line.split("\\|")));
-			db.add(splitted);
-			return true;
-		}
-		catch (Exception e1)
-		{
-			e1.printStackTrace();
-			return false;
-		}
 	}
 	
 	/**
@@ -180,18 +138,6 @@ public class FileHandler
 		{
 			return false;
 		}
-	}
-	
-	/**
-	 * 
-	 * @return
-	 */
-	public int getNewID()
-	{
-		if(db.size() != 0 && !db.isEmpty())
-			return db.size() + 1;
-		else
-			return 1; //No elements in data file (empty file)
 	}
 	
 	//--------------------------------------------------Private methods----------------------------------------------------------------------//

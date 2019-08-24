@@ -55,6 +55,15 @@ public class Character
 	}
 	
 	/**
+	 * set all parameters
+	 * @return void
+	 */
+	public void setAll()
+	{
+		
+	}
+	
+	/**
 	 * Returns the character strength
 	 * @return character strength ({@code double}) 
 	 */
