@@ -2,17 +2,18 @@ package handlers;
 
 import java.util.ArrayList;
 import java.util.List;
+import internal.classes.Character;
 
-public class CharacterHandler<T>
+public class CharacterHandler
 {
-	private List<T> list;
+	private List<Character> list;
 	
 	/**
 	 * CharacterHandler constructor
 	 */
 	public CharacterHandler()
 	{
-		list = new ArrayList<T>();
+		list = new ArrayList<Character>();
 	}
 	
 	/**
@@ -20,7 +21,7 @@ public class CharacterHandler<T>
 	 * 
 	 * @param character
 	 */
-	public void addCharacter(T character)
+	public void addCharacter(Character character)
 	{
 		list.add(character);
 	}
@@ -40,7 +41,7 @@ public class CharacterHandler<T>
 	 * 
 	 * @return a list which contains all element loaded previously
 	 */
-	public List<T> getCharactersList()
+	public List<Character> getCharactersList()
 	{
 		return list;
 	}

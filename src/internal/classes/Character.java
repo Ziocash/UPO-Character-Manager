@@ -29,11 +29,11 @@ public class Character
 	 */
 	private double intelligence = 0;
 	/**
-	 * Character intelligence
+	 * Character dexterity
 	 */
 	private double dexterity = 0;
 	/**
-	 * Character intelligence
+	 * Character charisma
 	 */
 	private double charisma = 0;
 	/**
