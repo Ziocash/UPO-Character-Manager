@@ -15,7 +15,7 @@ public class Character
 	/**
 	 * Character level
 	 */
-	private int level = 1;
+	private int level = 0;
 	/**
 	 * Character strength
 	 */
@@ -25,11 +25,23 @@ public class Character
 	 */
 	private double constitution = 0;
 	/**
+	 * Character intelligence
+	 */
+	private double intelligence = 0;
+	/**
+	 * Character intelligence
+	 */
+	private double dexterity = 0;
+	/**
+	 * Character intelligence
+	 */
+	private double charisma = 0;
+	/**
 	 * Character class (ROGUE, MAGE or WARRIOR)
 	 */
 	private CharacterClasses charClass;
 	/**
-	 * Character specialization
+	 * Character specialization(depend on the class selected)
 	 */
 	private Class<?> charSpec;
 	
@@ -111,6 +123,11 @@ public class Character
 	public void levelUp()
 	{
 		level++;
+		constitution = constitution + (level * 0.01 * constitution);
+		strength = strength + (level * 0.01 * strength);
+		intelligence = intelligence + (level * 0.01 * intelligence);
+		dexterity = dexterity + (level * 0.01 * dexterity);
+		charisma = charisma + (level * 0.01 * charisma);
 	}
 	
 	/**
