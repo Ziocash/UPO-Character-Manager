@@ -28,7 +28,7 @@ public class MainWindow
 	}
 	
 	/**
-	 * 
+	 * Initialize window components
 	 */
 	private void initializeComponents()
 	{
@@ -49,25 +49,29 @@ public class MainWindow
 	}
 	
 	/**
-	 * 
+	 * Initialize window menus
 	 */
 	private void initializeMenu()
 	{
 		JMenu mnNewMenu = new JMenu("File");
 		menuBar.add(mnNewMenu);
 		
+		//
 		JMenuItem mntmNewWindow = new JMenuItem("New window");
 		mnNewMenu.add(mntmNewWindow);
 		
 		MainMenuController newWindowController = new MainMenuController(mntmNewWindow, frame);
 		mntmNewWindow.addActionListener(newWindowController);
 		
+		//
 		JSeparator separator = new JSeparator();
 		mnNewMenu.add(separator);
 		
+		//
 		JMenuItem mntmNewMenuItem = new JMenuItem("Delete");
 		mnNewMenu.add(mntmNewMenuItem);
 		
+		//
 		JMenuItem mntmExit = new JMenuItem("Exit");
 		mnNewMenu.add(mntmExit);
 		
@@ -91,7 +95,7 @@ public class MainWindow
 	}
 
 	/**
-	 *  Calculate the width based on the widest cell renderer for the
+	 *  Calculates the width based on the widest cell renderer for the
 	 *  given column.
 	 * @param column
 	 * @return
@@ -115,7 +119,7 @@ public class MainWindow
 	}
 	
 	/**
-	 * Calculated the width based on the column name
+	 * Calculates the width based on the column name
 	 * @param column
 	 * @return
 	 */
