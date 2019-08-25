@@ -1,9 +1,12 @@
 package handlers;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import internal.classes.Character;
+import internal.classes.CharacterClasses;
+import internal.classes.CharacterSpecializations.MageType;
+import internal.classes.CharacterSpecializations.RogueType;
+import internal.classes.CharacterSpecializations.WarriorType;
 
 public class CharacterHandler
 {
@@ -88,8 +91,25 @@ public class CharacterHandler
 		try
 		{
 			Character ch = new Character(getNewID());
-			ch.
-			List<String> dati=Arrays.asList(line.split("\\|"));
+			String[] dati = line.split("\\|");
+			ch.setName(dati[0]);
+			ch.setStrength(Double.parseDouble(dati[2]));
+			ch.setConstitution(Double.parseDouble(dati[3]));
+			ch.setCharClass(CharacterClasses.valueOf(dati[4]));
+			CharacterClasses var = ch.getCharClass();
+			dati[5] = dati[5].replace(' ', '_');
+			switch(var)
+			{
+				case MAGE :
+					ch.setCharSpec(MageType.valueOf(dati[5]));
+					break;
+				case ROGUE :
+					ch.setCharSpec(RogueType.valueOf(dati[5]));
+					break;
+				case WARRIOR:
+					ch.setCharSpec(WarriorType.valueOf(dati[5]));
+					break;
+			}
 			addCharacter(ch);
 			return true;
 		}
