@@ -4,6 +4,8 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.swing.JFileChooser;
@@ -61,6 +63,15 @@ public class FileHandler
 	}
 	
 	/**
+	 * 
+	 * @param db
+	 */
+	public void setDb(Collection<? extends ArrayList<String>> db)
+	{
+		this.db.addAll(db);
+	}
+	
+	/**
 	 * Returns settings file path 
 	 * @return empty string or file path if set
 	 */
@@ -68,20 +79,6 @@ public class FileHandler
 	{
 		return pathOfFile;
 	}
-	
-	/**
-	 * Writes the db array into the file at path {@link #pathOfFile}
-	 * 
-	 * @param db line id
-	 * @return {@code true} if the file is correctly written, {@code false} in the other cases
-	 
-	public boolean writeLine(String line,int id)
-	{
-		if(db.remove(search(id)))
-			return addLine(line);
-		return false;		
-	}
-	*/
 	
 	/**
 	 * Writes the db array into the file at path {@link #pathOfFile}
