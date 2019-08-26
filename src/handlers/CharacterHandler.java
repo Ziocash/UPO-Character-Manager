@@ -119,4 +119,35 @@ public class CharacterHandler
 			return false;
 		}
 	}
+	
+	/**
+	 * Writes the db array into the file at path {@link #pathOfFile}
+	 * 
+	 * @param db line id
+	 * @return {@code true} if the file is correctly written, {@code false} in the other cases
+	 */
+	public boolean editChar(String line,int id)
+	{
+		if(db.remove(search(id)))
+			return addLine(line);
+		return false;		
+	}
+	
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public boolean delete(int id)
+	{
+		Character ch = search(id);
+		if(db.remove(ch))
+		{
+			return true;
+		} 
+		else
+		{
+			return false;
+		}
+	}
 }

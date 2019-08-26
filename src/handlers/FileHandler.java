@@ -74,13 +74,14 @@ public class FileHandler
 	 * 
 	 * @param db line id
 	 * @return {@code true} if the file is correctly written, {@code false} in the other cases
-	 */
+	 
 	public boolean writeLine(String line,int id)
 	{
 		if(db.remove(search(id)))
 			return addLine(line);
 		return false;		
 	}
+	*/
 	
 	/**
 	 * Writes the db array into the file at path {@link #pathOfFile}
@@ -122,23 +123,6 @@ public class FileHandler
 		}
 	}
 	
-	/**
-	 * 
-	 * @param id
-	 * @return
-	 */
-	public boolean delete(int id)
-	{
-		ArrayList<String> arraySearch = search(id);
-		if(db.remove(arraySearch))
-		{
-			return true;
-		} 
-		else
-		{
-			return false;
-		}
-	}
 	
 	//--------------------------------------------------Private methods----------------------------------------------------------------------//
 	
