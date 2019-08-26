@@ -21,6 +21,53 @@ public class CharacterHandler
 	}
 	
 	/**
+	 * 
+	 * @return
+	 */
+	public ArrayList<ArrayList<String>> parseList()
+	{
+		ArrayList<ArrayList<String>> list = new ArrayList<ArrayList<String>>();
+		ArrayList<String> value = new ArrayList<String>();
+		for(Character c : db)
+		{
+			value.add(Integer.toString(c.getId())); 
+			value.add(c.getName());
+			value.add(Integer.toString(c.getLevel()));
+			value.add(Double.toString(c.getStrength()));
+			value.add(Double.toString(c.getConstitution()));
+			value.add(c.getCharClass().name());
+			value.add(c.getCharSpec().replace('_', ' '));
+			list.add(value);
+		}
+		return list;
+	}
+	
+	/**
+	 * 
+	 * @param db
+	 */
+	public void loadList(ArrayList<ArrayList<String>> db)
+	{
+		for(ArrayList<String> row : db)
+		{
+			String content = "";
+			int i = 0;
+			int maxI = row.size() - 1;
+			for(String item : row)
+			{
+				if(i > 0)
+				{	
+					content += item;
+					if(maxI > i)
+						content += "|";
+				}
+				i++;
+			}
+			addLine(content);			
+		}
+	}
+	
+	/**
 	 * Adds a given-type character into list
 	 * 
 	 * @param character

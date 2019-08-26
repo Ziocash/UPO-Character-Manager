@@ -13,8 +13,9 @@ class TestClass
 	void test() 
 	{
 		//Instances
-		//FileHandler fh = new FileHandler();
+		FileHandler fh = new FileHandler();
 		CharacterHandler ch = new CharacterHandler();
+		ch.loadList(fh.getDb());
 		//FileHandler test
 		String line="Wizardous witness|1|30.0|200.0|MAGE|ARCANE WARRIOR";
 		ch.addLine(line);

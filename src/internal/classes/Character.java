@@ -222,6 +222,10 @@ public class Character
 		return value;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String toFileString()
 	{
 		String value = new String();
