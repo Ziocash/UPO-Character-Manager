@@ -145,6 +145,11 @@ public class CharacterHandler
 			ch.setName(dati[0]);
 			ch.setStrength(Double.parseDouble(dati[2]));
 			ch.setConstitution(Double.parseDouble(dati[3]));
+			/*
+			 * ch.setIntelligence(Double.parseDouble(dati[]));
+			 * ch.setDexterity(Double.parseDouble(dati[]));
+			 * ch.setCharisma(Double.parseDouble(dati[]));
+			*/
 			ch.setCharClass(CharacterClasses.valueOf(dati[4]));
 			CharacterClasses var = ch.getCharClass();
 			dati[5] = dati[5].replace(' ', '_');
@@ -180,7 +185,7 @@ public class CharacterHandler
 	{
 		if(db.remove(search(id)))
 			return addLine(line);
-		return false;		
+		return false;
 	}
 	
 	/**

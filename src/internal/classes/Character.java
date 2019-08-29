@@ -62,9 +62,113 @@ public class Character
 	 * set all parameters
 	 * @return void
 	 */
-	public void setAll()
+	public void setAll(String name,CharacterClasses charClass,Class<?> charSpec)
 	{
+		this.name=name;
+		this.charClass=charClass;
+		switch(charClass)
+		{
+			case MAGE :
+				this.setCharSpec(MageType.valueOf(charSpec.getName()));
+				break;
+			case ROGUE :
+				this.setCharSpec(RogueType.valueOf(charSpec.getName()));
+				break;
+			case WARRIOR:
+				this.setCharSpec(WarriorType.valueOf(charSpec.getName()));
+				break;
+		}
 		
+		switch(charSpec.getName())
+		{
+			//Mage Specialization characterist------------------------
+			case "ARCANE_WARRIOR":
+				this.strength = 0;
+				this.constitution = 0;
+				this.intelligence = 0;
+				this.dexterity = 0;
+				this.charisma = 0;
+				break;
+			case "BLOOD_MAGE":
+				this.strength = 0;
+				this.constitution = 0;
+				this.intelligence = 0;
+				this.dexterity = 0;
+				this.charisma = 0;
+				break;
+			case "SHAPESHIFTER":
+				this.strength = 0;
+				this.constitution = 0;
+				this.intelligence = 0;
+				this.dexterity = 0;
+				this.charisma = 0;
+				break;
+			case "SPIRIT_HEALER":
+				this.strength = 0;
+				this.constitution = 0;
+				this.intelligence = 0;
+				this.dexterity = 0;
+				this.charisma = 0;
+				break;
+			//Rogue Specialization characterist------------------------
+			case "ASSASSIN":
+				this.strength = 0;
+				this.constitution = 0;
+				this.intelligence = 0;
+				this.dexterity = 0;
+				this.charisma = 0;
+				break;
+			case "BARD":
+				this.strength = 0;
+				this.constitution = 0;
+				this.intelligence = 0;
+				this.dexterity = 0;
+				this.charisma = 0;
+				break;
+			case "DUELIST":
+				this.strength = 0;
+				this.constitution = 0;
+				this.intelligence = 0;
+				this.dexterity = 0;
+				this.charisma = 0;
+				break;
+			case "RANGER":
+				this.strength = 0;
+				this.constitution = 0;
+				this.intelligence = 0;
+				this.dexterity = 0;
+				this.charisma = 0;
+				break;
+			//Warrior Specialization characterist------------------------
+			case "BERSERKER":
+				this.strength = 0;
+				this.constitution = 0;
+				this.intelligence = 0;
+				this.dexterity = 0;
+				this.charisma = 0;
+				break;
+			case "CHAMPION":
+				this.strength = 0;
+				this.constitution = 0;
+				this.intelligence = 0;
+				this.dexterity = 0;
+				this.charisma = 0;
+				break;
+			case "REAVER":
+				this.strength = 0;
+				this.constitution = 0;
+				this.intelligence = 0;
+				this.dexterity = 0;
+				this.charisma = 0;
+				break;
+			case "TEMPLAR":
+				this.strength = 0;
+				this.constitution = 0;
+				this.intelligence = 0;
+				this.dexterity = 0;
+				this.charisma = 0;
+				break;
+		}
 	}
 	
 	/**
@@ -102,7 +206,60 @@ public class Character
 	{
 		this.constitution = constitution;
 	}
-	
+
+	/**
+	 * Returns the character intelligence
+	 * @return character intelligence ({@code double})
+	 */
+	public double getIntelligence() 
+	{
+		return intelligence;
+	}
+
+	/**
+	 * Sets the character intelligence
+	 * @param intelligence Character intelligence
+	 */
+	public void setIntelligence(double intelligence) 
+	{
+		this.intelligence = intelligence;
+	}
+
+	/**
+	 * Returns the character dexterity
+	 * @return character dexterity ({@code double})
+	 */
+	public double getDexterity() 
+	{
+		return dexterity;
+	}
+
+	/**
+	 * Sets the character dexterity
+	 * @param dexterity Character dexterity
+	 */
+	public void setDexterity(double dexterity) 
+	{
+		this.dexterity = dexterity;
+	}
+
+	/**
+	 * Returns the character charisma
+	 * @return character charisma ({@code double})
+	 */
+	public double getCharisma() 
+	{
+		return charisma;
+	}
+
+	/**
+	 * Sets the character charisma
+	 * @param charisma Character charisma
+	 */
+	public void setCharisma(double charisma) 
+	{
+		this.charisma = charisma;
+	}
 	/**
 	 * Returns the CharacterID
 	 * @return character id ({@code int})
