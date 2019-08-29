@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import handlers.FileHandler;
 
 import javax.swing.table.AbstractTableModel;
-import static java.lang.System.out;
 
 @SuppressWarnings("serial")
 public class TableModel extends AbstractTableModel

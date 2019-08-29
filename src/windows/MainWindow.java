@@ -155,16 +155,26 @@ public class MainWindow
 		return width + 20;
 	}
 	
+	/**
+	 * 
+	 */
 	public void show()
 	{
 		frame.setVisible(true);
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean isShown()
 	{
 		return frame.isVisible();
 	}
-
+	
+	/**
+	 * 
+	 */
 	public void close()
 	{
 		frame.setVisible(false);

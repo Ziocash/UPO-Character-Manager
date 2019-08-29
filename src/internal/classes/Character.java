@@ -9,6 +9,10 @@ public class Character
 	 */
 	private final int id;
 	/**
+	 * Character multiplier
+	 */
+	private final double multiplier = 0.01;
+	/**
 	 * Character name
 	 */
 	private String name;
@@ -132,11 +136,11 @@ public class Character
 	public void levelUp()
 	{
 		level++;
-		constitution = constitution + (level * 0.01 * constitution);
-		strength = strength + (level * 0.01 * strength);
-		intelligence = intelligence + (level * 0.01 * intelligence);
-		dexterity = dexterity + (level * 0.01 * dexterity);
-		charisma = charisma + (level * 0.01 * charisma);
+		constitution = constitution + (level * multiplier * constitution);
+		strength = strength + (level * multiplier * strength);
+		intelligence = intelligence + (level * multiplier * intelligence);
+		dexterity = dexterity + (level * multiplier * dexterity);
+		charisma = charisma + (level * multiplier * charisma);
 	}
 	
 	/**
@@ -223,8 +227,9 @@ public class Character
 	}
 	
 	/**
+	 * Returns a well-formatted String with a preconfigured separator ('|')
 	 * 
-	 * @return
+	 * @return a well-formatted String with a preconfigured separator ('|')
 	 */
 	public String toFileString()
 	{

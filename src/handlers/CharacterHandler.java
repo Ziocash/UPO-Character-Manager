@@ -21,8 +21,9 @@ public class CharacterHandler
 	}
 	
 	/**
+	 * Returns a parsed ArrayList for external handlers
 	 * 
-	 * @return
+	 * @return a parsed ArrayList for external handlers
 	 */
 	public ArrayList<ArrayList<String>> parseList()
 	{
@@ -43,8 +44,9 @@ public class CharacterHandler
 	}
 	
 	/**
+	 * Loads an ArrayList into internal collection
 	 * 
-	 * @param db
+	 * @param db Collection that contains data which will be loaded into internal collection
 	 */
 	public void loadList(ArrayList<ArrayList<String>> db)
 	{
@@ -113,8 +115,9 @@ public class CharacterHandler
 	}
 	
 	/**
+	 * Returns an unassigned id
 	 * 
-	 * @return
+	 * @return an unassigned id
 	 */
 	public int getNewID()
 	{

@@ -1,11 +1,11 @@
 package handlers;
+
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Enumeration;
 import java.util.List;
 
 import javax.swing.JFileChooser;
@@ -19,7 +19,7 @@ public class FileHandler
 	private String pathOfFile = ""; //path/to/file
 	
 	/**
-	 * 
+	 * Collection which contains all the file lines
 	 */
 	private ArrayList<ArrayList<String>> db = new ArrayList<ArrayList<String>>();
 	
@@ -63,11 +63,13 @@ public class FileHandler
 	}
 	
 	/**
+	 * Clears the db then adds a collection to it
 	 * 
-	 * @param db
+	 * @param db Collection that will be added to the db
 	 */
 	public void setDb(Collection<? extends ArrayList<String>> db)
 	{
+		this.db.clear();
 		this.db.addAll(db);
 	}
 	
@@ -134,6 +136,7 @@ public class FileHandler
 			//If the file exists 
 			if(testFile(true))
 			{
+				db.clear();
 				File file = new File(pathOfFile);
 				List<String> list = Files.readAllLines(file.toPath(), Charset.defaultCharset());
 				for(String item : list)
