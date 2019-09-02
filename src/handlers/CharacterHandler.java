@@ -150,19 +150,19 @@ public class CharacterHandler
 			 * ch.setDexterity(Double.parseDouble(dati[]));
 			 * ch.setCharisma(Double.parseDouble(dati[]));
 			*/
-			ch.setCharClass(CharacterClasses.valueOf(dati[4]));
+			ch.setCharClass(CharacterClasses.valueOf(dati[dati.length-2]));
 			CharacterClasses var = ch.getCharClass();
-			dati[5] = dati[5].replace(' ', '_');
+			dati[dati.length-1] = dati[dati.length-1].replace(' ', '_');
 			switch(var)
 			{
 				case MAGE :
-					ch.setCharSpec(MageType.valueOf(dati[5]));
+					ch.setCharSpec(MageType.valueOf(dati[dati.length-1]));
 					break;
 				case ROGUE :
-					ch.setCharSpec(RogueType.valueOf(dati[5]));
+					ch.setCharSpec(RogueType.valueOf(dati[dati.length-1]));
 					break;
 				case WARRIOR:
-					ch.setCharSpec(WarriorType.valueOf(dati[5]));
+					ch.setCharSpec(WarriorType.valueOf(dati[dati.length-1]));
 					break;
 			}
 			addCharacter(ch);

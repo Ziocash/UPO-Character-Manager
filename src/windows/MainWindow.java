@@ -13,6 +13,7 @@ import javax.swing.table.TableColumn;
 
 import controllers.MainMenuController;
 import models.TableModel;
+import java.awt.Font;
 
 public class MainWindow
 {
@@ -36,7 +37,7 @@ public class MainWindow
 		frame.setTitle("Characters Manager - Finestra principale");
 		frame.setBounds(0, 0, 700, 450);
 		frame.setLocationRelativeTo(null);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//------------------------------------------------		
 		scrollPane.setViewportView(table);
@@ -45,7 +46,7 @@ public class MainWindow
 		initializeMenu();
 		initializeTable();
 		frame.setJMenuBar(menuBar);
-		frame.add(scrollPane);
+		frame.getContentPane().add(scrollPane);
 	}
 	
 	/**
@@ -85,6 +86,7 @@ public class MainWindow
 	private void initializeTable()
 	{
 		table.setModel(model);
+		table.setFont(new Font("Segoe UI", Font.PLAIN, 11));
 		table.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
 		for (int i = 0; i < table.getColumnCount(); i++)
 		{
