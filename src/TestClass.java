@@ -5,6 +5,7 @@ import static java.lang.System.out;
 import org.junit.jupiter.api.Test;
 
 import handlers.*;
+import windows.CharacterCreationWindow;
 import windows.MainWindow;
 
 class TestClass 
@@ -25,10 +26,13 @@ class TestClass
 		fh.setDb(ch.parseList());
 		//--------------- MainWindow test -----------------------------------		
 		MainWindow mw = new MainWindow();
-		mw.show();
+		//mw.show();
 		out.println(mw.isShown());
+		
+		CharacterCreationWindow charWindow = new CharacterCreationWindow();
+		charWindow.show();
 		//
-		while(mw.isShown())
+		while(charWindow.isShown())
 			continue;
 		
 	}
