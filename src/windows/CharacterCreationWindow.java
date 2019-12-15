@@ -10,42 +10,41 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import internal.classes.CharacterClasses;
 import internal.classes.CharacterSpecializations.*;
+import controllers.ButtonController;
 import controllers.NewCharacterComboBoxController;
 import javax.swing.JButton;
 import javax.swing.JTextField;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.Window.Type;
 
-public class CharacterCreationWindow
+public class CharacterCreationWindow extends Window
 {
-	private JFrame frame;
 	private JScrollPane scrollPane = new JScrollPane();
 	private JTextField textField;
+	
 	
 	public CharacterCreationWindow()
 	{
 		initializeComponents();
+		setTitle("Characters Manager - Create new character");
+		setType(Type.UTILITY);
+		setCloseOperation(JFrame.HIDE_ON_CLOSE);
+		setFrameProperties(false, 473, 211, null);
+		frame.getContentPane().add(scrollPane);
+		initializeLayout();
 	}
 
-	private void initializeComponents()
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private void initializeLayout()
 	{
-		frame = new JFrame();
-		frame.setResizable(false);
-		frame.setType(Type.UTILITY);
-		frame.setTitle("Characters Manager - Creazione personaggio");
-		frame.setBounds(0, 0, 473, 211);
-		frame.setLocationRelativeTo(null);
-		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		
-		JLabel lblName = new JLabel("Nome");
-		
-		JLabel lblClass = new JLabel("Classe");
-		
-		JLabel lblSpecialization = new JLabel("Specializzazione");
+		JLabel lblName = new JLabel("Name");
+		JLabel lblClass = new JLabel("Class");		
+		JLabel lblSpecialization = new JLabel("Specialization");
+			
+			
 		
 		JComboBox cmbClass = new JComboBox();
 		JComboBox cmbSpec = new JComboBox();
+		
 		cmbClass.addActionListener(new NewCharacterComboBoxController(cmbSpec));
 		cmbClass.setModel(new DefaultComboBoxModel(CharacterClasses.values()));
 		
@@ -63,10 +62,13 @@ public class CharacterCreationWindow
 				break;
 		}
 		
-		JButton btnCreaPersonaggio = new JButton("Crea Personaggio");
+		JButton btnCreaPersonaggio = new JButton("Create");
+		ButtonController controller = new ButtonController(btnCreaPersonaggio, frame);
+		btnCreaPersonaggio.addActionListener(controller);
 		
-		JButton btnAnnulla = new JButton("Annulla");
-		//btnAnnulla.addActionListener();
+		JButton btnAnnulla = new JButton("Cancel");
+		controller = new ButtonController(btnAnnulla, frame);
+		btnAnnulla.addActionListener(controller);
 		
 		textField = new JTextField();
 		textField.setColumns(10);
@@ -114,28 +116,5 @@ public class CharacterCreationWindow
 		);
 		frame.getContentPane().setLayout(groupLayout);
 		
-	}
-	
-	public void show()
-	{
-		frame.setVisible(true);
-	}
-	
-	/**
-	 * 
-	 * @return
-	 */
-	public boolean isShown()
-	{
-		return frame.isVisible();
-	}
-	
-	/**
-	 * 
-	 */
-	public void close()
-	{
-		frame.setVisible(false);
-		frame.dispose();
 	}
 }

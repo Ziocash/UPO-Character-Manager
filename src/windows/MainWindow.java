@@ -14,40 +14,30 @@ import javax.swing.table.TableColumn;
 import controllers.MainMenuController;
 import models.TableModel;
 import java.awt.Font;
+import java.awt.Window.Type;
 
-public class MainWindow
+public class MainWindow extends Window
 {
-	private JFrame frame;
-	private JScrollPane scrollPane = new JScrollPane();
-	private JMenuBar menuBar = new JMenuBar();	
-	private TableModel model = new TableModel();
+	
 	private JTable table = new JTable();
+	private JMenuBar menuBar = new JMenuBar();
+	private JScrollPane scrollPane = new JScrollPane(); 
+	private TableModel model = new TableModel();
 
 	public MainWindow()
 	{
 		initializeComponents();
-	}
-	
-	/**
-	 * Initialize window components
-	 */
-	private void initializeComponents()
-	{
-		frame = new JFrame();
-		frame.setTitle("Characters Manager - Finestra principale");
-		frame.setBounds(0, 0, 700, 450);
-		frame.setLocationRelativeTo(null);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		//------------------------------------------------		
-		scrollPane.setViewportView(table);
-		
-		
+		setTitle("Characters Manager - Manage your characters");
+		setType(Type.NORMAL);
+		setCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setFrameProperties(true, 700, 450, null);
 		initializeMenu();
 		initializeTable();
 		frame.setJMenuBar(menuBar);
 		frame.getContentPane().add(scrollPane);
+		scrollPane.setViewportView(table);
 	}
+	
 	
 	/**
 	 * Initialize window menus
@@ -155,31 +145,5 @@ public class MainWindow
 		int width = c.getPreferredSize().width + table.getIntercellSpacing().width;
 
 		return width + 20;
-	}
-	
-	/**
-	 * 
-	 */
-	public void show()
-	{
-		frame.setVisible(true);
-	}
-	
-	/**
-	 * 
-	 * @return
-	 */
-	public boolean isShown()
-	{
-		return frame.isVisible();
-	}
-	
-	/**
-	 * 
-	 */
-	public void close()
-	{
-		frame.setVisible(false);
-		frame.dispose();
 	}
 }
