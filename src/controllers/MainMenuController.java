@@ -6,26 +6,22 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
-import javax.swing.JMenuItem;
 
 import windows.AdaptableWindow;
 
 public class MainMenuController implements ActionListener
 {
-	private JMenuItem item = new JMenuItem();
 	private JFrame owner = new JFrame();
 	
-	public MainMenuController(JMenuItem menuItem, JFrame ownFrame)
+	public MainMenuController(JFrame ownerFrame)
 	{
-		super();
-		item = menuItem;
-		owner = ownFrame;
+		owner = ownerFrame;
 	}
 	
 	@Override
-	public void actionPerformed(ActionEvent arg0)
+	public void actionPerformed(ActionEvent e)
 	{
-		String name = item.getText();
+		String name = e.getActionCommand();
 		switch(name)
 		{
 			case "New window":

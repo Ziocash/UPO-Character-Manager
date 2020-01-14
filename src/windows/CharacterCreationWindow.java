@@ -8,6 +8,8 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+
+import internal.classes.Character;
 import internal.classes.CharacterClasses;
 import internal.classes.CharacterSpecializations.*;
 import controllers.ButtonController;
@@ -15,6 +17,7 @@ import controllers.NewCharacterComboBoxController;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.Window.Type;
+import java.util.ArrayList;
 
 public class CharacterCreationWindow extends Window
 {
@@ -116,5 +119,18 @@ public class CharacterCreationWindow extends Window
 		);
 		frame.getContentPane().setLayout(groupLayout);
 		
+	}
+
+	public ArrayList<String> getNewCharacter() 
+	{
+		ArrayList<String> character = new ArrayList<String>();
+		character.set(1, textField.getText());
+		character.set(2, "30");
+		character.set(3, "30");
+		character.set(4, "30");
+		character.set(5, "30");
+		character.set(6, "30");
+		
+		return null;
 	}
 }

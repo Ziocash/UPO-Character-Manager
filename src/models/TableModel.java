@@ -46,7 +46,4 @@ public class TableModel extends AbstractTableModel
 		
 		return valueObject;
 	}
-
-	
-
 }

@@ -7,6 +7,14 @@ import javax.swing.JFrame;
 
 public abstract class Window
 {
+	/**
+	 * 
+	 */
+	protected JFrame owner;
+	
+	/**
+	 * 
+	 */
 	protected JFrame frame;
 	
 	/**

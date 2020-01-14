@@ -2,6 +2,8 @@ package windows;
 
 import java.awt.Dialog;
 import java.awt.Font;
+import java.awt.Window.Type;
+
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -13,27 +15,12 @@ import javax.swing.JTextArea;
 
 import controllers.MainMenuController;
 
-public class AdaptableWindow
+public class AdaptableWindow extends windows.Dialog
 {
-	/**
-	 *  
-	 */
-	private JDialog frame;
-	
 	/**
 	 * 
 	 */
 	private JFrame owner;
-	
-	/**
-	 * 
-	 */
-	private Dialog.ModalityType modType;
-	
-	/**
-	 * 
-	 */
-	private String title;
 	
 	/**
 	 * 
@@ -58,31 +45,21 @@ public class AdaptableWindow
 	 */
 	public AdaptableWindow(JFrame owner, String title, Dialog.ModalityType modType)
 	{
-		this.owner = owner;
-		this.modType = modType;
-		this.title = "Characters Manager - " + title;
 		initializeComponents();
-	}
-	
-	/**
-	 * 
-	 */
-	private void initializeComponents()
-	{
-		frame = new JDialog(owner, title, modType);
-		frame.setBounds(0, 0, 400, 250);
-		frame.setLocationRelativeTo(null);
-		frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);		
-		
-		//------------------------------------------------		
+		this.owner = owner;
+		dialog.setTitle("Characters Manager - " + title);
+		dialog.setModalityType(modType);
+		setDialogProperties(true, 400, 250, owner);
+		setType(Type.POPUP);
+		setCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		scrollPane.setViewportView(txtArea);
 		txtArea.setFont(new Font("Microsoft YaHei Light", Font.PLAIN, 14));
 		
 		initializeMenu();
-		frame.setJMenuBar(menuBar);
-		frame.add(scrollPane);
+		dialog.setJMenuBar(menuBar);
+		dialog.getContentPane().add(scrollPane);
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -94,7 +71,7 @@ public class AdaptableWindow
 		JMenuItem mntmNewWindow = new JMenuItem("New window");
 		mnNewMenu.add(mntmNewWindow);
 		
-		MainMenuController newWindowController = new MainMenuController(mntmNewWindow, null);
+		MainMenuController newWindowController = new MainMenuController(owner);
 		mntmNewWindow.addActionListener(newWindowController);
 		
 		JSeparator separator = new JSeparator();
@@ -106,7 +83,7 @@ public class AdaptableWindow
 		JMenuItem mntmExit = new JMenuItem("Exit");
 		mnNewMenu.add(mntmExit);
 		
-		MainMenuController exitController = new MainMenuController(mntmExit, null);
+		MainMenuController exitController = new MainMenuController(owner);
 		mntmExit.addActionListener(exitController);
 	}
 	
@@ -137,20 +114,4 @@ public class AdaptableWindow
 		txtArea.append(text);
 	}
 	
-	/**
-	 * 
-	 */
-	public void show()
-	{
-		frame.setVisible(true);
-	}
-	
-	/**
-	 * 
-	 * @return
-	 */
-	public boolean isShown()
-	{
-		return frame.isVisible();
-	}
 }

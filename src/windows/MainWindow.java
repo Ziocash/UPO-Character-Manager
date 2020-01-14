@@ -51,7 +51,7 @@ public class MainWindow extends Window
 		JMenuItem mntmNewWindow = new JMenuItem("New window");
 		mnNewMenu.add(mntmNewWindow);
 		
-		MainMenuController newWindowController = new MainMenuController(mntmNewWindow, frame);
+		MainMenuController newWindowController = new MainMenuController(frame);
 		mntmNewWindow.addActionListener(newWindowController);
 		
 		//
@@ -66,7 +66,7 @@ public class MainWindow extends Window
 		JMenuItem mntmExit = new JMenuItem("Exit");
 		mnNewMenu.add(mntmExit);
 		
-		MainMenuController exitController = new MainMenuController(mntmExit, frame);
+		MainMenuController exitController = new MainMenuController(frame);
 		mntmExit.addActionListener(exitController);
 	}
 	
