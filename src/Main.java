@@ -1,40 +1,39 @@
 import static java.lang.System.out;
-
-import org.junit.jupiter.api.Test;
-
 import handlers.*;
 import windows.CharacterCreationWindow;
 import windows.MainWindow;
 
-class TestClass 
+public class Main
 {
-	@Test
-	void test() 
-	{
-		//Instances
+    public static void main(String[] args) 
+    {
+        //Instances
 		FileHandler fh = new FileHandler();
 		CharacterHandler ch = new CharacterHandler();
 		ch.loadList(fh.getDb());
-		String line="1|Wizardous witness|1|30.0|200.0|0|0|0|MAGE|ARCANE WARRIOR";
+		String line="Wizardous witness|1|30.0|200.0|0|0|0|MAGE|ARCANE WARRIOR";
 		ch.addLine(line);
 		out.println(ch.getCharactersList());
-		line="1|Wizardous witness|1|30.0|440.0|0|0|0|MAGE|ARCANE WARRIOR";
-		ch.editChar(line, 3);
+		line="Wizardous witness|1|40.0|420.0|0|0|0|MAGE|ARCANE WARRIOR";
+		ch.addLine(line);
 		out.println(ch.getCharactersList());
 		fh.setDb(ch.parseList());
 		//--------------- MainWindow test -----------------------------------		
-		MainWindow mw = new MainWindow();
-		mw.show();
-		out.println(mw.isShown());
 		
 		CharacterCreationWindow charWindow = new CharacterCreationWindow();
 		charWindow.show();
+		
+		MainWindow mw = new MainWindow();
+		mw.show();
+		out.println(mw.isShown());
 		//
 		while(charWindow.isShown())
 		{
-			//if(charWindow.isShown() == false)
-				//ch.addCharacter(charWindow.getNewCharacter());
+			fh.writeFile();
 			continue;
 		}
-	}
+			
+		
+		//
+    }
 }
