@@ -28,14 +28,17 @@ public class CharacterHandler
 	public ArrayList<ArrayList<String>> parseList()
 	{
 		ArrayList<ArrayList<String>> list = new ArrayList<ArrayList<String>>();
-		ArrayList<String> value = new ArrayList<String>();
 		for(Character c : db)
 		{
+			ArrayList<String> value = new ArrayList<String>();
 			value.add(Integer.toString(c.getId())); 
 			value.add(c.getName());
 			value.add(Integer.toString(c.getLevel()));
 			value.add(Double.toString(c.getStrength()));
 			value.add(Double.toString(c.getConstitution()));
+			value.add(Double.toString(c.getIntelligence()));
+			value.add(Double.toString(c.getDexterity()));
+			value.add(Double.toString(c.getCharisma()));
 			value.add(c.getCharClass().name());
 			value.add(c.getCharSpec().replace('_', ' '));
 			list.add(value);
@@ -144,12 +147,10 @@ public class CharacterHandler
 			String[] dati = line.split("\\|");
 			ch.setName(dati[0]);
 			ch.setStrength(Double.parseDouble(dati[2]));
-			ch.setConstitution(Double.parseDouble(dati[3]));
-			/*
-			 * ch.setIntelligence(Double.parseDouble(dati[]));
-			 * ch.setDexterity(Double.parseDouble(dati[]));
-			 * ch.setCharisma(Double.parseDouble(dati[]));
-			*/
+			ch.setConstitution(Double.parseDouble(dati[3]));			
+			ch.setIntelligence(Double.parseDouble(dati[4]));
+			ch.setDexterity(Double.parseDouble(dati[5]));
+			ch.setCharisma(Double.parseDouble(dati[6]));
 			ch.setCharClass(CharacterClasses.valueOf(dati[dati.length-2]));
 			CharacterClasses var = ch.getCharClass();
 			dati[dati.length-1] = dati[dati.length-1].replace(' ', '_');
@@ -181,7 +182,7 @@ public class CharacterHandler
 	 * @param db line id
 	 * @return {@code true} if the file is correctly written, {@code false} in the other cases
 	 */
-	public boolean editChar(String line,int id)
+	public boolean editChar(String line, int id)
 	{
 		if(db.remove(search(id)))
 			return addLine(line);

@@ -58,6 +58,11 @@ public class Character
 		this.id = id;
 	}
 	
+	public final int getFieldCount()
+	{
+		return getClass().getDeclaredFields().length;
+	}
+	
 	/**
 	 * set all parameters
 	 * @return void

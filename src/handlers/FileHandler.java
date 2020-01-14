@@ -103,14 +103,14 @@ public class FileHandler
 				String content = "";
 				int i = 0;
 				int maxI = row.size() - 1;
-				for(String item : row)
+				for(int temp = 0; temp < row.size(); temp++)
 				{
-					content += item;
+					content += row.get(temp); 
 					if(maxI > i)
 						content += "|";
 					i++;
 				}
-				out.append(content + "\n");			
+				out.append(content + System.lineSeparator());			
 			}			
 			out.close();
 			return true;
