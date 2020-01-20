@@ -1,5 +1,6 @@
 package windows;
 
+import java.awt.Dialog.ModalityType;
 import java.awt.Window.Type;
 
 import javax.swing.JDialog;
@@ -30,6 +31,16 @@ public abstract class Dialog
 		this.owner = owner;
 	}
 	
+	protected void setModality(ModalityType modType)
+	{
+		dialog.setModalityType(modType);
+	}
+	
+	protected void setTitle(String title)
+	{
+		dialog.setTitle(title);
+	}
+	
 	protected void setType(Type type) 
 	{
 		dialog.setType(type);
@@ -45,6 +56,16 @@ public abstract class Dialog
 	 */
 	public void show()
 	{
+		dialog.setModalityType(ModalityType.MODELESS);
+		dialog.setVisible(true);
+	}
+	
+	/**
+	 * 
+	 */
+	public void showDialog()
+	{
+		dialog.setModalityType(ModalityType.APPLICATION_MODAL);
 		dialog.setVisible(true);
 	}
 	

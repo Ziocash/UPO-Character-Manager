@@ -15,6 +15,10 @@ import controllers.MainMenuController;
 import models.TableModel;
 import java.awt.Font;
 import java.awt.Window.Type;
+import java.util.ArrayList;
+import javax.swing.KeyStroke;
+import java.awt.event.KeyEvent;
+import java.awt.event.InputEvent;
 
 public class MainWindow extends Window
 {
@@ -38,6 +42,20 @@ public class MainWindow extends Window
 		scrollPane.setViewportView(table);
 	}
 	
+	public void updateData()
+	{
+		model.updateData();
+	}
+	
+	public void updateData(ArrayList<ArrayList<String>> data)
+	{
+		model.updateData(data);
+	}
+	
+	public void updateView()
+	{
+		frame.repaint();
+	}
 	
 	/**
 	 * Initialize window menus
@@ -48,7 +66,8 @@ public class MainWindow extends Window
 		menuBar.add(mnNewMenu);
 		
 		//
-		JMenuItem mntmNewWindow = new JMenuItem("New window");
+		JMenuItem mntmNewWindow = new JMenuItem("New character");
+		mntmNewWindow.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
 		mnNewMenu.add(mntmNewWindow);
 		
 		MainMenuController newWindowController = new MainMenuController(frame);
@@ -64,6 +83,7 @@ public class MainWindow extends Window
 		
 		//
 		JMenuItem mntmExit = new JMenuItem("Exit");
+		mntmExit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, InputEvent.ALT_MASK));
 		mnNewMenu.add(mntmExit);
 		
 		MainMenuController exitController = new MainMenuController(frame);

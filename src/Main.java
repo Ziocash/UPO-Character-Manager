@@ -19,21 +19,23 @@ public class Main
 		out.println(ch.getCharactersList());
 		fh.setDb(ch.parseList());
 		//--------------- MainWindow test -----------------------------------		
-		
-		CharacterCreationWindow charWindow = new CharacterCreationWindow();
-		charWindow.show();
-		
 		MainWindow mw = new MainWindow();
 		mw.show();
+		CharacterCreationWindow charWindow = new CharacterCreationWindow();
+		charWindow.showDialog();
+		ch.addLine(charWindow.getNewCharacter());
+		mw.updateData(ch.parseList());
+		mw.updateView();
+		
+		
 		out.println(mw.isShown());
 		//
 		while(charWindow.isShown())
 		{
-			fh.writeFile();
 			continue;
 		}
 			
-		
+		fh.writeFile();
 		//
     }
 }

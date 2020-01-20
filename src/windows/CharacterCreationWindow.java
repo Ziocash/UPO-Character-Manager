@@ -9,7 +9,6 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
-import internal.classes.Character;
 import internal.classes.CharacterClasses;
 import internal.classes.CharacterSpecializations.*;
 import controllers.ButtonController;
@@ -19,10 +18,14 @@ import javax.swing.JTextField;
 import java.awt.Window.Type;
 import java.util.ArrayList;
 
-public class CharacterCreationWindow extends Window
+public class CharacterCreationWindow extends Dialog
 {
 	private JScrollPane scrollPane = new JScrollPane();
 	private JTextField textField;
+	@SuppressWarnings("rawtypes")
+	private JComboBox cmbClass = new JComboBox();
+	@SuppressWarnings("rawtypes")
+	private JComboBox cmbSpec = new JComboBox();
 	
 	
 	public CharacterCreationWindow()
@@ -31,11 +34,11 @@ public class CharacterCreationWindow extends Window
 		setTitle("Characters Manager - Create new character");
 		setType(Type.UTILITY);
 		setCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setFrameProperties(false, 473, 211, null);
-		frame.getContentPane().add(scrollPane);
+		setDialogProperties(false, 473, 211, null);
+		dialog.getContentPane().add(scrollPane);
 		initializeLayout();
 	}
-
+	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initializeLayout()
 	{
@@ -45,8 +48,7 @@ public class CharacterCreationWindow extends Window
 			
 			
 		
-		JComboBox cmbClass = new JComboBox();
-		JComboBox cmbSpec = new JComboBox();
+		
 		
 		cmbClass.addActionListener(new NewCharacterComboBoxController(cmbSpec));
 		cmbClass.setModel(new DefaultComboBoxModel(CharacterClasses.values()));
@@ -66,17 +68,17 @@ public class CharacterCreationWindow extends Window
 		}
 		
 		JButton btnCreaPersonaggio = new JButton("Create");
-		ButtonController controller = new ButtonController(btnCreaPersonaggio, frame);
+		ButtonController controller = new ButtonController(dialog);
 		btnCreaPersonaggio.addActionListener(controller);
 		
 		JButton btnAnnulla = new JButton("Cancel");
-		controller = new ButtonController(btnAnnulla, frame);
+		controller = new ButtonController(dialog);
 		btnAnnulla.addActionListener(controller);
 		
 		textField = new JTextField();
 		textField.setColumns(10);
 		
-		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		GroupLayout groupLayout = new GroupLayout(dialog.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
@@ -117,20 +119,23 @@ public class CharacterCreationWindow extends Window
 						.addComponent(btnAnnulla))
 					.addContainerGap())
 		);
-		frame.getContentPane().setLayout(groupLayout);
+		dialog.getContentPane().setLayout(groupLayout);
 		
 	}
 
-	public ArrayList<String> getNewCharacter() 
+	public String getNewCharacter() 
 	{
-		ArrayList<String> character = new ArrayList<String>();
-		character.set(1, textField.getText());
-		character.set(2, "30");
-		character.set(3, "30");
-		character.set(4, "30");
-		character.set(5, "30");
-		character.set(6, "30");
+		String character = "";
+		character += textField.getText() + "|";
+		character += "1" + "|";
+		character += "30" +"|";
+		character += "30" +"|";
+		character += "30" +"|";
+		character += "30" +"|";
+		character += "30" +"|";
+		character += cmbClass.getSelectedItem().toString() + "|";
+		character += cmbSpec.getSelectedItem().toString();
 		
-		return null;
+		return character;
 	}
 }
