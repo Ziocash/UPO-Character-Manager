@@ -11,11 +11,21 @@ public class TableModel extends AbstractTableModel
 	protected static final String[] COLUMN_NAME_STRINGS = { "ID", "Name", "Level", "Strength", "Intelligence", "Dexterity", "Charisma", "Constitution", "Class", "Specialization" };
 	
 	private ArrayList<ArrayList<String>> characters;
+	private FileHandler fh = new FileHandler();
 	
 	public TableModel()
+	{		
+		updateData();
+	}
+	
+	public void updateData()
 	{
-		FileHandler fh = new FileHandler();
 		this.characters = new ArrayList<ArrayList<String>>(fh.getDb());
+	}
+	
+	public void updateData(ArrayList<ArrayList<String>> data)
+	{
+		this.characters = data;
 	}
 	
 	@Override
