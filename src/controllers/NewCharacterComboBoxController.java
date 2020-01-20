@@ -23,19 +23,23 @@ public class NewCharacterComboBoxController implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		if(e.getActionCommand().equals("comboBoxChanged"))
-			switch((CharacterClasses)((JComboBox)e.getSource()).getSelectedItem())
-			{
-				case MAGE:
-					child.setModel(new DefaultComboBoxModel(MageType.values()));
-					break;
-				case WARRIOR:
-					child.setModel(new DefaultComboBoxModel(WarriorType.values()));
-					break;
-				case ROGUE:
-					child.setModel(new DefaultComboBoxModel(RogueType.values()));
-					break;
-			}
+		switch(e.getActionCommand())
+		{
+			case "comboBoxChanged":
+				switch((CharacterClasses)((JComboBox)e.getSource()).getSelectedItem())
+				{
+					case MAGE:
+						child.setModel(new DefaultComboBoxModel(MageType.values()));
+						break;
+					case WARRIOR:
+						child.setModel(new DefaultComboBoxModel(WarriorType.values()));
+						break;
+					case ROGUE:
+						child.setModel(new DefaultComboBoxModel(RogueType.values()));
+						break;
+				}
+				break;
+		}
 	}
 
 }

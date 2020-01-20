@@ -1,35 +1,41 @@
 package controllers;
 
 import java.awt.Component;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
+import handlers.CharacterHandler;
 import handlers.FileHandler;
 
 public class ButtonController implements ActionListener
 {
-	private JButton item = new JButton();
-	private JFrame itemParent = new JFrame();
+	private Component itemParent;	
 	
-	public ButtonController(JButton button, JFrame parent)
+	public ButtonController(JFrame parent)
 	{
-		item = button;
+		itemParent = parent;
+	}
+	
+	public ButtonController(JDialog parent)
+	{
 		itemParent = parent;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e)
-	{
-		String content = item.getText();
-		switch(content)
+	{		
+		
+		switch(e.getActionCommand())
 		{
-			case "Create": 
-				Component testObjects = itemParent;
-				itemParent.dispatchEvent(new WindowEvent(itemParent, WindowEvent.WINDOW_CLOSING));
+			case "Create":
+				itemParent.dispatchEvent(new WindowEvent((Window) itemParent, WindowEvent.WINDOW_CLOSING));
 		}
 	}
 	
