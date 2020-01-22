@@ -18,12 +18,17 @@ public class TableModel extends AbstractTableModel
 		updateData();
 	}
 	
-	public void updateData()
+	public TableModel(ArrayList<ArrayList<String>> data)
+	{
+		updateData(data);
+	}
+
+	private void updateData()
 	{
 		this.characters = new ArrayList<ArrayList<String>>(fh.getDb());
 	}
 	
-	public void updateData(ArrayList<ArrayList<String>> data)
+	private void updateData(ArrayList<ArrayList<String>> data)
 	{
 		this.characters = data;
 	}

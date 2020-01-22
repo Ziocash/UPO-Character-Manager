@@ -13,8 +13,10 @@ import javax.swing.JFrame;
 import handlers.CharacterHandler;
 import handlers.FileHandler;
 import windows.CharacterCreationWindow;
+import windows.Dialog;
 import windows.MainWindow;
 import windows.Window;
+import windows.Dialog.DialogResult;
 
 public class Controller implements ActionListener
 {
@@ -24,6 +26,7 @@ public class Controller implements ActionListener
 	public Controller(MainWindow window, JFrame owner)
 	{
 		this.owner = owner;
+		this.window = window;
 		//this.ownerClass = owner.getClass();
 	}
 	
@@ -35,17 +38,20 @@ public class Controller implements ActionListener
 			case "New character":
 				CharacterCreationWindow creationWindow = new CharacterCreationWindow();
 				creationWindow.showDialog();
-				FileHandler fh = new FileHandler();
-				CharacterHandler ch = new CharacterHandler();
-				ch.loadList(fh.getDb());
-				ch.addLine(creationWindow.getNewCharacter());
-				fh.setDb(ch.parseList());
-				fh.writeFile();
-				window.updateData();
+				if(creationWindow.getResult() == DialogResult.OK)
+				{				
+					FileHandler fh = new FileHandler();
+					CharacterHandler ch = new CharacterHandler();
+					ch.loadList(fh.getDb());
+					ch.addLine(creationWindow.getNewCharacter());
+					fh.setDb(ch.parseList());
+					fh.writeFile();
+					window.updateData();
+				}
 				break;
 				
 			case "Exit":
-				owner.dispatchEvent(new WindowEvent((java.awt.Window) owner, WindowEvent.WINDOW_CLOSING));
+				window.close();
 				break;
 				
 			

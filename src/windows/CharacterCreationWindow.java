@@ -44,7 +44,7 @@ public class CharacterCreationWindow extends Dialog
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initializeLayout()
 	{
-		controller = new NewCharacterComboBoxController(cmbSpec);
+		controller = new NewCharacterComboBoxController(this, cmbSpec);
 		JLabel lblName = new JLabel("Name");
 		JLabel lblClass = new JLabel("Class");		
 		JLabel lblSpecialization = new JLabel("Specialization");
@@ -64,14 +64,11 @@ public class CharacterCreationWindow extends Dialog
 				cmbSpec.setModel(new DefaultComboBoxModel(RogueType.values()));
 				break;
 		}
-		cmbSpec.addActionListener(controller);
 		
 		JButton btnCreaPersonaggio = new JButton("Create");
-		ButtonController controller = new ButtonController(dialog);
 		btnCreaPersonaggio.addActionListener(controller);
 		
 		JButton btnAnnulla = new JButton("Cancel");
-		controller = new ButtonController(dialog);
 		btnAnnulla.addActionListener(controller);
 		
 		textField = new JTextField();

@@ -46,16 +46,20 @@ public class MainWindow extends Window
 	
 	public void updateData()
 	{
-		model.updateData();
+		model = new TableModel();
 		initializeTable();
-		frame.repaint();
+		table.invalidate();
+		table.repaint();
+		table.revalidate();
 	}
 	
 	public void updateData(ArrayList<ArrayList<String>> data)
 	{
-		model.updateData(data);
+		model = new TableModel(data);
 		initializeTable();
-		frame.repaint();
+		table.invalidate();
+		table.repaint();
+		table.revalidate();
 	}
 	
 	/**

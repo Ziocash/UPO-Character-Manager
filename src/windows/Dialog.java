@@ -18,6 +18,21 @@ public abstract class Dialog
 	 */
 	protected JFrame owner;
 	
+	/**
+	 *
+	 */
+	public enum DialogResult
+	{
+		OK,
+		CANCEL,
+		CLOSED		
+	}
+	
+	/**
+	 * 
+	 */
+	protected DialogResult result;
+	
 	protected void setCloseOperation(int onClose) 
 	{
 		dialog.setDefaultCloseOperation(onClose);
@@ -51,6 +66,16 @@ public abstract class Dialog
 		dialog = new JDialog();
 	}
 	
+	public DialogResult getResult()
+	{
+		return result;
+	}
+
+	public void setResult(DialogResult result)
+	{
+		this.result = result;
+	}
+
 	/**
 	 * 
 	 */

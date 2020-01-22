@@ -14,6 +14,7 @@ import javax.swing.SwingUtilities;
 import handlers.CharacterHandler;
 import handlers.FileHandler;
 
+@Deprecated
 public class ButtonController implements ActionListener
 {
 	private Component itemParent;	
