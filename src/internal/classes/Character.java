@@ -2,7 +2,7 @@ package internal.classes;
 
 import internal.classes.CharacterSpecializations.*;
 
-public class Character 
+public class Character implements Comparable<Character>
 {
 	/**
 	 * CharacterID
@@ -404,6 +404,12 @@ public class Character
 		value += getCharClass() + "|";
 		value += getCharSpec().replace('_', ' ') + "\n";
 		return value;
+	}
+
+	@Override
+	public int compareTo(Character character) 
+	{
+		return this.id > character.id ? 1 : this.id < character.id ? -1 : 0;
 	}
 	
 }

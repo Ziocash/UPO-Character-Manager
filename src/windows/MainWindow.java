@@ -11,6 +11,7 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
+import controllers.Controller;
 import controllers.MainMenuController;
 import models.TableModel;
 import java.awt.Font;
@@ -27,6 +28,7 @@ public class MainWindow extends Window
 	private JMenuBar menuBar = new JMenuBar();
 	private JScrollPane scrollPane = new JScrollPane(); 
 	private TableModel model = new TableModel();
+	private Controller controller = new Controller(this, frame);
 
 	public MainWindow()
 	{
@@ -45,15 +47,14 @@ public class MainWindow extends Window
 	public void updateData()
 	{
 		model.updateData();
+		initializeTable();
+		frame.repaint();
 	}
 	
 	public void updateData(ArrayList<ArrayList<String>> data)
 	{
 		model.updateData(data);
-	}
-	
-	public void updateView()
-	{
+		initializeTable();
 		frame.repaint();
 	}
 	
@@ -70,8 +71,7 @@ public class MainWindow extends Window
 		mntmNewWindow.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
 		mnNewMenu.add(mntmNewWindow);
 		
-		MainMenuController newWindowController = new MainMenuController(frame);
-		mntmNewWindow.addActionListener(newWindowController);
+		mntmNewWindow.addActionListener(controller);
 		
 		//
 		JSeparator separator = new JSeparator();
@@ -86,8 +86,7 @@ public class MainWindow extends Window
 		mntmExit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, InputEvent.ALT_MASK));
 		mnNewMenu.add(mntmExit);
 		
-		MainMenuController exitController = new MainMenuController(frame);
-		mntmExit.addActionListener(exitController);
+		mntmExit.addActionListener(controller);
 	}
 	
 	/**

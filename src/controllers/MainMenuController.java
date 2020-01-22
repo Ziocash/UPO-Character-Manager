@@ -30,19 +30,7 @@ public class MainMenuController implements ActionListener
 		String name = e.getActionCommand();
 		switch(name)
 		{
-			case "New character":
-				CharacterCreationWindow creationWindow = new CharacterCreationWindow();
-				creationWindow.showDialog();	
-				cHandler.addLine(creationWindow.getNewCharacter());
-				ArrayList<ArrayList<String>> tempArrayList = fHandler.getDb();
-				tempArrayList.add(cHandler.parseList().get(0));
-				fHandler.setDb(tempArrayList);
-				fHandler.writeFile();
-				owner.repaint();
-				break;
-			case "Exit":
-				owner.dispatchEvent(new WindowEvent(owner, WindowEvent.WINDOW_CLOSING));
-				break;
+			
 			default:
 				break;
 		}

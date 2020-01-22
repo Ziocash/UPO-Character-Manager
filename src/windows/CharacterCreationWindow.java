@@ -12,6 +12,7 @@ import javax.swing.DefaultComboBoxModel;
 import internal.classes.CharacterClasses;
 import internal.classes.CharacterSpecializations.*;
 import controllers.ButtonController;
+import controllers.Controller;
 import controllers.NewCharacterComboBoxController;
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -26,6 +27,7 @@ public class CharacterCreationWindow extends Dialog
 	private JComboBox cmbClass = new JComboBox();
 	@SuppressWarnings("rawtypes")
 	private JComboBox cmbSpec = new JComboBox();
+	private NewCharacterComboBoxController controller;
 	
 	
 	public CharacterCreationWindow()
@@ -42,17 +44,13 @@ public class CharacterCreationWindow extends Dialog
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initializeLayout()
 	{
+		controller = new NewCharacterComboBoxController(cmbSpec);
 		JLabel lblName = new JLabel("Name");
 		JLabel lblClass = new JLabel("Class");		
 		JLabel lblSpecialization = new JLabel("Specialization");
-			
-			
 		
-		
-		
-		cmbClass.addActionListener(new NewCharacterComboBoxController(cmbSpec));
-		cmbClass.setModel(new DefaultComboBoxModel(CharacterClasses.values()));
-		
+		cmbClass.addActionListener(controller);
+		cmbClass.setModel(new DefaultComboBoxModel(CharacterClasses.values()));		
 		
 		switch((CharacterClasses)cmbClass.getSelectedItem())
 		{
@@ -66,6 +64,7 @@ public class CharacterCreationWindow extends Dialog
 				cmbSpec.setModel(new DefaultComboBoxModel(RogueType.values()));
 				break;
 		}
+		cmbSpec.addActionListener(controller);
 		
 		JButton btnCreaPersonaggio = new JButton("Create");
 		ButtonController controller = new ButtonController(dialog);

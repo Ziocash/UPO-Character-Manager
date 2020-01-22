@@ -127,6 +127,7 @@ public class FileHandler
 	
 	/**
 	 * Reads the file with a default separator style ("|")
+	 * 
 	 * @return a list of lists which contains all file lines ({@code ArrayList<ArrayList<String>>})
 	 */
 	private void readFile() 

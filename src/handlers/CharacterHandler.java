@@ -1,6 +1,7 @@
 package handlers;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import internal.classes.Character;
 import internal.classes.CharacterClasses;
@@ -10,6 +11,9 @@ import internal.classes.CharacterSpecializations.WarriorType;
 
 public class CharacterHandler
 {
+	/**
+	 * 
+	 */
 	private List<Character> db;
 	
 	/**
@@ -77,9 +81,9 @@ public class CharacterHandler
 	 * 
 	 * @param character
 	 */
-	public void addCharacter(Character character)
+	public boolean addCharacter(Character character)
 	{
-		db.add(character);
+		return db.add(character);
 	}
 	
 	/**
@@ -177,6 +181,50 @@ public class CharacterHandler
 	}
 	
 	/**
+	 * 
+	 * @param line
+	 * @param id
+	 * @return
+	 */
+	private boolean addAtIndex(String line, int id)
+	{
+		try
+		{
+			Character ch = new Character(id);
+			String[] dati = line.split("\\|");
+			ch.setName(dati[0]);
+			ch.setStrength(Double.parseDouble(dati[2]));
+			ch.setConstitution(Double.parseDouble(dati[3]));			
+			ch.setIntelligence(Double.parseDouble(dati[4]));
+			ch.setDexterity(Double.parseDouble(dati[5]));
+			ch.setCharisma(Double.parseDouble(dati[6]));
+			ch.setCharClass(CharacterClasses.valueOf(dati[dati.length-2]));
+			CharacterClasses var = ch.getCharClass();
+			dati[dati.length-1] = dati[dati.length-1].replace(' ', '_');
+			switch(var)
+			{
+				case MAGE :
+					ch.setCharSpec(MageType.valueOf(dati[dati.length-1]));
+					break;
+				case ROGUE :
+					ch.setCharSpec(RogueType.valueOf(dati[dati.length-1]));
+					break;
+				case WARRIOR:
+					ch.setCharSpec(WarriorType.valueOf(dati[dati.length-1]));
+					break;
+			}
+			addCharacter(ch);
+			Collections.sort(db);
+			return true;
+		}
+		catch (Exception e1)
+		{
+			e1.printStackTrace();
+			return false;
+		}
+	}
+	
+	/**
 	 * Writes the db array into the file at path {@link #pathOfFile}
 	 * 
 	 * @param db line id
@@ -185,7 +233,7 @@ public class CharacterHandler
 	public boolean editChar(String line, int id)
 	{
 		if(db.remove(search(id)))
-			return addLine(line);
+			return addAtIndex(line, id);
 		return false;
 	}
 	
@@ -197,13 +245,7 @@ public class CharacterHandler
 	public boolean delete(int id)
 	{
 		Character ch = search(id);
-		if(db.remove(ch))
-		{
-			return true;
-		} 
-		else
-		{
-			return false;
-		}
+			return db.remove(ch);
+		
 	}
 }
