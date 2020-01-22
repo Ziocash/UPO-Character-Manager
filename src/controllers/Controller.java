@@ -8,7 +8,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import handlers.CharacterHandler;
 import handlers.FileHandler;
@@ -38,7 +40,10 @@ public class Controller implements ActionListener
 			case "New character":
 				CharacterCreationWindow creationWindow = new CharacterCreationWindow();
 				creationWindow.showDialog();
-				if(creationWindow.getResult() == DialogResult.OK)
+				String[] d = creationWindow.getNewCharacter().split("\\|");
+				d[0] = d[0].replaceAll(" ", "");
+				boolean correct = !d[0].isEmpty();
+				if(creationWindow.getResult() == DialogResult.OK && correct)
 				{				
 					FileHandler fh = new FileHandler();
 					CharacterHandler ch = new CharacterHandler();
@@ -47,6 +52,10 @@ public class Controller implements ActionListener
 					fh.setDb(ch.parseList());
 					fh.writeFile();
 					window.updateData();
+				}
+				else 
+				{
+					JOptionPane.showMessageDialog(owner, "Character name should contains at least 1 char", "No name provided", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 				
