@@ -1,15 +1,8 @@
 package controllers;
-import static java.lang.System.out;
-
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
-import javax.swing.JDialog;
-
 import internal.classes.CharacterClasses;
 import internal.classes.CharacterSpecializations.MageType;
 import internal.classes.CharacterSpecializations.RogueType;
@@ -19,14 +12,16 @@ import windows.Dialog.DialogResult;
 
 public class NewCharacterComboBoxController implements ActionListener
 {
+	@SuppressWarnings("rawtypes")
 	private JComboBox child;
 	private Dialog dialog;
-	public NewCharacterComboBoxController(Dialog dialog, JComboBox child)
+	public NewCharacterComboBoxController(Dialog dialog, @SuppressWarnings("rawtypes") JComboBox child)
 	{
 		this.child = child;
 		this.dialog = dialog;
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
@@ -53,6 +48,8 @@ public class NewCharacterComboBoxController implements ActionListener
 			case "Cancel":
 				dialog.setResult(DialogResult.CANCEL);
 				dialog.close();
+			default:
+				dialog.setResult(DialogResult.CLOSED);
 				break;
 				
 		}

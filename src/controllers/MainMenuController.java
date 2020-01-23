@@ -13,6 +13,7 @@ import handlers.FileHandler;
 import windows.AdaptableWindow;
 import windows.CharacterCreationWindow;
 
+@Deprecated
 public class MainMenuController implements ActionListener
 {
 	private JFrame owner = new JFrame();

@@ -11,13 +11,10 @@ import javax.swing.DefaultComboBoxModel;
 
 import internal.classes.CharacterClasses;
 import internal.classes.CharacterSpecializations.*;
-import controllers.ButtonController;
-import controllers.Controller;
 import controllers.NewCharacterComboBoxController;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.Window.Type;
-import java.util.ArrayList;
 
 public class CharacterCreationWindow extends Dialog
 {

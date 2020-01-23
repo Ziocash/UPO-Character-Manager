@@ -1,7 +1,5 @@
 package internal.classes;
 
-import internal.classes.CharacterSpecializations.*;
-
 public class Character implements Comparable<Character>
 {
 	/**
@@ -45,10 +43,20 @@ public class Character implements Comparable<Character>
 	 */
 	private CharacterClasses charClass;
 	/**
-	 * Character specialization(depend on the class selected)
+	 * 
 	 */
-	private Class<?> charSpec;
+	private String charSpecName;
 	
+	public String getCharSpecName() 
+	{
+		return charSpecName;
+	}
+
+	public void setCharSpecName(String charSpecName) 
+	{
+		this.charSpecName = charSpecName;
+	}
+
 	/**
 	 * Represents a Character with his own customization
 	 * @param id CharacterID
@@ -67,24 +75,13 @@ public class Character implements Comparable<Character>
 	 * set all parameters
 	 * @return void
 	 */
-	public void setAll(String name,CharacterClasses charClass,Class<?> charSpec)
+	public void setAll(String name, CharacterClasses charClass, String charSpec)
 	{
 		this.name=name;
 		this.charClass=charClass;
-		switch(charClass)
-		{
-			case MAGE :
-				this.setCharSpec(MageType.valueOf(charSpec.getName()));
-				break;
-			case ROGUE :
-				this.setCharSpec(RogueType.valueOf(charSpec.getName()));
-				break;
-			case WARRIOR:
-				this.setCharSpec(WarriorType.valueOf(charSpec.getName()));
-				break;
-		}
+		this.charSpecName = charSpec;
 		
-		switch(charSpec.getName())
+		switch(charSpecName)
 		{
 			//Mage Specialization characterist------------------------
 			case "ARCANE_WARRIOR":
@@ -320,34 +317,7 @@ public class Character implements Comparable<Character>
 	 */
 	public String getCharSpec()
 	{
-		return charSpec.getDeclaredFields()[0].getName();
-	}
-
-	/**
-	 * Sets the character specialization
-	 * @param charSpec Character specialization ({@code MageType})
-	 */
-	public void setCharSpec(MageType charSpec)
-	{
-		this.charSpec = charSpec.getClass();
-	}
-	
-	/**
-	 * Sets the character specialization
-	 * @param charSpec Character specialization ({@code RogueType})
-	 */
-	public void setCharSpec(RogueType charSpec)
-	{
-		this.charSpec = charSpec.getClass();
-	}
-	
-	/**
-	 * Sets the character specialization
-	 * @param charSpec Character specialization ({@code WarriorType})
-	 */
-	public void setCharSpec(WarriorType charSpec)
-	{
-		this.charSpec = charSpec.getClass();
+		return charSpecName;
 	}
 
 	/**
@@ -366,6 +336,11 @@ public class Character implements Comparable<Character>
 	public void setCharClass(CharacterClasses charClass)
 	{
 		this.charClass = charClass;
+	}
+	
+	public void setCharSpec(String string) 
+	{
+		this.charSpecName = string;		
 	}
 	
 	/**
@@ -411,5 +386,7 @@ public class Character implements Comparable<Character>
 	{
 		return this.id > character.id ? 1 : this.id < character.id ? -1 : 0;
 	}
+
+	
 	
 }
