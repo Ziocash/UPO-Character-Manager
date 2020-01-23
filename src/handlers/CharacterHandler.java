@@ -5,9 +5,6 @@ import java.util.Collections;
 import java.util.List;
 import internal.classes.Character;
 import internal.classes.CharacterClasses;
-import internal.classes.CharacterSpecializations.MageType;
-import internal.classes.CharacterSpecializations.RogueType;
-import internal.classes.CharacterSpecializations.WarriorType;
 
 public class CharacterHandler
 {
@@ -158,7 +155,6 @@ public class CharacterHandler
 			ch.setCharClass(CharacterClasses.valueOf(dati[dati.length-2]));
 			dati[dati.length-1] = dati[dati.length-1].replace(' ', '_');
 			ch.setCharSpec(dati[dati.length-1]);
-			System.out.println(ch.getCharSpec());
 			addCharacter(ch);
 			return true;
 		}
@@ -188,20 +184,8 @@ public class CharacterHandler
 			ch.setDexterity(Double.parseDouble(dati[5]));
 			ch.setCharisma(Double.parseDouble(dati[6]));
 			ch.setCharClass(CharacterClasses.valueOf(dati[dati.length-2]));
-			CharacterClasses var = ch.getCharClass();
 			dati[dati.length-1] = dati[dati.length-1].replace(' ', '_');
-			switch(var)
-			{
-				case MAGE :
-					ch.setCharSpec(MageType.valueOf(dati[dati.length-1]));
-					break;
-				case ROGUE :
-					ch.setCharSpec(RogueType.valueOf(dati[dati.length-1]));
-					break;
-				case WARRIOR:
-					ch.setCharSpec(WarriorType.valueOf(dati[dati.length-1]));
-					break;
-			}
+			ch.setCharSpec(dati[dati.length-1]);
 			addCharacter(ch);
 			Collections.sort(db);
 			return true;
