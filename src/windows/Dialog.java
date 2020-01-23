@@ -19,17 +19,36 @@ public abstract class Dialog
 	protected JFrame owner;
 	
 	/**
-	 *
+	 * Dialog result values.<br>
+	 * 
+	 * Provides a description on which button/command has been used by user<br>
+	 * Possible values:
+	 * <ul>
+	 * <li>OK: when user selects confirmation button</li>
+	 * <li>CANCEL: when user selects cancel button</li>
+	 * <li>CLOSED: when user simply closes the dialog</li>
+	 * </ul>
 	 */
 	public enum DialogResult
 	{
+		/**
+		 * 
+		 */
 		OK,
+		/**
+		 * 
+		 */
 		CANCEL,
+		/**
+		 * 
+		 */
 		CLOSED		
 	}
 	
 	/**
+	 * Dialog result value.<br>
 	 * 
+	 * Provides a description on which button/command has been used by user
 	 */
 	protected DialogResult result;
 	
@@ -71,6 +90,10 @@ public abstract class Dialog
 		return result;
 	}
 
+	/**
+	 * 
+	 * @param result
+	 */
 	public void setResult(DialogResult result)
 	{
 		this.result = result;

@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
@@ -12,7 +13,6 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 import controllers.Controller;
-import controllers.MainMenuController;
 import models.TableModel;
 import java.awt.Font;
 import java.awt.Window.Type;
@@ -82,8 +82,10 @@ public class MainWindow extends Window
 		mnNewMenu.add(separator);
 		
 		//
-		JMenuItem mntmNewMenuItem = new JMenuItem("Delete");
-		mnNewMenu.add(mntmNewMenuItem);
+		JMenuItem mntmDeleteItem = new JMenuItem("Delete");
+		mntmDeleteItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_MASK));
+		mntmDeleteItem.addActionListener(controller);
+		mnNewMenu.add(mntmDeleteItem);
 		
 		//
 		JMenuItem mntmExit = new JMenuItem("Exit");
@@ -94,7 +96,7 @@ public class MainWindow extends Window
 	}
 	
 	/**
-	 * 
+	 * Table initialization method
 	 */
 	private void initializeTable()
 	{
@@ -168,5 +170,17 @@ public class MainWindow extends Window
 		int width = c.getPreferredSize().width + table.getIntercellSpacing().width;
 
 		return width + 20;
+	}
+
+	public void deleteRow() 
+	{
+		int index = table.getSelectedRow();
+		if(index > -1)
+			if(JOptionPane.showConfirmDialog(frame, "Do you wanna delete the selected character?") == JOptionPane.OK_OPTION)
+			{
+				model.removeIndex(index);
+				table.revalidate();
+			}
+		
 	}
 }

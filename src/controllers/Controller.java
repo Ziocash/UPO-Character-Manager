@@ -3,21 +3,13 @@ package controllers;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import handlers.CharacterHandler;
 import handlers.FileHandler;
 import windows.CharacterCreationWindow;
-import windows.Dialog;
 import windows.MainWindow;
-import windows.Window;
 import windows.Dialog.DialogResult;
 
 public class Controller implements ActionListener
@@ -53,10 +45,14 @@ public class Controller implements ActionListener
 					fh.writeFile();
 					window.updateData();
 				}
-				else 
+				else if(creationWindow.getResult() == DialogResult.OK && !correct)
 				{
 					JOptionPane.showMessageDialog(owner, "Character name should contains at least 1 char", "No name provided", JOptionPane.ERROR_MESSAGE);
 				}
+				break;
+				
+			case "Delete":
+				window.deleteRow();
 				break;
 				
 			case "Exit":

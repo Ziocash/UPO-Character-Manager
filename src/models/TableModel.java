@@ -33,6 +33,13 @@ public class TableModel extends AbstractTableModel
 		this.characters = data;
 	}
 	
+	public void removeIndex(int rowIndex)
+	{
+		characters.remove(rowIndex);
+		fh.setDb(characters);
+		fh.writeFile();
+	}
+	
 	@Override
 	public int getColumnCount()
 	{		
