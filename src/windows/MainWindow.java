@@ -30,6 +30,9 @@ public class MainWindow extends Window
 	private TableModel model = new TableModel();
 	private Controller controller = new Controller(this, frame);
 
+	/**
+	 * MainWindow initialization
+	 */
 	public MainWindow()
 	{
 		initializeComponents();
@@ -44,21 +47,24 @@ public class MainWindow extends Window
 		scrollPane.setViewportView(table);
 	}
 	
+	/**
+	 * Updates data values into the table
+	 */
 	public void updateData()
 	{
 		model = new TableModel();
 		initializeTable();
-		table.invalidate();
-		table.repaint();
 		table.revalidate();
 	}
 	
+	/**
+	 * Updates data values into the table based on {@code data}
+	 * @param data that needs to be loaded into table
+	 */
 	public void updateData(ArrayList<ArrayList<String>> data)
 	{
 		model = new TableModel(data);
 		initializeTable();
-		table.invalidate();
-		table.repaint();
 		table.revalidate();
 	}
 	
@@ -172,6 +178,9 @@ public class MainWindow extends Window
 		return width + 20;
 	}
 
+	/**
+	 * Get the selected row and calls a model deletion
+	 */
 	public void deleteRow() 
 	{
 		int index = table.getSelectedRow();
