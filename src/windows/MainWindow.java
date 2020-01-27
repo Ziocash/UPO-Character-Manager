@@ -1,6 +1,8 @@
 package windows;
 
 import java.awt.Component;
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -40,6 +42,7 @@ public class MainWindow extends Window
 		setType(Type.NORMAL);
 		setCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setFrameProperties(true, 700, 450, null);
+		frame.setMinimumSize(new Dimension(650, 350));
 		initializeMenu();
 		initializeTable();
 		frame.setJMenuBar(menuBar);
@@ -75,13 +78,23 @@ public class MainWindow extends Window
 	{
 		JMenu mnNewMenu = new JMenu("File");
 		menuBar.add(mnNewMenu);
+		mnNewMenu.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		
 		//
-		JMenuItem mntmNewWindow = new JMenuItem("New character");
-		mntmNewWindow.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
-		mnNewMenu.add(mntmNewWindow);
+		JMenuItem mntmNewChar = new JMenuItem("New character");
+		mntmNewChar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
+		mnNewMenu.add(mntmNewChar);
 		
-		mntmNewWindow.addActionListener(controller);
+		mntmNewChar.addActionListener(controller);
+		mntmNewChar.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+		
+		//
+		JMenuItem mntmEdit = new JMenuItem("Edit character");
+		mntmEdit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.CTRL_MASK));
+		mnNewMenu.add(mntmEdit);
+		
+		mntmEdit.addActionListener(controller);
+		mntmEdit.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		
 		//
 		JSeparator separator = new JSeparator();
@@ -91,6 +104,7 @@ public class MainWindow extends Window
 		JMenuItem mntmDeleteItem = new JMenuItem("Delete");
 		mntmDeleteItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_MASK));
 		mntmDeleteItem.addActionListener(controller);
+		mntmDeleteItem.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		mnNewMenu.add(mntmDeleteItem);
 		
 		//
@@ -99,6 +113,7 @@ public class MainWindow extends Window
 		mnNewMenu.add(mntmExit);
 		
 		mntmExit.addActionListener(controller);
+		mntmExit.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 	}
 	
 	/**
@@ -107,7 +122,8 @@ public class MainWindow extends Window
 	private void initializeTable()
 	{
 		table.setModel(model);
-		table.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+		table.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		table.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 15));
 		table.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
 		for (int i = 0; i < table.getColumnCount(); i++)
 		{
@@ -115,6 +131,7 @@ public class MainWindow extends Window
 			int headerWidth = getColumnHeaderWidth(i);
 			table.getColumnModel().getColumn(i).setPreferredWidth(Math.max(dataWidth, headerWidth));
 		}
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 	}
 
 	/**
@@ -191,5 +208,22 @@ public class MainWindow extends Window
 				table.revalidate();
 			}
 		
+	}
+
+	public ArrayList<ArrayList<String>> getRow() 
+	{
+		if(table.getSelectedRow() > -1)
+		{
+			ArrayList<ArrayList<String>> characterValues = new ArrayList<ArrayList<String>>();
+			for(int j = 1; j < model.getColumnCount(); j++)
+			{
+				ArrayList<String> temp = new ArrayList<String>();
+				temp.add(model.getColumnName(j));
+				temp.add(model.getValueAt(table.getSelectedRow(), j).toString());
+				characterValues.add(temp);
+			}
+			return characterValues;
+		}
+		return null;
 	}
 }

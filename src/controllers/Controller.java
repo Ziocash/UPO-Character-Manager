@@ -1,8 +1,12 @@
 package controllers;
 
 import java.awt.Component;
+import java.awt.Dialog;
+import java.awt.Dialog.ModalityType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -10,6 +14,7 @@ import handlers.CharacterHandler;
 import handlers.FileHandler;
 import windows.CharacterCreationWindow;
 import windows.MainWindow;
+import windows.ShowCharacterWindow;
 import windows.Dialog.DialogResult;
 
 public class Controller implements ActionListener
@@ -49,6 +54,12 @@ public class Controller implements ActionListener
 				{
 					JOptionPane.showMessageDialog(owner, "Character name should contains at least 1 char", "No name provided", JOptionPane.ERROR_MESSAGE);
 				}
+				break;
+				
+			case "Edit character":
+				ShowCharacterWindow showWindow = new ShowCharacterWindow();
+				showWindow.loadData(window.getRow());
+				showWindow.showDialog();
 				break;
 				
 			case "Delete":

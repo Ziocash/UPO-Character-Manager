@@ -14,7 +14,7 @@ public class Main
         				try 
         				{
         					MainWindow mw = new MainWindow();
-        					mw.show();        					
+        					mw.show();
         				}
         				catch(Exception ex)
         				{

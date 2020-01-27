@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 
 import handlers.CharacterHandler;
 import handlers.FileHandler;
-import windows.AdaptableWindow;
+import windows.ShowCharacterWindow;
 import windows.CharacterCreationWindow;
 
 @Deprecated
