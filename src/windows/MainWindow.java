@@ -226,4 +226,9 @@ public class MainWindow extends Window
 		}
 		return null;
 	}
+	
+	public int getSelectedRowIndex()
+	{
+		return table.getSelectedRow(); 
+	}
 }

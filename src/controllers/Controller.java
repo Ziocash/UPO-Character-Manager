@@ -1,12 +1,9 @@
 package controllers;
 
 import java.awt.Component;
-import java.awt.Dialog;
-import java.awt.Dialog.ModalityType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -57,9 +54,30 @@ public class Controller implements ActionListener
 				break;
 				
 			case "Edit character":
-				ShowCharacterWindow showWindow = new ShowCharacterWindow();
-				showWindow.loadData(window.getRow());
-				showWindow.showDialog();
+				if(window.getRow() !=  null)
+				{
+					ShowCharacterWindow showWindow = new ShowCharacterWindow();
+					showWindow.loadData(window.getRow());
+					showWindow.showDialog();
+					if(showWindow.getResult() == DialogResult.OK)
+					{
+						FileHandler fh = new FileHandler();
+						CharacterHandler ch = new CharacterHandler();
+						ch.loadList(fh.getDb());
+						String[] temp = showWindow.getEditedCharacter().split("\\|");
+						String reconstruct = "";
+						for(int i = 1; i < temp.length; i++)
+						{
+							reconstruct += temp[i];
+							if(temp.length - 1 > i)
+								reconstruct += "|";
+						}
+						ch.editChar(reconstruct, window.getSelectedRowIndex()+1);
+						fh.setDb(ch.parseList());
+						fh.writeFile();
+						window.updateData();
+					}
+				}
 				break;
 				
 			case "Delete":

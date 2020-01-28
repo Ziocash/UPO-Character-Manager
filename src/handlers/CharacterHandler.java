@@ -147,6 +147,7 @@ public class CharacterHandler
 			Character ch = new Character(getNewID());
 			String[] dati = line.split("\\|");
 			ch.setName(dati[0]);
+			ch.setLevel(Integer.parseInt(dati[1]));
 			ch.setStrength(Double.parseDouble(dati[2]));
 			ch.setConstitution(Double.parseDouble(dati[3]));			
 			ch.setIntelligence(Double.parseDouble(dati[4]));
@@ -178,6 +179,7 @@ public class CharacterHandler
 			Character ch = new Character(id);
 			String[] dati = line.split("\\|");
 			ch.setName(dati[0]);
+			ch.setLevel(Integer.parseInt(dati[1]));
 			ch.setStrength(Double.parseDouble(dati[2]));
 			ch.setConstitution(Double.parseDouble(dati[3]));			
 			ch.setIntelligence(Double.parseDouble(dati[4]));

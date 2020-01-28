@@ -3,17 +3,15 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
+import windows.ShowCharacterWindow;
+import windows.Dialog.DialogResult;
 
 public class ShowCharacterController implements ActionListener 
 {
 	private windows.Dialog dialog;
-	private JFrame owner;
-	
-	public ShowCharacterController(windows.Dialog dialog, JFrame owner)
+	public ShowCharacterController(windows.Dialog dialog)
 	{
 		this.dialog = dialog;
-		this.owner = owner;
 	}
 	
 	@Override
@@ -21,13 +19,23 @@ public class ShowCharacterController implements ActionListener
 	{
 		switch(e.getActionCommand())
 		{
-		
-			case "Close":
+			case "Show ability":
+				break;
+			case "Level up":
+				((ShowCharacterWindow)dialog).levelUp();
+				System.gc();
+				break;
+			case "OK":
+				dialog.setResult(DialogResult.OK);
 				dialog.close();
 				break;
-				default:
-					System.out.println(e.getActionCommand());
-					break;
+			case "Cancel":
+				dialog.setResult(DialogResult.CANCEL);
+				dialog.close();
+				break;
+			default:
+				dialog.setResult(DialogResult.CLOSED);
+				break;
 		}
 	}
 

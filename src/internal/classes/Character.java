@@ -9,7 +9,7 @@ public class Character implements Comparable<Character>
 	/**
 	 * Character multiplier
 	 */
-	private final double multiplier = 0.01;
+	private final double multiplier = 0.1;
 	/**
 	 * Character name
 	 */
@@ -56,6 +56,15 @@ public class Character implements Comparable<Character>
 	{
 		this.charSpecName = charSpecName;
 	}
+	
+	/**
+	 * .
+	 * @param level
+	 */
+	public void setLevel(int level)
+	{
+		this.level = level;
+	}
 
 	/**
 	 * Represents a Character with his own customization
@@ -76,102 +85,102 @@ public class Character implements Comparable<Character>
 	 * @return void
 	 */
 	public void setAll(String name, CharacterClasses charClass, String charSpec)
-	{
-		this.name=name;
-		this.charClass=charClass;
-		this.charSpecName = charSpec;
-		
-		switch(charSpecName)
-		{
-			//Mage Specialization characterist------------------------
-			case "ARCANE_WARRIOR":
-				this.strength = 0;
-				this.constitution = 0;
-				this.intelligence = 0;
-				this.dexterity = 0;
-				this.charisma = 0;
-				break;
-			case "BLOOD_MAGE":
-				this.strength = 0;
-				this.constitution = 0;
-				this.intelligence = 0;
-				this.dexterity = 0;
-				this.charisma = 0;
-				break;
-			case "SHAPESHIFTER":
-				this.strength = 0;
-				this.constitution = 0;
-				this.intelligence = 0;
-				this.dexterity = 0;
-				this.charisma = 0;
-				break;
-			case "SPIRIT_HEALER":
-				this.strength = 0;
-				this.constitution = 0;
-				this.intelligence = 0;
-				this.dexterity = 0;
-				this.charisma = 0;
-				break;
-			//Rogue Specialization characterist------------------------
-			case "ASSASSIN":
-				this.strength = 0;
-				this.constitution = 0;
-				this.intelligence = 0;
-				this.dexterity = 0;
-				this.charisma = 0;
-				break;
-			case "BARD":
-				this.strength = 0;
-				this.constitution = 0;
-				this.intelligence = 0;
-				this.dexterity = 0;
-				this.charisma = 0;
-				break;
-			case "DUELIST":
-				this.strength = 0;
-				this.constitution = 0;
-				this.intelligence = 0;
-				this.dexterity = 0;
-				this.charisma = 0;
-				break;
-			case "RANGER":
-				this.strength = 0;
-				this.constitution = 0;
-				this.intelligence = 0;
-				this.dexterity = 0;
-				this.charisma = 0;
-				break;
-			//Warrior Specialization characterist------------------------
-			case "BERSERKER":
-				this.strength = 0;
-				this.constitution = 0;
-				this.intelligence = 0;
-				this.dexterity = 0;
-				this.charisma = 0;
-				break;
-			case "CHAMPION":
-				this.strength = 0;
-				this.constitution = 0;
-				this.intelligence = 0;
-				this.dexterity = 0;
-				this.charisma = 0;
-				break;
-			case "REAVER":
-				this.strength = 0;
-				this.constitution = 0;
-				this.intelligence = 0;
-				this.dexterity = 0;
-				this.charisma = 0;
-				break;
-			case "TEMPLAR":
-				this.strength = 0;
-				this.constitution = 0;
-				this.intelligence = 0;
-				this.dexterity = 0;
-				this.charisma = 0;
-				break;
-		}
-	}
+	  {
+	    this.name=name;
+	    this.charClass=charClass;
+	    this.charSpecName = charSpec;
+	    
+	    switch(charSpecName)
+	    {
+	      //Mage Specialization characterist------------------------
+	      case "ARCANE_WARRIOR":
+	        this.strength = 30;
+	        this.constitution = 30;
+	        this.intelligence = 30;
+	        this.dexterity = 30;
+	        this.charisma = 30;
+	        break;
+	      case "BLOOD_MAGE":
+	        this.strength = 30;
+	        this.constitution = 30;
+	        this.intelligence = 30;
+	        this.dexterity = 30;
+	        this.charisma = 30;
+	        break;
+	      case "SHAPESHIFTER":
+	        this.strength = 30;
+	        this.constitution = 30;
+	        this.intelligence = 30;
+	        this.dexterity = 30;
+	        this.charisma = 30;
+	        break;
+	      case "SPIRIT_HEALER":
+	        this.strength = 30;
+	        this.constitution = 30;
+	        this.intelligence = 30;
+	        this.dexterity = 30;
+	        this.charisma = 30;
+	        break;
+	      //Rogue Specialization characterist------------------------
+	      case "ASSASSIN":
+	        this.strength = 30;
+	        this.constitution = 30;
+	        this.intelligence = 30;
+	        this.dexterity = 30;
+	        this.charisma = 30;
+	        break;
+	      case "BARD":
+	        this.strength = 30;
+	        this.constitution = 30;
+	        this.intelligence = 30;
+	        this.dexterity = 30;
+	        this.charisma = 30;
+	        break;
+	      case "DUELIST":
+	        this.strength = 30;
+	        this.constitution = 30;
+	        this.intelligence = 30;
+	        this.dexterity = 30;
+	        this.charisma = 30;
+	        break;
+	      case "RANGER":
+	        this.strength = 30;
+	        this.constitution = 30;
+	        this.intelligence = 30;
+	        this.dexterity = 30;
+	        this.charisma = 30;
+	        break;
+	      //Warrior Specialization characterist------------------------
+	      case "BERSERKER":
+	        this.strength = 30;
+	        this.constitution = 30;
+	        this.intelligence = 30;
+	        this.dexterity = 30;
+	        this.charisma = 30;
+	        break;
+	      case "CHAMPION":
+	        this.strength = 30;
+	        this.constitution = 30;
+	        this.intelligence = 30;
+	        this.dexterity = 30;
+	        this.charisma = 30;
+	        break;
+	      case "REAVER":
+	        this.strength = 30;
+	        this.constitution = 30;
+	        this.intelligence = 30;
+	        this.dexterity = 30;
+	        this.charisma = 30;
+	        break;
+	      case "TEMPLAR":
+	        this.strength = 30;
+	        this.constitution = 30;
+	        this.intelligence = 30;
+	        this.dexterity = 30;
+	        this.charisma = 30;
+	        break;
+	    }
+	  }
 	
 	/**
 	 * Returns the character strength
@@ -355,8 +364,11 @@ public class Character implements Comparable<Character>
 		value += "ID: " + id + " ";
 		value += "Name: " + name + " ";
 		value += "Level: " + level + " ";
-		value += "Strength: " + strength + " ";
-		value += "Constitution: " + constitution + " ";
+		value += "Strength: " + String.format("%.2f", strength) + " ";
+		value += "Intelligence: " + String.format("%.2f", intelligence) + " ";
+		value += "Dexterity: " + String.format("%.2f", dexterity) + " ";		
+		value += "Charisma: " + String.format("%.2f", charisma) + " ";
+		value += "Constitution: " + String.format("%.2f", constitution) + " ";
 		value += "Class: " + getCharClass() + " ";
 		value += "Specialization: " + getCharSpec().replace('_', ' ') + " ";
 		
@@ -375,6 +387,9 @@ public class Character implements Comparable<Character>
 		value += name + "|";
 		value += level + "|";
 		value += strength + "|";
+		value += intelligence + "|";
+		value += dexterity + "|";		
+		value += charisma + "|";
 		value += constitution + "|";
 		value += getCharClass() + "|";
 		value += getCharSpec().replace('_', ' ') + "\n";
