@@ -194,7 +194,7 @@ public class FileHandler
 				
 				if(result == JFileChooser.APPROVE_OPTION)
 				{
-					charactersFile = fc.getSelectedFile().getPath();
+					abilitiesFile = fc.getSelectedFile().getPath();
 					testFile(abilitiesFile, false);
 					SettingsHandler.setProperty("AbilitiesFilePath", charactersFile);
 				}			
