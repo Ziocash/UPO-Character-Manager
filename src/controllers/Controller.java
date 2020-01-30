@@ -11,6 +11,7 @@ import handlers.CharacterHandler;
 import handlers.FileHandler;
 import windows.CharacterCreationWindow;
 import windows.MainWindow;
+import windows.SettingsWindow;
 import windows.ShowCharacterWindow;
 import windows.Dialog.DialogResult;
 
@@ -31,6 +32,9 @@ public class Controller implements ActionListener
 	{
 		switch(e.getActionCommand())
 		{
+			/**
+			 * 
+			 */
 			case "New character":
 				CharacterCreationWindow creationWindow = new CharacterCreationWindow();
 				creationWindow.showDialog();
@@ -52,7 +56,9 @@ public class Controller implements ActionListener
 					JOptionPane.showMessageDialog(owner, "Character name should contains at least 1 char", "No name provided", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
-				
+			/**
+			 * 
+			 */
 			case "Edit character":
 				if(window.getRow() !=  null)
 				{
@@ -79,11 +85,23 @@ public class Controller implements ActionListener
 					}
 				}
 				break;
+			/**
+			 * 
+			 */
+			case "Settings":
+				SettingsWindow settingsWindow = new SettingsWindow();
+				settingsWindow.showDialog();
+				break;
 				
+			/**
+			 * 
+			 */
 			case "Delete":
 				window.deleteRow();
 				break;
-				
+			/**
+			 * 
+			 */
 			case "Exit":
 				window.close();
 				break;

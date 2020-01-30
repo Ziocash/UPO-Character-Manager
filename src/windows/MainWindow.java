@@ -45,7 +45,8 @@ public class MainWindow extends Window
 		frame.setMinimumSize(new Dimension(650, 350));
 		initializeMenu();
 		initializeTable();
-		frame.setJMenuBar(menuBar);
+		frame.setJMenuBar(menuBar);		
+		
 		frame.getContentPane().add(scrollPane);
 		scrollPane.setViewportView(table);
 	}
@@ -114,6 +115,17 @@ public class MainWindow extends Window
 		
 		mntmExit.addActionListener(controller);
 		mntmExit.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+		
+		//-------------------------------------------------------------
+		JMenu mnNewMenu_1 = new JMenu("Edit");
+		menuBar.add(mnNewMenu_1);
+		mnNewMenu_1.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+		
+		JMenuItem mntmSettings = new JMenuItem("Settings");
+		mntmSettings.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_COMMA, InputEvent.CTRL_MASK));
+		mntmSettings.addActionListener(controller);
+		mntmSettings.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+		mnNewMenu_1.add(mntmSettings);
 	}
 	
 	/**

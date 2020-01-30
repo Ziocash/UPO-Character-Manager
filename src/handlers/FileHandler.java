@@ -14,9 +14,14 @@ import javax.swing.JOptionPane;
 public class FileHandler 
 {
 	/**
-	 * Path to the save file
+	 * Path to characters file
 	 */
-	private String pathOfFile = ""; //path/to/file
+	private String charactersFile = ""; //path/to/file
+	
+	/**
+	 * Path to abilities file
+	 */
+	private String abilitiesFile = "";
 	
 	/**
 	 * Collection which contains all the file lines
@@ -31,10 +36,14 @@ public class FileHandler
 		try
 		{
 			String path = SettingsHandler.retrieveProperty("SaveFilePath");
-			if(path == null || path.isEmpty() || !(new File(path).exists()))
+			String abilitiesPath = SettingsHandler.retrieveProperty("AbilitiesFilePath");
+			if(path == null || path.isEmpty() || !(new File(path).exists()) || abilitiesPath == null || abilitiesPath.isEmpty() || !(new File(abilitiesPath).exists()))
 				intializeClass();
 			else
-				pathOfFile = path;			
+			{
+				charactersFile = path;
+				abilitiesFile = path;
+			}
 				
 		}
 		catch(Exception e)
@@ -79,11 +88,11 @@ public class FileHandler
 	 */
 	public String getFilePath()
 	{
-		return pathOfFile;
+		return charactersFile;
 	}
 	
 	/**
-	 * Writes the db array into the file at path {@link #pathOfFile}
+	 * Writes the db array into the file at path {@link #charactersFile}
 	 * 
 	 * @param db
 	 * @return {@code true} if the file is correctly written, {@code false} in the other cases
@@ -92,7 +101,7 @@ public class FileHandler
 	{
 		try
 		{
-			FileWriter fw = new FileWriter(pathOfFile, false);
+			FileWriter fw = new FileWriter(charactersFile, false);
 		    BufferedWriter bw = new BufferedWriter(fw);
 		    PrintWriter out = new PrintWriter(bw);
 		    
@@ -135,10 +144,10 @@ public class FileHandler
 		try
 		{
 			//If the file exists 
-			if(testFile(true))
+			if(testFile(charactersFile, true))
 			{
 				db.clear();
-				File file = new File(pathOfFile);
+				File file = new File(charactersFile);
 				List<String> list = Files.readAllLines(file.toPath(), Charset.defaultCharset());
 				for(String item : list)
 				{
@@ -162,24 +171,42 @@ public class FileHandler
 	private void intializeClass()
 	{
 		int result = 0;
-		if(!testFile(true))
+		if(!testFile(charactersFile, true) || !testFile(abilitiesFile, true))
 		{
-			if(pathOfFile.isEmpty())
+			if(charactersFile.isEmpty() || abilitiesFile.isEmpty())
 			{
 				JFileChooser fc = new JFileChooser();
+				fc.setDialogTitle("Select characters file");
 				result = fc.showSaveDialog(null);
 				
 				if(result == JFileChooser.APPROVE_OPTION)
 				{
-					pathOfFile = fc.getSelectedFile().getPath();
-					testFile(false);
-					SettingsHandler.setProperty("SaveFilePath", pathOfFile);
+					charactersFile = fc.getSelectedFile().getPath();
+					testFile(charactersFile, false);
+					SettingsHandler.setProperty("SaveFilePath", charactersFile);
+				}			
+			}
+			if(abilitiesFile.isEmpty())
+			{
+				JFileChooser fc = new JFileChooser();
+				fc.setDialogTitle("Select abilities file");
+				result = fc.showSaveDialog(null);
+				
+				if(result == JFileChooser.APPROVE_OPTION)
+				{
+					charactersFile = fc.getSelectedFile().getPath();
+					testFile(abilitiesFile, false);
+					SettingsHandler.setProperty("AbilitiesFilePath", charactersFile);
 				}			
 			}
 			
+			
 		}
 		else
-			testFile(true);
+		{
+			testFile(abilitiesFile, true);
+			testFile(charactersFile, true);
+		}
 	}
 	
 	/**
@@ -187,15 +214,15 @@ public class FileHandler
 	 * @param onlyCheck Specify if the method should create the file or only checks if it exists
 	 * @return {@code true} if the file exists, {@code false} in other cases
 	 */
-	private boolean testFile(boolean onlyCheck)
+	private boolean testFile(String path, boolean onlyCheck)
 	{
-		if(new File(pathOfFile).isFile() && onlyCheck)			
+		if(new File(path).isFile() && onlyCheck)			
 			return true;
 		else
 		{
 			if(!onlyCheck)
 			{
-				File f = new File(pathOfFile);
+				File f = new File(path);
 				try
 				{					
 					return f.createNewFile();
