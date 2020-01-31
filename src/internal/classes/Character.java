@@ -85,12 +85,13 @@ public class Character implements Comparable<Character>
 	 * @return void
 	 */
 	public void setAll(String name, CharacterClasses charClass, String charSpec)
-	  {
+	{
+		String tempString = charSpec;
 	    this.name=name;
 	    this.charClass=charClass;
-	    this.charSpecName = charSpec;
+	    this.charSpecName = charSpec.replace("_", " ");
 	    
-	    switch(charSpecName)
+	    switch(tempString)
 	    {
 	      //Mage Specialization characterist------------------------
 	      case "ARCANE_WARRIOR":
