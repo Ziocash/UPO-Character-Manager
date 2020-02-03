@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class FileHandler 
 {
@@ -173,15 +174,19 @@ public class FileHandler
 		int result = 0;
 		if(!testFile(charactersFile, true) || !testFile(abilitiesFile, true))
 		{
-			if(charactersFile.isEmpty() || abilitiesFile.isEmpty())
+			if(charactersFile.isEmpty())
 			{
 				JFileChooser fc = new JFileChooser();
+				FileNameExtensionFilter filter = new FileNameExtensionFilter("Text file", "txt");
+				fc.setFileFilter(filter);
 				fc.setDialogTitle("Select characters file");
 				result = fc.showSaveDialog(null);
 				
 				if(result == JFileChooser.APPROVE_OPTION)
 				{
 					charactersFile = fc.getSelectedFile().getPath();
+					if(!charactersFile.contains(".txt"))
+						charactersFile.concat(".txt");
 					testFile(charactersFile, false);
 					SettingsHandler.setProperty("SaveFilePath", charactersFile);
 				}			
@@ -189,14 +194,18 @@ public class FileHandler
 			if(abilitiesFile.isEmpty())
 			{
 				JFileChooser fc = new JFileChooser();
+				FileNameExtensionFilter filter = new FileNameExtensionFilter("Text file", "txt");
+				fc.setFileFilter(filter);
 				fc.setDialogTitle("Select abilities file");
 				result = fc.showSaveDialog(null);
 				
 				if(result == JFileChooser.APPROVE_OPTION)
 				{
 					abilitiesFile = fc.getSelectedFile().getPath();
+					if(!abilitiesFile.contains(".txt"))
+						abilitiesFile.concat(".txt");
 					testFile(abilitiesFile, false);
-					SettingsHandler.setProperty("AbilitiesFilePath", charactersFile);
+					SettingsHandler.setProperty("AbilitiesFilePath", abilitiesFile);
 				}			
 			}
 			

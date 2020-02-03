@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import handlers.SettingsHandler;
 import windows.Dialog;
@@ -30,6 +31,8 @@ public class SettingsController implements ActionListener
 			case "Browse...": 
 				JButton button = (JButton)e.getSource();
 				JFileChooser fileChooser  = new JFileChooser();
+				FileNameExtensionFilter filter = new FileNameExtensionFilter("Text file", "txt");
+				fileChooser.setFileFilter(filter);
 				switch(button.getName())
 				{
 					case "btnBrowseCharFile":
@@ -44,11 +47,17 @@ public class SettingsController implements ActionListener
 					switch(button.getName())
 					{
 						case "btnBrowseCharFile":
-							SettingsHandler.setProperty("SaveFilePath", fileChooser.getSelectedFile().getPath());
+							String tempString = fileChooser.getSelectedFile().getPath();
+							if(!tempString.contains(".txt"))
+								tempString.concat(".txt");
+							SettingsHandler.setProperty("SaveFilePath", tempString);
 							((SettingsWindow)dialog).updateData(); 
 							break;
 						case "btnBrowseAbilitiesFile":
-							SettingsHandler.setProperty("AbilitiesFilePath", fileChooser.getSelectedFile().getPath());
+							tempString = fileChooser.getSelectedFile().getPath();
+							if(!tempString.contains(".txt"))
+								tempString.concat(".txt");
+							SettingsHandler.setProperty("AbilitiesFilePath", tempString);
 							((SettingsWindow)dialog).updateData();
 							break;
 					}

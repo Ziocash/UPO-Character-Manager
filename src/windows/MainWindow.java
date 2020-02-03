@@ -104,10 +104,10 @@ public class MainWindow extends Window
 		//
 		JMenuItem mntmDeleteItem = new JMenuItem("Delete");
 		mntmDeleteItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_MASK));
-		mntmDeleteItem.addActionListener(controller);
-		mntmDeleteItem.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		mnNewMenu.add(mntmDeleteItem);
 		
+		mntmDeleteItem.addActionListener(controller);
+		mntmDeleteItem.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		//
 		JMenuItem mntmExit = new JMenuItem("Exit");
 		mntmExit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, InputEvent.ALT_MASK));
@@ -123,9 +123,10 @@ public class MainWindow extends Window
 		
 		JMenuItem mntmSettings = new JMenuItem("Settings");
 		mntmSettings.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_COMMA, InputEvent.CTRL_MASK));
+		mnNewMenu_1.add(mntmSettings);
+		
 		mntmSettings.addActionListener(controller);
 		mntmSettings.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-		mnNewMenu_1.add(mntmSettings);
 	}
 	
 	/**
