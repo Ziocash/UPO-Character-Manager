@@ -87,8 +87,8 @@ public class Character implements Comparable<Character>
 	public void setAll(String name, CharacterClasses charClass, String charSpec)
 	{
 		String tempString = charSpec;
-	    this.name=name;
-	    this.charClass=charClass;
+	    this.name = name;
+	    this.charClass = charClass;
 	    this.charSpecName = charSpec.replace("_", " ");
 	    
 	    switch(tempString)
