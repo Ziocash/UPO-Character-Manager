@@ -17,6 +17,7 @@ class TestClass
 	Character character = new internal.classes.Character(1);
 	FileHandler fHandler = new FileHandler();
 	TableModel tableModel = new TableModel();
+	AbilityHandler aHandler = new AbilityHandler();
 
 	@Test
 	void testAddLine() 
@@ -70,6 +71,13 @@ class TestClass
 			for(int columnIndex = 0; columnIndex < tableModel.getColumnCount(); columnIndex++)
 				assertEquals(tableModel.getValueAt(rowIndex, columnIndex), data.get(rowIndex).get(columnIndex));
 		out.println("Passed");
+	}
+	
+	@Test
+	void testAbility()
+	{
+		aHandler.getCharacterAbility(CharacterClasses.MAGE, "Shapeshifter".toUpperCase());
+		
 	}
 	
 }

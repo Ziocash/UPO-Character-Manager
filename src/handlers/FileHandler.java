@@ -25,10 +25,14 @@ public class FileHandler
 	private String abilitiesFile = "";
 	
 	/**
-	 * Collection which contains all the file lines
+	 * Collection which contains all the db file lines
 	 */
 	private ArrayList<ArrayList<String>> db = new ArrayList<ArrayList<String>>();
 	
+	/**
+	 * 
+	 */
+	private ArrayList<String> dbAbility = new ArrayList<String>(); 
 	/**
 	 * Class constructor
 	 */
@@ -43,7 +47,7 @@ public class FileHandler
 			else
 			{
 				charactersFile = path;
-				abilitiesFile = path;
+				abilitiesFile = abilitiesPath;
 			}
 				
 		}
@@ -55,6 +59,7 @@ public class FileHandler
 		try 
 		{
 			readFile();
+			readAbilityFile();
 		}
 		catch(Exception e)
 		{
@@ -70,6 +75,16 @@ public class FileHandler
 	public ArrayList<ArrayList<String>> getDb()
 	{
 		return db;
+	}
+	
+	/**
+	 * Return the DBAbility value
+	 * 
+	 * @return the DBAbility value
+	 */
+	public ArrayList<String> getDbAbilities()
+	{
+		return dbAbility;
 	}
 	
 	/**
@@ -246,6 +261,28 @@ public class FileHandler
 			return false;
 		}
 			
+	}
+	
+	private boolean readAbilityFile()
+	{
+		try
+		{
+			//If the file exists 
+			if(testFile(abilitiesFile, true))
+			{
+				dbAbility.clear();
+				File file = new File(abilitiesFile);
+				dbAbility = (ArrayList<String>) Files.readAllLines(file.toPath(), Charset.defaultCharset());
+							
+			}
+			return true;
+		} 
+		catch (Exception e1)
+		{
+			e1.printStackTrace();
+			return false;
+		}
+		
 	}
 
 }
