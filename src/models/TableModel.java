@@ -8,7 +8,7 @@ import javax.swing.table.AbstractTableModel;
 @SuppressWarnings("serial")
 public class TableModel extends AbstractTableModel
 {
-	protected static final String[] COLUMN_NAME_STRINGS = { "ID", "Name", "Level", "Strength", "Intelligence", "Dexterity", "Charisma", "Constitution", "Class", "Specialization" };
+	protected static final String[] COLUMN_NAME_STRINGS = { "ID", "Name", "Level", "Strength", "Intelligence", "Dexterity", "Charisma", "Constitution", "Abilities", "Class", "Specialization" };
 	
 	private ArrayList<ArrayList<String>> characters;
 	private FileHandler fh = new FileHandler();

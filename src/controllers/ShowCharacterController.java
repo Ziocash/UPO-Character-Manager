@@ -3,7 +3,10 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import windows.ShowCharacterWindow;
+import windows.AbilitiesWindow;
 import windows.Dialog.DialogResult;
 
 public class ShowCharacterController implements ActionListener 
@@ -20,10 +23,19 @@ public class ShowCharacterController implements ActionListener
 		switch(e.getActionCommand())
 		{
 			case "Show ability":
+				AbilitiesWindow abilitiesWindow = new AbilitiesWindow();
+				abilitiesWindow.showDialog(((ShowCharacterWindow)dialog).getCharacter());
 				break;
 			case "Level up":
-				((ShowCharacterWindow)dialog).levelUp();
-				System.gc();
+				if(!((ShowCharacterWindow)dialog).getCharacter().isMaxLevel())
+				{
+					((ShowCharacterWindow)dialog).levelUp();
+					System.gc();
+				}
+				else 
+				{
+					JOptionPane.showMessageDialog(null, "You're alredy at max level", "Max level reached", JOptionPane.INFORMATION_MESSAGE);
+				}
 				break;
 			case "OK":
 				dialog.setResult(DialogResult.OK);

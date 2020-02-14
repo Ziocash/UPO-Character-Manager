@@ -40,6 +40,7 @@ public class CharacterHandler
 			value.add(Double.toString(c.getIntelligence()));
 			value.add(Double.toString(c.getDexterity()));
 			value.add(Double.toString(c.getCharisma()));
+			value.add(c.getAbilities());
 			value.add(c.getCharClass().name());
 			value.add(c.getCharSpec().replace('_', ' '));
 			list.add(value);
@@ -153,6 +154,7 @@ public class CharacterHandler
 			ch.setIntelligence(Double.parseDouble(dati[4]));
 			ch.setDexterity(Double.parseDouble(dati[5]));
 			ch.setCharisma(Double.parseDouble(dati[6]));
+			ch.setAbilities(dati[7]);
 			ch.setCharClass(CharacterClasses.valueOf(dati[dati.length-2]));
 			dati[dati.length-1] = dati[dati.length-1].replace(' ', '_');
 			ch.setCharSpec(dati[dati.length-1]);
@@ -185,6 +187,7 @@ public class CharacterHandler
 			ch.setIntelligence(Double.parseDouble(dati[4]));
 			ch.setDexterity(Double.parseDouble(dati[5]));
 			ch.setCharisma(Double.parseDouble(dati[6]));
+			ch.setAbilities(dati[7]);
 			ch.setCharClass(CharacterClasses.valueOf(dati[dati.length-2]));
 			dati[dati.length-1] = dati[dati.length-1].replace(' ', '_');
 			ch.setCharSpec(dati[dati.length-1]);

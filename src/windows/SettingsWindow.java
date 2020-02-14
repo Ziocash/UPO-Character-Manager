@@ -25,6 +25,9 @@ public class SettingsWindow extends Dialog
 	private JTextField textAbilitiesPath;
 	private SettingsController controller = new SettingsController(this);
 	
+	/**
+	 * SettingsWindow constructor
+	 */
 	public SettingsWindow()
 	{
 		initializeComponents();
@@ -37,12 +40,18 @@ public class SettingsWindow extends Dialog
 		updateData();
 	}
 
+	/**
+	 * Checks for settings update
+	 */
 	public void updateData()
 	{
 		textCharPath.setText(SettingsHandler.retrieveProperty("SaveFilePath"));
 		textAbilitiesPath.setText(SettingsHandler.retrieveProperty("AbilitiesFilePath"));
 	}
 
+	/**
+	 * GUI initialization
+	 */
 	private void initializeLayout()
 	{
 		JLabel lblSavesPath = new JLabel("Characters path:", SwingConstants.RIGHT);

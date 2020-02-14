@@ -29,7 +29,7 @@ import javax.swing.table.TableColumn;
 public class ShowCharacterWindow extends windows.Dialog
 {
 	/**
-	 * 
+	 * Window owner
 	 */
 	private JFrame owner;	
 	
@@ -44,7 +44,7 @@ public class ShowCharacterWindow extends windows.Dialog
 	private Character character;
 
 	/**
-	 * 
+	 * ShowCharacterWindow constructor
 	 */
 	public ShowCharacterWindow()
 	{
@@ -59,7 +59,7 @@ public class ShowCharacterWindow extends windows.Dialog
 	}
 	
 	/**
-	 * 
+	 * GUI initialization
 	 */
 	private void initializePanel() 
 	{
@@ -141,8 +141,8 @@ public class ShowCharacterWindow extends windows.Dialog
 	}
 
 	/**
-	 * 
-	 * @param data
+	 * Loads data into a {@code Character} type value then loads table
+	 * @param data Expected value {@code ArrayList<ArrayList<String>>}
 	 */
 	public void loadData(ArrayList<ArrayList<String>> data)
 	{
@@ -156,6 +156,7 @@ public class ShowCharacterWindow extends windows.Dialog
 			character.setDexterity(Double.parseDouble(data.get(4).get(1)));
 			character.setCharisma(Double.parseDouble(data.get(5).get(1)));
 			character.setConstitution(Double.parseDouble(data.get(6).get(1)));
+			character.setAbilities(data.get(7).get(1));
 			character.setCharClass(CharacterClasses.valueOf(data.get(data.size()-2).get(1)));
 			character.setCharSpec(data.get(data.size()-1).get(1).replace(' ', '_'));
 			lblCharacterName.setText(data.get(0).get(1));
@@ -169,9 +170,6 @@ public class ShowCharacterWindow extends windows.Dialog
 			
 			table.setModel(new ShowCharacterModel(data));
 			initializeTable();
-			
-			//character.setStrength();
-			//character.setDexterity();
 		}
 	}
 	
@@ -196,8 +194,6 @@ public class ShowCharacterWindow extends windows.Dialog
 	/**
 	 *  Calculates the width based on the widest cell renderer for the
 	 *  given column.
-	 * @param column
-	 * @return
 	 */
 	private int getColumnDataWidth(int column)
 	{
@@ -276,10 +272,25 @@ public class ShowCharacterWindow extends windows.Dialog
 		table.revalidate();
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public String getEditedCharacter() 
 	{
 		if(character != null)
 			return character.toFileString().replace("\n", "");
+		return null;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public Character getCharacter()
+	{
+		if(character != null)
+			return character;
 		return null;
 	}
 }

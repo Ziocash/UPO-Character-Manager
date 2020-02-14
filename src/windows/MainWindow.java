@@ -150,8 +150,6 @@ public class MainWindow extends Window
 	/**
 	 *  Calculates the width based on the widest cell renderer for the
 	 *  given column.
-	 * @param column
-	 * @return
 	 */
 	private int getColumnDataWidth(int column)
 	{
@@ -173,8 +171,6 @@ public class MainWindow extends Window
 	
 	/**
 	 * Calculates the width based on the column name
-	 * @param column
-	 * @return
 	 */
 	private int getColumnHeaderWidth(int column)
 	{
@@ -193,9 +189,6 @@ public class MainWindow extends Window
 	
 	/**
 	 * Get the preferred width for the specified cell
-	 * @param row
-	 * @param column
-	 * @return
 	 */
 	private int getCellDataWidth(int row, int column)
 	{
@@ -223,6 +216,10 @@ public class MainWindow extends Window
 		
 	}
 
+	/**
+	 * Returns selected row as {@code ArrayList<ArrayList<String>>}
+	 * @return selected row as {@code ArrayList<ArrayList<String>>}
+	 */
 	public ArrayList<ArrayList<String>> getRow() 
 	{
 		if(table.getSelectedRow() > -1)
@@ -240,6 +237,10 @@ public class MainWindow extends Window
 		return null;
 	}
 	
+	/**
+	 * Returns selected row index
+	 * @return selected row index
+	 */
 	public int getSelectedRowIndex()
 	{
 		return table.getSelectedRow(); 

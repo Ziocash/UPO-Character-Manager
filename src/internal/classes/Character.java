@@ -43,9 +43,19 @@ public class Character implements Comparable<Character>
 	 */
 	private CharacterClasses charClass;
 	/**
-	 * 
+	 * Character specialization
 	 */
 	private String charSpecName;
+	
+	/**
+	 * Max character level
+	 */
+	private final int MAX_LEVEL = 20;
+	
+	/**
+	 * Abilities
+	 */
+	private String abilities;
 	
 	public String getCharSpecName() 
 	{
@@ -304,12 +314,20 @@ public class Character implements Comparable<Character>
 	 */
 	public void levelUp()
 	{
-		level++;
-		constitution = constitution + (level * multiplier * constitution);
-		strength = strength + (level * multiplier * strength);
-		intelligence = intelligence + (level * multiplier * intelligence);
-		dexterity = dexterity + (level * multiplier * dexterity);
-		charisma = charisma + (level * multiplier * charisma);
+		if(level < MAX_LEVEL)
+		{
+			level++;
+			constitution = constitution + (level * multiplier * constitution);
+			strength = strength + (level * multiplier * strength);
+			intelligence = intelligence + (level * multiplier * intelligence);
+			dexterity = dexterity + (level * multiplier * dexterity);
+			charisma = charisma + (level * multiplier * charisma);
+		}
+	}
+	
+	public boolean isMaxLevel() 
+	{
+		return level == MAX_LEVEL;
 	}
 	
 	/**
@@ -370,6 +388,7 @@ public class Character implements Comparable<Character>
 		value += "Dexterity: " + String.format("%.2f", dexterity) + " ";		
 		value += "Charisma: " + String.format("%.2f", charisma) + " ";
 		value += "Constitution: " + String.format("%.2f", constitution) + " ";
+		value += "Abilities: " + abilities + " ";
 		value += "Class: " + getCharClass() + " ";
 		value += "Specialization: " + getCharSpec().replace('_', ' ') + " ";
 		
@@ -392,6 +411,7 @@ public class Character implements Comparable<Character>
 		value += dexterity + "|";		
 		value += charisma + "|";
 		value += constitution + "|";
+		value += abilities + "|";
 		value += getCharClass() + "|";
 		value += getCharSpec().replace('_', ' ') + "\n";
 		return value;
@@ -401,6 +421,16 @@ public class Character implements Comparable<Character>
 	public int compareTo(Character character) 
 	{
 		return this.id > character.id ? 1 : this.id < character.id ? -1 : 0;
+	}
+
+	public void setAbilities(String string) 
+	{
+		abilities = string;
+	}
+	
+	public String getAbilities()
+	{
+		return abilities;
 	}
 
 	
