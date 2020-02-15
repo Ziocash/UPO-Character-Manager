@@ -25,6 +25,11 @@ public class ShowCharacterController implements ActionListener
 			case "Show ability":
 				AbilitiesWindow abilitiesWindow = new AbilitiesWindow();
 				abilitiesWindow.showDialog(((ShowCharacterWindow)dialog).getCharacter());
+				if(abilitiesWindow.getResult() == DialogResult.OK)
+				{
+					((ShowCharacterWindow)dialog).getCharacter().setAbilities(abilitiesWindow.getCharacterAbilities());	
+					((ShowCharacterWindow)dialog).update();
+				}
 				break;
 			case "Level up":
 				if(!((ShowCharacterWindow)dialog).getCharacter().isMaxLevel())

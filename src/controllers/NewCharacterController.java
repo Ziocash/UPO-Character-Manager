@@ -10,12 +10,12 @@ import internal.classes.CharacterSpecializations.WarriorType;
 import windows.Dialog;
 import windows.Dialog.DialogResult;
 
-public class NewCharacterComboBoxController implements ActionListener
+public class NewCharacterController implements ActionListener
 {
 	@SuppressWarnings("rawtypes")
 	private JComboBox child;
 	private Dialog dialog;
-	public NewCharacterComboBoxController(Dialog dialog, @SuppressWarnings("rawtypes") JComboBox child)
+	public NewCharacterController(Dialog dialog, @SuppressWarnings("rawtypes") JComboBox child)
 	{
 		this.child = child;
 		this.dialog = dialog;

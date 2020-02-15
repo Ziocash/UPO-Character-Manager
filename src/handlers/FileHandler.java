@@ -78,7 +78,7 @@ public class FileHandler
 	}
 	
 	/**
-	 * Return the DBAbility value
+	 * Returns the DBAbility value
 	 * 
 	 * @return the DBAbility value
 	 */

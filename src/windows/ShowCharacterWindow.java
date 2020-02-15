@@ -255,21 +255,8 @@ public class ShowCharacterWindow extends windows.Dialog
 	 */
 	public void levelUp()
 	{
-		character.levelUp();
-		charHandler.delete(0);
-		charHandler.addCharacter(character);
-		models.TableModel model = new models.TableModel(charHandler.parseList());
-		ArrayList<ArrayList<String>> characterValues = new ArrayList<ArrayList<String>>();
-		for(int j = 1; j < model.getColumnCount(); j++)
-		{
-			ArrayList<String> temp = new ArrayList<String>();
-			temp.add(model.getColumnName(j));
-			temp.add(model.getValueAt(0, j).toString());
-			characterValues.add(temp);
-		}
-		loadData(characterValues);
-		
-		table.revalidate();
+		character.levelUp();		
+		update();
 	}
 
 	/**
@@ -292,5 +279,21 @@ public class ShowCharacterWindow extends windows.Dialog
 		if(character != null)
 			return character;
 		return null;
+	}
+	
+	public void update()
+	{
+		charHandler.delete(0);
+		charHandler.addCharacter(character);
+		models.TableModel model = new models.TableModel(charHandler.parseList());
+		ArrayList<ArrayList<String>> characterValues = new ArrayList<ArrayList<String>>();
+		for(int j = 1; j < model.getColumnCount(); j++)
+		{
+			ArrayList<String> temp = new ArrayList<String>();
+			temp.add(model.getColumnName(j));
+			temp.add(model.getValueAt(0, j).toString());
+			characterValues.add(temp);
+		}
+		loadData(characterValues);
 	}
 }

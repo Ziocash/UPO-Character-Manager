@@ -23,7 +23,7 @@ class TestClass
 	void testAddLine() 
 	{		
 		out.println("AddLine test");
-		assertTrue(characterHandler.addLine("Test|0|30.0|30.0|30.0|30.0|30.0|MAGE|ARCANE WARRIOR"));		
+		assertTrue(characterHandler.addLine("Test|0|30.0|30.0|30.0|30.0|30.0||MAGE|ARCANE WARRIOR"));		
 		character.setAll("Test", CharacterClasses.MAGE, CharacterSpecializations.MageType.ARCANE_WARRIOR.toString());
 		assertEquals(character.compareTo(characterHandler.getCharactersList().get(0)), 0);
 		out.println("Passed");
@@ -76,7 +76,9 @@ class TestClass
 	@Test
 	void testAbility()
 	{
+		out.println("Ability handler test");
 		aHandler.getCharacterAbility(CharacterClasses.MAGE, "Shapeshifter".toUpperCase());
+		out.println("Passed");
 		
 	}
 	

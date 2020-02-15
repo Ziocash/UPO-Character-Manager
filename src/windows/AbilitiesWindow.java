@@ -75,7 +75,7 @@ public class AbilitiesWindow extends Dialog
 		selectionModel.addListSelectionListener(tableController);
 		lblName.setText(character.getName());
 		lblClass.setText(character.getCharClass().name());
-		lblSpecialization.setText(character.getCharSpec());
+		lblSpecialization.setText(character.getCharSpec().replace("_", " "));
 		lblAbilityPoints.setText(getAbilityPoint(character.getLevel()));
 		showDialog();
 	}
@@ -276,9 +276,18 @@ public class AbilitiesWindow extends Dialog
 		
 	}
 	
+	/**
+	 * 
+	 * @param index
+	 */
 	public void getDescription(int index)
 	{
 		Ability ability = abilities.get(index);
 		descriptionPane.setText(ability.getDescription());
+	}
+	
+	public String getCharacterAbilities()
+	{		
+		return abilityHandler.parseAbilities(ownedAbilities);
 	}
 }

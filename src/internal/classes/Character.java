@@ -55,13 +55,21 @@ public class Character implements Comparable<Character>
 	/**
 	 * Abilities
 	 */
-	private String abilities;
+	private String abilities = "";
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getCharSpecName() 
 	{
 		return charSpecName;
 	}
 
+	/**
+	 * 
+	 * @param charSpecName
+	 */
 	public void setCharSpecName(String charSpecName) 
 	{
 		this.charSpecName = charSpecName;
@@ -85,6 +93,10 @@ public class Character implements Comparable<Character>
 		this.id = id;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public final int getFieldCount()
 	{
 		return getClass().getDeclaredFields().length;
@@ -100,6 +112,7 @@ public class Character implements Comparable<Character>
 	    this.name = name;
 	    this.charClass = charClass;
 	    this.charSpecName = charSpec.replace("_", " ");
+	    this.level = 1;
 	    
 	    switch(tempString)
 	    {
@@ -416,18 +429,47 @@ public class Character implements Comparable<Character>
 		value += getCharSpec().replace('_', ' ') + "\n";
 		return value;
 	}
+	
+	/**
+	 * Returns a well-formatted String with a preconfigured separator ('|') without ID
+	 * 
+	 * @return a well-formatted String with a preconfigured separator ('|') without ID
+	 */
+	public String toFileStringWithoutID()
+	{
+		String value = new String();
+		value += name + "|";
+		value += level + "|";
+		value += strength + "|";
+		value += intelligence + "|";
+		value += dexterity + "|";		
+		value += charisma + "|";
+		value += constitution + "|";
+		value += abilities + "|";
+		value += getCharClass() + "|";
+		value += getCharSpec().replace('_', ' ') + "\n";
+		return value;
+	}
 
 	@Override
 	public int compareTo(Character character) 
 	{
 		return this.id > character.id ? 1 : this.id < character.id ? -1 : 0;
 	}
-
+	
+	/**
+	 * 
+	 * @param string
+	 */
 	public void setAbilities(String string) 
 	{
 		abilities = string;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getAbilities()
 	{
 		return abilities;

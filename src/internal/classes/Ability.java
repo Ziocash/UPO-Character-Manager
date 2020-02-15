@@ -16,20 +16,32 @@ public class Ability
 	private String description;
 	
 	
-	
+	/**
+	 * Sets a new instance of Ability
+	 */ 
 	public Ability()
 	{
 		
 	}
 	
-	public Ability(int id, String abi, int lev, CharacterClasses c, String s, String d)
+	/**
+	 * Sets a new instance of Ability
+	 * 
+	 * @param id Ability ID
+	 * @param ability Ability name
+	 * @param levelRequired Ability minimum required level
+	 * @param characterClass Character class
+	 * @param specialization Character specialization
+	 * @param description Ability description
+	 */
+	public Ability(int id, String ability, int levelRequired, CharacterClasses characterClass, String specialization, String description)
 	{
 		this.id = id;
-		this.abilityName = abi;
-		this.levelRequired = lev;
-		this.charClassRequired = c;
-		this.charSpecRequired = s;
-		this.description = d;
+		this.abilityName = ability;
+		this.levelRequired = levelRequired;
+		this.charClassRequired = characterClass;
+		this.charSpecRequired = specialization;
+		this.description = description;
 	}
 	
 	public void setId(int id)

@@ -9,9 +9,10 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
+import internal.classes.Character;
 import internal.classes.CharacterClasses;
 import internal.classes.CharacterSpecializations.*;
-import controllers.NewCharacterComboBoxController;
+import controllers.NewCharacterController;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.Window.Type;
@@ -24,14 +25,14 @@ public class CharacterCreationWindow extends Dialog
 	private JComboBox cmbClass = new JComboBox();
 	@SuppressWarnings("rawtypes")
 	private JComboBox cmbSpec = new JComboBox();
-	private NewCharacterComboBoxController controller;
+	private NewCharacterController controller;
 	
 	
 	public CharacterCreationWindow()
 	{
 		initializeComponents();
 		setTitle("Characters Manager - Create new character");
-		setType(Type.UTILITY);
+		setType(Type.POPUP);
 		setCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setDialogProperties(false, 473, 211, null);
 		dialog.getContentPane().add(scrollPane);
@@ -41,7 +42,7 @@ public class CharacterCreationWindow extends Dialog
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initializeLayout()
 	{
-		controller = new NewCharacterComboBoxController(this, cmbSpec);
+		controller = new NewCharacterController(this, cmbSpec);
 		JLabel lblName = new JLabel("Name");
 		JLabel lblClass = new JLabel("Class");		
 		JLabel lblSpecialization = new JLabel("Specialization");
@@ -116,19 +117,14 @@ public class CharacterCreationWindow extends Dialog
 		
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public String getNewCharacter() 
 	{
-		String character = "";
-		character += textField.getText() + "|";
-		character += "1" + "|";
-		character += "30" +"|";
-		character += "30" +"|";
-		character += "30" +"|";
-		character += "30" +"|";
-		character += "30" +"|";
-		character += cmbClass.getSelectedItem().toString() + "|";
-		character += cmbSpec.getSelectedItem().toString();
-		
-		return character;
+		internal.classes.Character character = new Character(0);
+		character.setAll(textField.getText().replace("|", "").replace("#", ""), CharacterClasses.valueOf(cmbClass.getSelectedItem().toString()), cmbSpec.getSelectedItem().toString());
+		return character.toFileStringWithoutID().replace("\n", "");
 	}
 }
