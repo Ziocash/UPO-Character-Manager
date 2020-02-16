@@ -1,5 +1,6 @@
 package windows;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Window.Type;
 import java.util.ArrayList;
@@ -93,6 +94,17 @@ public class AbilitiesWindow extends Dialog
 		
 		return Integer.toString(point);
 	}
+	
+	/**
+	 * 
+	 * @param row
+	 * @param color
+	 */
+	private void changeRowColor(int row, Color color)
+	{
+		Component component = table.prepareRenderer(table.getCellRenderer(row, 0), row, 0);
+		component.setBackground(color);
+	}
 
 	/**
 	 * 
@@ -105,6 +117,7 @@ public class AbilitiesWindow extends Dialog
 			if(ownedAbilityNumber < Integer.parseInt(lblAbilityPoints.getText()))
 			{
 				ownedAbilities[ownedAbilityNumber++] = abilities.get(table.getSelectedRow()).getId();
+				changeRowColor(table.getSelectedRow(), Color.GREEN);
 				return 0;
 			}
 			else
