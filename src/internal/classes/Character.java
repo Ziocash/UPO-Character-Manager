@@ -118,89 +118,89 @@ public class Character implements Comparable<Character>
 	    {
 	      //Mage Specialization characterist------------------------
 	      case "ARCANE_WARRIOR":
-	        this.strength = 30;
-	        this.constitution = 30;
-	        this.intelligence = 30;
-	        this.dexterity = 30;
-	        this.charisma = 30;
+	        this.strength = 27;
+	        this.constitution = 33;
+	        this.intelligence = 35;
+	        this.dexterity = 22;
+	        this.charisma = 24;
 	        break;
 	      case "BLOOD_MAGE":
-	        this.strength = 30;
-	        this.constitution = 30;
-	        this.intelligence = 30;
-	        this.dexterity = 30;
-	        this.charisma = 30;
+	        this.strength = 20;
+	        this.constitution = 35;
+	        this.intelligence = 37;
+	        this.dexterity = 22;
+	        this.charisma = 20;
 	        break;
 	      case "SHAPESHIFTER":
-	        this.strength = 30;
-	        this.constitution = 30;
-	        this.intelligence = 30;
-	        this.dexterity = 30;
+	        this.strength = 20;
+	        this.constitution = 25;
+	        this.intelligence = 37;
+	        this.dexterity = 25;
 	        this.charisma = 30;
 	        break;
 	      case "SPIRIT_HEALER":
-	        this.strength = 30;
-	        this.constitution = 30;
-	        this.intelligence = 30;
-	        this.dexterity = 30;
-	        this.charisma = 30;
+	        this.strength = 20;
+	        this.constitution = 25;
+	        this.intelligence = 37;
+	        this.dexterity = 22;
+	        this.charisma = 36;
 	        break;
 	      //Rogue Specialization characterist------------------------
 	      case "ASSASSIN":
-	        this.strength = 30;
-	        this.constitution = 30;
-	        this.intelligence = 30;
-	        this.dexterity = 30;
-	        this.charisma = 30;
+	        this.strength = 27;
+	        this.constitution = 25;
+	        this.intelligence = 29;
+	        this.dexterity = 37;
+	        this.charisma = 25;
 	        break;
 	      case "BARD":
-	        this.strength = 30;
-	        this.constitution = 30;
-	        this.intelligence = 30;
-	        this.dexterity = 30;
-	        this.charisma = 30;
+	        this.strength = 19;
+	        this.constitution = 27;
+	        this.intelligence = 33;
+	        this.dexterity = 25;
+	        this.charisma = 40;
 	        break;
 	      case "DUELIST":
-	        this.strength = 30;
-	        this.constitution = 30;
-	        this.intelligence = 30;
-	        this.dexterity = 30;
-	        this.charisma = 30;
+	        this.strength = 32;
+	        this.constitution = 28;
+	        this.intelligence = 25;
+	        this.dexterity = 37;
+	        this.charisma = 33;
 	        break;
 	      case "RANGER":
-	        this.strength = 30;
-	        this.constitution = 30;
-	        this.intelligence = 30;
-	        this.dexterity = 30;
-	        this.charisma = 30;
+	        this.strength = 25;
+	        this.constitution = 33;
+	        this.intelligence = 27;
+	        this.dexterity = 35;
+	        this.charisma = 32;
 	        break;
 	      //Warrior Specialization characterist------------------------
 	      case "BERSERKER":
-	        this.strength = 30;
-	        this.constitution = 30;
-	        this.intelligence = 30;
-	        this.dexterity = 30;
-	        this.charisma = 30;
+	        this.strength = 35;
+	        this.constitution = 40;
+	        this.intelligence = 25;
+	        this.dexterity = 20;
+	        this.charisma = 25;
 	        break;
 	      case "CHAMPION":
-	        this.strength = 30;
-	        this.constitution = 30;
-	        this.intelligence = 30;
-	        this.dexterity = 30;
-	        this.charisma = 30;
+	        this.strength = 37;
+	        this.constitution = 35;
+	        this.intelligence = 27;
+	        this.dexterity = 21;
+	        this.charisma = 33;
 	        break;
 	      case "REAVER":
-	        this.strength = 30;
-	        this.constitution = 30;
+	    	this.strength = 30;
+	        this.constitution = 35;
 	        this.intelligence = 30;
-	        this.dexterity = 30;
-	        this.charisma = 30;
+	        this.dexterity = 20;
+	        this.charisma = 15;
 	        break;
 	      case "TEMPLAR":
-	        this.strength = 30;
-	        this.constitution = 30;
-	        this.intelligence = 30;
-	        this.dexterity = 30;
+	        this.strength = 35;
+	        this.constitution = 35;
+	        this.intelligence = 25;
+	        this.dexterity = 20;
 	        this.charisma = 30;
 	        break;
 	    }
