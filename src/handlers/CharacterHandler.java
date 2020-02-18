@@ -9,7 +9,7 @@ import internal.classes.CharacterClasses;
 public class CharacterHandler
 {
 	/**
-	 * 
+	 * CharacterHandler db
 	 */
 	private List<Character> db;
 	
@@ -169,10 +169,10 @@ public class CharacterHandler
 	}
 	
 	/**
-	 * 
-	 * @param line
-	 * @param id
-	 * @return
+	 * Add a line into a selected index
+	 * @param line Character line
+	 * @param id 
+	 * @return {@code true} if added correctly, else {@code false}
 	 */
 	private boolean addAtIndex(String line, int id)
 	{
@@ -216,9 +216,9 @@ public class CharacterHandler
 	}
 	
 	/**
-	 * 
-	 * @param id
-	 * @return
+	 * Deletes the line with the given id
+	 * @param id character id
+	 * @return {@code true} if the character is correctly deleted, {@code false} in the other cases
 	 */
 	public boolean delete(int id)
 	{

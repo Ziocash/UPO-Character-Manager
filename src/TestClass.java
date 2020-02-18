@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 import handlers.*;
+import internal.classes.Ability;
 import internal.classes.Character;
 import internal.classes.CharacterClasses;
 import internal.classes.CharacterSpecializations;
@@ -74,12 +75,21 @@ class TestClass
 	}
 	
 	@Test
-	void testAbility()
+	void testAbilityHandler()
 	{
 		out.println("Ability handler test");
 		aHandler.getCharacterAbility(CharacterClasses.MAGE, "Shapeshifter".toUpperCase());
 		out.println("Passed");
 		
+	}
+	
+	@Test
+	void testAbility()
+	{
+		out.println("Abilities check");
+		ArrayList<Ability> abilities = aHandler.getCharacterAbility(CharacterClasses.MAGE, CharacterSpecializations.MageType.SHAPESHIFTER.name().toUpperCase());
+		assertEquals(abilities.get(0).getAbName(), "MageAbility");
+		out.println("Passed");
 	}
 	
 }

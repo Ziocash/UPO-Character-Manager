@@ -21,6 +21,14 @@ public class NewCharacterController implements ActionListener
 		this.dialog = dialog;
 	}
 
+	/**
+	 * <h2>Input-based action</h2>
+	 * <ul>
+	 * <li>comboBoxChanged: combobox event when user changes selected value</li>
+	 * <li>Create: creates a new character and closes the dialog</li>
+	 * <li>Cancel: cancels the creation and closes the dialog</li>
+	 * </ul>
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void actionPerformed(ActionEvent e)

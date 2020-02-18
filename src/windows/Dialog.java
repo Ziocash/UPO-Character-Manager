@@ -57,6 +57,13 @@ public abstract class Dialog
 		dialog.setDefaultCloseOperation(onClose);
 	}
 
+	/**
+	 * Sets dialog properties
+	 * @param resizable resizable property
+	 * @param width width value
+	 * @param height height value
+	 * @param owner owner
+	 */
 	protected void setDialogProperties(boolean resizable, int width, int height, JFrame owner) 
 	{
 		dialog.setBounds(0, 0, width, height);
@@ -65,6 +72,10 @@ public abstract class Dialog
 		this.owner = owner;
 	}
 	
+	/**
+	 * Sets window modality
+	 * @param modType {@link java.awt.Dialog.ModalityType}
+	 */
 	protected void setModality(ModalityType modType)
 	{
 		dialog.setModalityType(modType);
@@ -75,24 +86,35 @@ public abstract class Dialog
 		dialog.setTitle(title);
 	}
 	
+	/**
+	 * Sets window type
+	 * @param type {@link java.awt.Window.Type}
+	 */
 	protected void setType(Type type) 
 	{
 		dialog.setType(type);
 	}
 	
+	/**
+	 * Initializes components
+	 */
 	protected void initializeComponents()
 	{
 		dialog = new JDialog();
 	}
 	
+	/**
+	 * Returns the {@link DialogResult} value
+	 * @return the {@link DialogResult} value
+	 */
 	public DialogResult getResult()
 	{
 		return result;
 	}
 
 	/**
-	 * 
-	 * @param result
+	 * Sets the {@link DialogResult} value
+	 * @param result {@link DialogResult}   
 	 */
 	public void setResult(DialogResult result)
 	{
@@ -100,7 +122,7 @@ public abstract class Dialog
 	}
 
 	/**
-	 * 
+	 * Shows the dialog
 	 */
 	public void show()
 	{
@@ -109,7 +131,7 @@ public abstract class Dialog
 	}
 	
 	/**
-	 * 
+	 * Show the dialog with {@link ModalityType} set on APPLICATION_MODAL
 	 */
 	public void showDialog()
 	{
@@ -118,8 +140,8 @@ public abstract class Dialog
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Returns a boolean on window visibility 
+	 * @return a boolean on window visibility
 	 */
 	public boolean isShown()
 	{
@@ -127,7 +149,7 @@ public abstract class Dialog
 	}
 	
 	/**
-	 * 
+	 * Closes the dialog
 	 */
 	public void close()
 	{

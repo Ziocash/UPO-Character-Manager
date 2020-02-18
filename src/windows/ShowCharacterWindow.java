@@ -251,7 +251,7 @@ public class ShowCharacterWindow extends windows.Dialog
 	}
 	
 	/**
-	 * 
+	 * Levels up the character and update GUI
 	 */
 	public void levelUp()
 	{
@@ -260,8 +260,8 @@ public class ShowCharacterWindow extends windows.Dialog
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Returns the edited character with modified data 
+	 * @return the edited character with modified data 
 	 */
 	public String getEditedCharacter() 
 	{
@@ -271,8 +271,8 @@ public class ShowCharacterWindow extends windows.Dialog
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Returns the character
+	 * @return the character
 	 */
 	public Character getCharacter()
 	{
@@ -281,6 +281,9 @@ public class ShowCharacterWindow extends windows.Dialog
 		return null;
 	}
 	
+	/**
+	 * Updates GUI and model
+	 */
 	public void update()
 	{
 		charHandler.delete(0);

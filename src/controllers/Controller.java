@@ -27,14 +27,21 @@ public class Controller implements ActionListener
 		//this.ownerClass = owner.getClass();
 	}
 	
+	/**
+	 * <h2>Input-based action</h2>
+	 * <ul>
+	 * <li>New character: shows the new character window and return the data output of the window</li>
+	 * <li>Edit character: shows the edit window on selected character and return the new data edited </li>
+	 * <li>Settings: shows the settings dialog </li>
+	 * <li>Delete: delete the selected character</li>
+	 * <li>Exit: close the main window </li>
+	 * </ul>
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
 		switch(e.getActionCommand())
 		{
-			/**
-			 * 
-			 */
 			case "New character":
 				CharacterCreationWindow creationWindow = new CharacterCreationWindow();
 				creationWindow.showDialog();

@@ -58,8 +58,8 @@ public class Character implements Comparable<Character>
 	private String abilities = "";
 	
 	/**
-	 * 
-	 * @return
+	 * Returns character specialization
+	 * @return character specialization
 	 */
 	public String getCharSpecName() 
 	{
@@ -67,8 +67,8 @@ public class Character implements Comparable<Character>
 	}
 
 	/**
-	 * 
-	 * @param charSpecName
+	 * Sets character specialization
+	 * @param charSpecName character specialization
 	 */
 	public void setCharSpecName(String charSpecName) 
 	{
@@ -76,8 +76,8 @@ public class Character implements Comparable<Character>
 	}
 	
 	/**
-	 * .
-	 * @param level
+	 * Sets character level
+	 * @param level character level
 	 */
 	public void setLevel(int level)
 	{
@@ -94,16 +94,7 @@ public class Character implements Comparable<Character>
 	}
 	
 	/**
-	 * 
-	 * @return
-	 */
-	public final int getFieldCount()
-	{
-		return getClass().getDeclaredFields().length;
-	}
-	
-	/**
-	 * set all parameters
+	 * Set all parameters
 	 * @return void
 	 */
 	public void setAll(String name, CharacterClasses charClass, String charSpec)
@@ -338,6 +329,10 @@ public class Character implements Comparable<Character>
 		}
 	}
 	
+	/**
+	 * Returns a boolean that represent if character reached max level
+	 * @return a boolean that represent if character reached max level
+	 */
 	public boolean isMaxLevel() 
 	{
 		return level == MAX_LEVEL;
@@ -458,17 +453,17 @@ public class Character implements Comparable<Character>
 	}
 	
 	/**
-	 * 
-	 * @param string
+	 * Sets character abilities
+	 * @param abilities character abilities string
 	 */
-	public void setAbilities(String string) 
+	public void setAbilities(String abilities) 
 	{
-		abilities = string;
+		this.abilities = abilities;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Returns a string that represents character abilities
+	 * @return a string that represents character abilities
 	 */
 	public String getAbilities()
 	{

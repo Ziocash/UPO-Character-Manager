@@ -27,7 +27,9 @@ public class CharacterCreationWindow extends Dialog
 	private JComboBox cmbSpec = new JComboBox();
 	private NewCharacterController controller;
 	
-	
+	/**
+	 * CharacterCreationWindow constructor
+	 */
 	public CharacterCreationWindow()
 	{
 		initializeComponents();
@@ -39,6 +41,9 @@ public class CharacterCreationWindow extends Dialog
 		initializeLayout();
 	}
 	
+	/**
+	 * Layout initialization
+	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initializeLayout()
 	{
@@ -118,8 +123,8 @@ public class CharacterCreationWindow extends Dialog
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Returns a string that represents current character
+	 * @return a string that represents current character
 	 */
 	public String getNewCharacter() 
 	{

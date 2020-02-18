@@ -20,6 +20,13 @@ public class SettingsController implements ActionListener
 		this.dialog = dialog;
 	}
 
+	/**
+	 * <h2>Input-based action</h2>
+	 * <ul>
+	 * <li>Browse...: shows a JFileChooser based on clicked JButton</li>
+	 * <li>Close: closes the dialog </li>
+	 * </ul>
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{

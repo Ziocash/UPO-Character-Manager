@@ -30,7 +30,7 @@ public class FileHandler
 	private ArrayList<ArrayList<String>> db = new ArrayList<ArrayList<String>>();
 	
 	/**
-	 * 
+	 * Collection which contains all abilities
 	 */
 	private ArrayList<String> dbAbility = new ArrayList<String>(); 
 	/**
@@ -110,7 +110,6 @@ public class FileHandler
 	/**
 	 * Writes the db array into the file at path {@link #charactersFile}
 	 * 
-	 * @param db
 	 * @return {@code true} if the file is correctly written, {@code false} in the other cases
 	 */
 	public boolean writeFile() 
@@ -263,6 +262,10 @@ public class FileHandler
 			
 	}
 	
+	/**
+	 * Returns a {@code boolean} when dbAbility is correctly set, else return {@code false}
+	 * @return a {@code boolean} when dbAbility is correctly set, else return {@code false}
+	 */
 	private boolean readAbilityFile()
 	{
 		try

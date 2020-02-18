@@ -1,6 +1,5 @@
 package windows;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Window.Type;
 import java.util.ArrayList;
@@ -9,6 +8,7 @@ import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.GroupLayout.Alignment;
@@ -46,6 +46,7 @@ public class AbilitiesWindow extends Dialog
 	private ArrayList<Ability> abilities;
 	private int ownedAbilityNumber = 0;
 	private int[] ownedAbilities = new int[4];
+	private int level;
 	
 	/**
 	 * AbilitiesWindow constructor
@@ -68,10 +69,13 @@ public class AbilitiesWindow extends Dialog
 	 */
 	public void showDialog(internal.classes.Character character) 
 	{
+		level = character.getLevel();
 		abilities = abilityHandler.getCharacterAbility(character.getCharClass(), character.getCharSpec());
 		AbilitiesTableModel model = new AbilitiesTableModel(abilities);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setModel(model);
+		ownedAbilities = abilityHandler.buildAbilityArray(character.getAbilities());
+		ownedAbilityNumber = abilityHandler.countAbilities(ownedAbilities);
 		ListSelectionModel selectionModel = table.getSelectionModel();
 		selectionModel.addListSelectionListener(tableController);
 		lblName.setText(character.getName());
@@ -82,33 +86,27 @@ public class AbilitiesWindow extends Dialog
 	}
 	
 	/**
-	 * 
+	 * Returns how many points the character has
 	 * @param level
-	 * @return
+	 * @return how many points the character has
 	 */
 	private String getAbilityPoint(int level) 
 	{
-		if(level>0)
+		if(level > 0)
 			level--;
-		int point=1+(level/5);
+		int point = 1 + (level / 5);
 		
 		return Integer.toString(point);
 	}
-	
-	/**
-	 * 
-	 * @param row
-	 * @param color
-	 */
-	private void changeRowColor(int row, Color color)
-	{
-		Component component = table.prepareRenderer(table.getCellRenderer(row, 0), row, 0);
-		component.setBackground(color);
-	}
 
 	/**
-	 * 
-	 * @return
+	 * Get table selected row and add it to character owned abilities
+	 * @return an {@code int} based on action
+	 * <ul>
+	 * <li>0 when ability has been acquired correctly</li>
+	 * <li>1 when character hasn't enough ability points</li>
+	 * <li>-1 when no row has been selected</li>
+	 * </ul>
 	 */
 	public int buyAbility()
 	{
@@ -116,9 +114,25 @@ public class AbilitiesWindow extends Dialog
 		{
 			if(ownedAbilityNumber < Integer.parseInt(lblAbilityPoints.getText()))
 			{
-				ownedAbilities[ownedAbilityNumber++] = abilities.get(table.getSelectedRow()).getId();
-				changeRowColor(table.getSelectedRow(), Color.GREEN);
+				if(!abilityHandler.isAlreadyOwned(ownedAbilities, abilities.get(table.getSelectedRow()).getId()))
+				{
+					if(level >= abilities.get(table.getSelectedRow()).getLevRequired())
+					{
+						ownedAbilities[ownedAbilityNumber++] = abilities.get(table.getSelectedRow()).getId();
+					}
+					else 
+					{
+						JOptionPane.showMessageDialog(null, "Level required " + abilities.get(table.getSelectedRow()).getLevRequired() + " higher then your current level: " + level + ".", "No level", JOptionPane.INFORMATION_MESSAGE);
+					}
+					
+				}
+				else 
+				{
+					JOptionPane.showMessageDialog(null, "Ability already owned", "Already owned", JOptionPane.INFORMATION_MESSAGE);
+					
+				}
 				return 0;
+				
 			}
 			else
 				return 1;
@@ -195,7 +209,7 @@ public class AbilitiesWindow extends Dialog
 
 
 	/**
-	 * @wbp.parser.entryPoint
+	 * Initialize layout and GUI objects
 	 */
 	private void initializeLayout()
 	{
@@ -290,8 +304,8 @@ public class AbilitiesWindow extends Dialog
 	}
 	
 	/**
-	 * 
-	 * @param index
+	 * Returns a description based on index 
+	 * @param index Selected ability index
 	 */
 	public void getDescription(int index)
 	{
@@ -299,6 +313,10 @@ public class AbilitiesWindow extends Dialog
 		descriptionPane.setText(ability.getDescription());
 	}
 	
+	/**
+	 * Return a parsed string that contains all owned or bought 
+	 * @return a parsed string that contains all owned or bought 
+	 */
 	public String getCharacterAbilities()
 	{		
 		return abilityHandler.parseAbilities(ownedAbilities);

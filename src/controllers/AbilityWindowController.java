@@ -18,6 +18,14 @@ public class AbilityWindowController implements ActionListener
 		this.dialog = dialog;
 	}
 
+	/**
+	 * <h2>Input-based action</h2>
+	 * <ul>
+	 * <li>Close: close the dialog without saving</li>
+	 * <li>Save: saves changes and close the dialog</li>
+	 * <li>Buy: buys selected ability </li>
+	 * </ul>
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{

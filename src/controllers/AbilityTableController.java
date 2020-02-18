@@ -16,6 +16,10 @@ public class AbilityTableController implements ListSelectionListener
 		this.dialog = dialog;
 	}
 
+	/**
+	 * <h2>Input-based action</h2>
+	 * Changes dynamically description based on valueChanged event
+	 */
 	@Override
 	public void valueChanged(ListSelectionEvent e) 
 	{
