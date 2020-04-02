@@ -387,7 +387,7 @@ public class Character implements Comparable<Character>
 	@Override
 	public String toString()
 	{
-		String value = new String();
+		String value = "";
 		value += "ID: " + id + " ";
 		value += "Name: " + name + " ";
 		value += "Level: " + level + " ";
@@ -410,7 +410,7 @@ public class Character implements Comparable<Character>
 	 */
 	public String toFileString()
 	{
-		String value = new String();
+		String value = "";
 		value += id + "|";
 		value += name + "|";
 		value += level + "|";
@@ -432,7 +432,7 @@ public class Character implements Comparable<Character>
 	 */
 	public String toFileStringWithoutID()
 	{
-		String value = new String();
+		String value = "";
 		value += name + "|";
 		value += level + "|";
 		value += strength + "|";
