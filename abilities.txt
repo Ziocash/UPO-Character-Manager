@@ -1,0 +1,47 @@
+Warrior
+1#Colpo di spada#1#Tira un potente fendente al nemico
+2#Spaccaterra#10#Colpisce il terreno creando un terremoto che colpisce i nemici vicini
+Berserker
+3#Furia#5#Entrando in questa modalita il personaggio non subisce malus e aumenta molto la propria forza e costituzione
+4#Carica#15#Carica i nemici travolgendo tutti quelli sul suo cammino
+Champion
+5#Grido ispiratorio#5#Un grido ispira i tuoi alleati a combattere aumentando le loro statistiche
+6#Distruttore#15#Crea un vortice con l'arma che colpisce tutti i nemici circostanti infliggendo gravi danni
+Reaver
+7#Sacrificio di sangue#5#Aumenta la propria forza in base alla percentuale di vita sacrificata
+8#Arma di sangue#15#Utilizza il proprio sangue per creare spuntoni che si solidificano sul arma 
+Templar
+9#Purifica<ione#5#Annulla tutti i buff e poteri magici in uso dai nemici
+10#Luce divina#15#Colpisce tutti i nemici malvagi nella zona con una luce accecante che li danneggia
+
+Rogue
+11#Ruba#1#Borseggia un nemico prendendo un oggetto casuale dal suo inventario
+12#Coltre Fumogena#10#Crea una coltre fumogena che impedisce ai nemici di vederti
+Assassin
+13#Assassinio#5#Compari dietro al nemico colpendolo alle spalle e infliggendo gravi danni
+14#Lame avvelenate#15#Avvelena le armi rendendole piu efficaci contro nemici organici
+Bard
+15#Esibizione bardica#5#Potenzia tutti gli alleati presenti aumentandone destrezza e forza
+16#Sonno#15#Addormenta tutti i nemici nel area per per un numero di secondi pari al proprio livello
+Duelist
+17#Sfida#5#Il nemico è obbligato ad attaccarti e i suoi parametri vengono penalizzati
+18#Colpo finale#15#Colpisce un nemico sfidato infliggendogli danni letali
+Ranger
+19#Chiamata del lupo#5#Un lupo accorrera in tuo soccorso combattendo con te per 30 secondi
+20#Chiamata dell'orso#15#Un orso accorrera in tuo soccorso combattendo con te per 40 secondi
+
+Mage
+21#Fulmine#1#Colpisce un nemico un una scarica elettrica
+22#Palla di fuoco#10#Colpisce un area di 2 metri con una palla di fuoco
+Arcane_Warrior
+23#Entropia#5#Assorbe mana dai nemici vicini
+24#Esplosione di mana#15#Utilizzi tutto il tuo mana restante colpendo un area di 3 metri intorno a te
+Blood_Mage
+25#Magia del sangue#5#Si utilizza la propria vita al posto del mana per castare incantesimi
+26#Patto demoniaco#15#Evochi un demone che combattera al tuo fianco per 20 secondi
+Shapeshifter
+27#Teletrasporto di emergenza#5#Ti teletrasporti lontano dal combattimento di 4 metri
+28#Vuoto cosmico#15#Crei un portale che risucchia tutti i nemici vicini uccidendoli
+Spirit_Healer
+29#Guarire#5#Cura un alleato
+30#Resurrezione#15#Resuscita un alleato

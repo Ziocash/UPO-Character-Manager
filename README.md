@@ -3,5 +3,11 @@
 - Java based project
 - Currently under active development
 
-### Issues or bugs
-[Click here](https://github.com/Ziocash/development-Java/issues/new) to submit an issue
+## Issues or bugs
+
+[Click here](./issues/new) to submit an issue
+
+## File requirements
+
+- characters.txt
+- abilities.txt
