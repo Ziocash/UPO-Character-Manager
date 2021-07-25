@@ -5,7 +5,7 @@
 
 ## Issues or bugs
 
-[Click here](./issues/new) to submit an issue
+[Click here](https://github.com/Ziocash/UPO-Character-Manager/issues/new) to submit an issue
 
 ## File requirements
 
